@@ -1,0 +1,22 @@
+Red
+Green
+Blue
+
+NSW
+V
+SA
+WA
+NT
+Q
+TZ
+
+NSW Q
+NSW V
+NSW SA
+V SA
+Q NT
+Q SA
+NT WA
+NT SA
+WA SA
+
