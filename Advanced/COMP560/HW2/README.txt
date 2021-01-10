@@ -1,0 +1,1 @@
+Rein3.c is my rough code at the moment, If you need a new .exe because of your os: gcc -o "nameOfExeYouWant" Rein3.c
