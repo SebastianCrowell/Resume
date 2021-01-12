@@ -1,0 +1,16 @@
+
+.bottom-center {
+    position: relative;
+    top: 85%;
+    left: 44%;
+  }
+
+.card {
+    height: 300px;
+    width: 300px;
+    color: black;
+}
+
+.box {
+    color: black;
+}

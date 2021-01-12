@@ -1,0 +1,13 @@
+table {
+    border: 1px solid black;
+}
+td {
+    color: blue;
+    padding: 10px;
+    width: 22px;
+    border: 1px solid black;
+}
+h6 {
+    color: #000;
+    width: 200px;
+}

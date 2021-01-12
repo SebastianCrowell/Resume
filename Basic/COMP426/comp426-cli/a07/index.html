@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+ 
+        <title>Game of 2048</title>
+
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src= "./engine/game.js" type ="module"></script>
+        <script src= "view.js" type="module"></script>
+ 
+    </head>
+ 
+    <body>
+        <div class="container">
+            <h1 class="title">2048 game</h1>
+            <h2 class="subtitle" id="score">0</h2>
+            <h6 class="subtitle"> The game is played by using the arrowkeys to move the numbered boxes until a combonation is possible and is either won at a box total 2048 or lost when the board is full and no moves are left. Restarting makes a new board and resets the score.</h6>
+            <button id="restart">Restart</button>
+        </div>
+        <div id="root">
+            
+        </div>
+    </body>
+</html>
