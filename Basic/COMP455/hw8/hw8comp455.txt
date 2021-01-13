@@ -1,0 +1,58 @@
+1. Consider the Turing machine M = (K,Σ,δ,s,H) where K = {q0,q,r,s,t,h},Σ = {U,>,a,b,c},s = q0,H = {h}, and δ 
+includes the following transitions: 
+
+_________________________________
+	δ(q0, U) = (q, ->)
+_________________________________
+	δ(q, a) = (r, c)
+	δ(q, b) = (q, ->)
+	δ(q, c) = (q, ->)
+	δ(q, U) = (s, <-)
+_________________________________
+	δ(r, c) = (q, ->)
+_________________________________
+	δ(s, a) = (s, <-)
+	δ(s, b) = (t, a)
+	δ(s, c) = (s, <-)
+	δ(s, U) = (h, U)
+_________________________________
+	δ(t, a) = (s, <-)
+_________________________________
+
+
+There may be other transitions besides these, but these are all you need to know. The symbol U denotes a blank.
+a) What is the ﬁnal tape conﬁguration when this machine is started on the tape > U abaccbcaa scanning the blank in the 
+start state?
+
+(q0, >U abaccbcaa)	U ->
+(q, >U cbaccbcaa)	a = c
+(r, >U cbaccbcaa)	c ->
+(q, >U cbaccbcaa)	b ->
+(q, >U cbcccbcaa)	a = c
+(r, >U cbcccbcaa)	c ->
+(q, >U cbcccbcaa)	c ->
+(q, >U cbcccbcaa)	c ->
+(q, >U cbcccbcaa)	b ->
+(q, >U cbcccbcaa)	c ->
+(q, >U cbcccbcca)	a = c
+(r, >U cbcccbcca)	c ->
+(q, >U cbcccbccc)	a = c
+(r, >U cbcccbccc)	c ->
+(q, >U cbcccbcccU)	U <-
+(s, >U cbcccbcccU)	c <-
+(s, >U cbcccbcccU)	c <-
+(s, >U cbcccbcccU)	c <-
+(s, >U cbcccacccU)	b = a
+(t, >U cbcccacccU)	a <-
+(s, >U cbcccacccU)	c <-
+(s, >U cbcccacccU)	c <-
+(s, >U cbcccacccU)	c <-
+(s, >U cacccacccU)	b = a
+(t, >U cacccacccU)	a <-
+(s, >U cacccacccU)	c <-
+(h, >U cacccacccU)	h
+
+b) Describe informally what this machine does.
+This machine reads throught the inputed string changing all a's to c's, and then it travles back through the string changing
+all b's to a's. This seems like a way to simplfy a string, make a more recognizable pattern, and perhaps a way to create a 
+string that is # c's >= a's, if b's =< a's.

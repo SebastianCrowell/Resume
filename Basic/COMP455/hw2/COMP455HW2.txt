@@ -1,0 +1,23 @@
+COMP 455 
+Models of Languages and Computation 
+Spring 2020 
+Homework 2 
+Due Thursday, January 23, 2020
+1. Give a regular expression for the set of strings over {a,b,c} such that the number of a’s 
+equals the number of b’s and is less than or equal to 2.
+
+(c*) ; any number of c's
+__ or ab or aabb are the options
+c* 
+U abc* U bac* U c*ba U c*ab U ac*b U bc*a 
+U aabbc* U ababc* U abbac* U babac* U bbaac* U baabc* 
+U aabc*b U abac*b U abbc*a U babc*a U bbac*a U baac*b
+U aac*bb U abc*ab U abc*ba U bac*ba U bbc*aa U bac*ab
+U ac*abb U ac*bab U ac*bba U bc*aba U bc*baa U bc*aab
+U c*aabb U c*abab U c*abba U c*baba U c*bbaa U c*baab
+
+this all strings possible
+
+c∗ ∪ ((c∗bc∗ac∗) ∪ (c∗ac∗bc∗)) ∪ ((c∗ac∗ac∗bc∗bc∗) ∪ (c∗ac∗bc∗ac∗bc∗) ∪ (c∗ac∗bc∗bc∗ac∗) ∪ (c∗bc∗bc∗ac∗ac∗) ∪ (c∗bc∗ac∗bc∗ac∗) ∪ (c∗bc∗ac∗ac∗bc∗))
+
+

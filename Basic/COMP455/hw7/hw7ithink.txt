@@ -1,0 +1,28 @@
+1. Consider the context-free grammar G = (V,Σ,R,S) where V = {S,P,Q,a,b,c,d}, Σ = {a,b,c,d}, and R contains the following rules: 
+S → P 
+S → Q
+Q → aQb
+Q → e
+P → cPd
+P → e
+Construct a push-down automaton M = (K,Σ,Γ,∆,s,F) obtained from this grammar using the construction of lemma 3.4.1 in the text, also reproduced in the 
+course notes at the beginning of this lecture: http://www.cs.unc.edu/ plaisted/comp455/slides/pdacfg3.4.pdf 
+Give the set ∆ of transitions as a sequence of elements of the form ((p,a,β),(q,γ)). Also say what K,Σ,Γ,s, and F are. 
+
+1)
+
+M = ({q, p}, {a,b,c,d}, {S,P,Q,a,b,c,d}, ∆, q, {Q, P})
+
+K = set of states, Σ = input states, Γ = stack alphabet, ∆ = transitions, s = start state, F = accepting states
+
+∆(p, e, e) = {(q, S)}
+
+∆(q, e, S) = {(q, P), (q, Q)}
+∆(q, e, P) = {(q, cPd), (q, e)}
+∆(q, e, Q) = {(q, aQb), (q, e)}
+
+∆(q, a, a) = {(q, e)}
+∆(q, b, b) = {(q, e)}
+∆(q, c, c) = {(q, e)}
+∆(q, d, d) = {(q, e)}
+

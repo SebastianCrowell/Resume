@@ -1,0 +1,65 @@
+COMP 455 Models of Languages and Computation 
+Spring 2020 
+Homework 1 
+Due Thursday, January 16, 2020
+1. True or false: 
+a. {{a,b}}⊆{{a,b},{b,c}} 
+b. {a,c}∈{{a,b},c,{b,c}} 
+c. {{a,b},{b,a,c}} = {{c,c,a,b},{b,a},{a,a,b}} 
+2. Compute the result of these operations: ({a,b}∪{a,c})∩{b,c,d} 
+3. Compute the result of this composition of two relations: {(a,b),(b,c),(a,d)}◦{(b,d),(c,a),(b,f),(d,f)}
+For this homework you may work in groups of up to four people if you choose to, and groups are encouraged 
+to turn in only one paper with everyone’s names in the group on it. This will make the work of the grader 
+easier. Those who want to be part of a group and can’t ﬁnd others may meet in the front after class 
+(today or later) and form groups, if you desire to.
+
+
+1.
+a.	{{a,b}}⊆{{a,b},{b,c}} 									Use L1
+	{a,b}∈{{a,b},{b,c}}									Use L5
+	{a,b} is an element of set A = {{a,b},{b,c}}
+	therefore, this succeeds and is true
+
+b.	{a,c}∈{{a,b},c,{b,c}}									Use L4
+	{a,c}={a,b}?										Use L8
+	{a,c}⊆{a,b} and {a,b}⊆{a,c}								Use L1, L2, L3
+	a∈{a,b}, yes; c∈{a,b}, no; this fails for L1
+	a,c ∈ {a,b}, no; this fails for L2
+	{a,c} is not empty; this fails for L3
+	therefore, this fails and is false
+
+	{a,c}=c?										Use L8
+	{a,c}⊆c and c⊆{a,c}									Use L1, L2, L3
+	a∈c, no; this fails for L1
+	a,c ∈ c, no; this fails for L2
+	{a,c} is not empty; this fails for L3
+	therefore, this fails and is false
+
+	{a,c}={b,c}?										Use L8
+	{a,c}⊆{b,c} and {b,c}⊆{a,c}								Use L1, L2, L3
+	a∈{b,c}, no; this fails for L1
+	a,c ∈ {b,c}, no; this fails for L2
+	{a,c} is not empty; this fails for L3
+	therefore, this fails and is false
+
+	the set A = {a,c} is not an element of the set B = {{a,b},c,{b,c}}
+	therefore, the statement {a,c}∈{{a,b},c,{b,c}} is false
+
+c.	{{a,b},{b,a,c}} = {{c,c,a,b},{b,a},{a,a,b}}						Use L8
+	{a,b},{b,a,c} ⊆ {c,c,a,b},{b,a},{a,a,b}	and {c,c,a,b},{b,a},{a,a,b} ⊆ {a,b},{b,a,c}	Use L1, L2, L3
+	{a,b}∈{c,c,a,b}, yes; {a,b}∈{b,a}, yes; {a,b}∈{a,a,b}, yes; {b,a,c}∈{c,c,a,b}, yes; {b,a,c}∈{b,a}, no; this fails L1
+	a,b ∈ {c,c,a,b}, yes; ... fails at same spot, fails L2
+	neither are empty
+	therefore, this fails and is false
+
+2.
+	({a,b}∪{a,c})∩{b,c,d}
+	{a,b,c}∩{b,c,d}
+	{b,c}
+3.
+	{(a,b),(b,c),(a,d)}◦{(b,d),(c,a),(b,f),(d,f)}
+	a->b->d		b->c->a		a->d->f
+	b->a->a		c->b->d		d->a->a
+	{(d,a),(a,d),(f,a)}
+
+	
