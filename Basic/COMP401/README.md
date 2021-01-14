@@ -1,0 +1,1 @@
+This is a collection of the assignments completed in the COMP 401. They were done in eclipse photon 2018.
