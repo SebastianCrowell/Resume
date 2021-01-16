@@ -1,0 +1,1 @@
+Collection of assignments from COMP 410, missing a1- linked LIST and a0- HELLO WORLD
