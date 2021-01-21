@@ -1,0 +1,103 @@
+.pace {
+    -webkit-pointer-events: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+    .pace .pace-activity {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 2000;
+        display: block;
+        width: 300px;
+        height: 300px;
+        background: #800080;
+        -webkit-transition: -webkit-transform 0.3s;
+        -moz-transition: transform 0.3s;
+        -o-transition: transform 0.3s;
+        transition: transform 0.3s;
+        -webkit-transform: translateX(100%) translateY(-100%) rotate(45deg);
+        -moz-transform: translateX(100%) translateY(-100%) rotate(45deg);
+        -ms-transform: translateX(100%) translateY(-100%) rotate(45deg);
+        -o-transform: translateX(100%) translateY(-100%) rotate(45deg);
+        transform: translateX(100%) translateY(-100%) rotate(45deg);
+        pointer-events: none;
+    }
+
+    .pace.pace-active .pace-activity {
+        -webkit-transform: translateX(50%) translateY(-50%) rotate(45deg);
+        -moz-transform: translateX(50%) translateY(-50%) rotate(45deg);
+        -ms-transform: translateX(50%) translateY(-50%) rotate(45deg);
+        -o-transform: translateX(50%) translateY(-50%) rotate(45deg);
+        transform: translateX(50%) translateY(-50%) rotate(45deg);
+    }
+
+    .pace .pace-activity::before,
+    .pace .pace-activity::after {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        display: block;
+        border: 5px solid #fff;
+        border-radius: 50%;
+        content: '';
+    }
+
+    .pace .pace-activity::before {
+        margin-left: -40px;
+        width: 80px;
+        height: 80px;
+        border-right-color: rgba(0, 0, 0, .2);
+        border-left-color: rgba(0, 0, 0, .2);
+        -webkit-animation: pace-rotation 3s linear infinite;
+        -moz-animation: pace-rotation 3s linear infinite;
+        -o-animation: pace-rotation 3s linear infinite;
+        animation: pace-rotation 3s linear infinite;
+    }
+
+    .pace .pace-activity::after {
+        bottom: 50px;
+        margin-left: -20px;
+        width: 40px;
+        height: 40px;
+        border-top-color: rgba(0, 0, 0, .2);
+        border-bottom-color: rgba(0, 0, 0, .2);
+        -webkit-animation: pace-rotation 1s linear infinite;
+        -moz-animation: pace-rotation 1s linear infinite;
+        -o-animation: pace-rotation 1s linear infinite;
+        animation: pace-rotation 1s linear infinite;
+    }
+
+@-webkit-keyframes pace-rotation {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes pace-rotation {
+    0% {
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(359deg);
+        -ms-transform: rotate(359deg);
+        -o-transform: rotate(359deg);
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}

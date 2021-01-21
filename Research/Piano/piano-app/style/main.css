@@ -1,0 +1,284 @@
+@font-face {
+    font-family: Vdj;
+    src: url(Vdj.otf);
+}
+
+body {
+    -moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    margin: 35px 0 0 0;
+    background: url(../style/img/bk/5.jpg);
+    cursor: default;
+}
+
+#piano {
+    z-index: 3;
+    margin: 0 auto;
+    width: 1236px;
+    height: 220px;
+}
+
+#s1,
+#s2,
+#composition {
+    -moz-user-select: text;
+    -ms-user-select: text;
+    -webkit-user-select: text;
+    user-select: text;
+    cursor: text;
+}
+
+#composition {
+    width: 300px;
+}
+
+#submit {
+    position: absolute;
+    left: 511px;
+}
+
+.w,
+.b,
+.text,
+#tb1,
+#tb2,
+#expert,
+input[type="button"] {
+    cursor: pointer;
+}
+
+.text,
+#white,
+#win,
+#btns {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.sheet_txt,
+#rec_txt,
+#sheet_choose {
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+#btns {
+    position: absolute;
+    z-index: 4;
+    margin: 0 auto;
+    margin-top: 3px;
+    margin-left: 393px;
+    padding-left: 40px;
+    width: 450px;
+    height: 40px;
+    border: 1px solid #303030;
+    background-color: #404040;
+    font-size: 30px;
+    font-family: Vdj;
+}
+
+.text {
+    float: left;
+    text-align: center;
+}
+
+#recordd,
+#styled,
+#sheetd {
+    width: 64px;
+}
+
+#assistd {
+    width: 164px;
+}
+
+#sheetd {
+    margin-left: 30px;
+}
+
+#white {
+    z-index: 1;
+    padding-left: 10px;
+    width: 1236px;
+    height: 220px;
+    background-image: linear-gradient(#454545 -10px,#000 200px);
+}
+
+#black {
+    position: relative;
+    top: -210px;
+    padding-left: 9px;
+    width: 1236px;
+}
+
+.w,
+.b {
+    float: left;
+    text-align: center;
+}
+
+.w {
+    margin: 4% auto;
+    margin-left: 2px;
+    width: 32px;
+    height: 160px;
+    -moz-border-radius: 2px 2px 5px 5px;
+    -webkit-border-radius: 2px 2px 5px 5px;
+    border-radius: 2px 2px 5px 5px;
+    background-image: linear-gradient(0,#000 -20px,#fff 8%);
+    color: #000;
+    font-weight: 700;
+}
+
+.b {
+    position: relative;
+    width: 20px;
+    height: 100px;
+    -moz-border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+    background-image: linear-gradient(0,#c8c8c8 -10px,#0f0f0f 12%);
+    color: #fff;
+}
+
+#win {
+    visibility:hidden;
+    position: relative;
+    top: 5px;
+    z-index: 5;
+    margin: 0 auto;
+    padding-left: 15px;
+    width: 585px;
+    height: 400px;
+    border: 1px solid #202020;
+    background-image: linear-gradient(#C7C7C7 -10px,#fff 200px);
+}
+
+#rec_bkg {
+    margin-top: -2px;
+    margin-left: -16px;
+    width: 600px;
+    height: 22px;
+    border: 1px solid #202020;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+    background-image: linear-gradient(#454545 -10px,#000 200px);
+}
+
+#sheet_stop,
+#sheet_stop_sep,
+#hh_vis,
+#hh_sep {
+    visibility: hidden;
+}
+
+.sep {
+    color: #B2CCCC;
+}
+
+#sheet_play {
+    margin-left: 5px;
+}
+
+#rec_bkg_title {
+    position: absolute;
+    top: -4px;
+    left: 5px;
+    color: #DEDEDE;
+    text-align: center;
+    font-size: 24px;
+    font-family: Vdj;
+}
+
+#rec_bkg_x,
+#rec_bkg_- {
+    position: absolute;
+    top: 0;
+    width: 22px;
+    height: 22px;
+    color: #BEBEBE;
+    text-align: center;
+}
+
+#rec_bkg_x {
+    left: 578px;
+    font-weight: 600;
+}
+
+#rec_bkg_- {
+    left: 555px;
+    font-size: 20px;
+}
+
+    .text,
+    #rec_bkg_x:hover,
+    #rec_bkg_-:hover {
+        color: #DEDEDE;
+    }
+
+#recplay {
+    position: absolute;
+    top: 32px;
+    left: 215px;
+    float: left;
+}
+
+#sheet_tb1,
+#rec_tb2,
+#rec_tb3 {
+    position: absolute;
+    left: 10px;
+    float: left;
+    width: 606px;
+    height: 22px;
+}
+
+#rec_tb1,
+#sheet_tb1 {
+    top: 32px;
+}
+
+#rec_tb2 {
+    top: 62px;
+    left: 10px;
+    width: 550px;
+}
+
+#rec_tb3 {
+    top: 367px;
+}
+
+.rec_txt {
+    position: absolute;
+    top: 92px;
+    left: 10px;
+    width: 570px;
+    height: 270px;
+}
+
+.sheet_txt {
+    top: 62px;
+    height: 325px;
+}
+
+#sheet_submit {
+    position: absolute;
+    top: 365px;
+    left: 517px;
+}
+
+#expbar {
+    float: right;
+    margin-right: -18px;
+}
+
+#exptext {
+    z-index: 5;
+    cursor: pointer;
+}

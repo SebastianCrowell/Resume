@@ -1,0 +1,35 @@
+﻿<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Piano</title>
+    <link rel="stylesheet" type="text/css" href="style/main.css" />
+    <link rel="stylesheet" type="text/css" href="style/pace.css" />
+    <link rel="icon" type="image/x-icon" href="style/favicon.ico" />
+    <script type="text/javascript" src="js/pace.min.js"></script>
+    <script type="text/javascript" src="js/piano.js"></script>
+    <script type="text/javascript" src="js/notes.js"></script>
+    <script type="text/javascript" src="js/translators/translator.js"></script>
+    <script type="text/javascript" src="js/translators/retranslator.js"></script>
+    <script type="text/javascript" src="js/arm.js"></script>
+    <script type="text/javascript" src="js/db/music_list.js"></script>
+    <script async type="text/javascript" src="js/keyboard.js"></script>
+    <script async type="text/javascript" src="js/DOM/window_fnc.js"></script>
+    <script async type="text/javascript" src="js/DOM/index.js"></script>
+    <script async type="text/javascript" src="js/DOM/window_dom.js"></script>
+    <script async type="text/javascript" src="js/lastsession.js"></script>
+</head>
+<body>
+    <div id="piano">
+        <div id="btns">
+            <div id="styled" class="text" onclick="piano.styler()">Styles</div>
+            <div id="assistd" class="text" onclick="piano.assist()">Key assist Off</div>
+            <div id="recordd" class="text" onclick="win_fnc.viewer('recorder')">Recorder</div>
+            <div id="sheetd" class="text" onclick="win_fnc.viewer('sheet')">Sheets</div>
+        </div>
+        <div id="white"></div>
+        <div id="black"></div>
+        <div id="audio" onerror="location.reload()"></div>
+    </div>
+    <div id='win'></div>
+</body>
+</html>
