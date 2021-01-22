@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WebView  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/webview"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <SearchView
+        android:id="@+id/simpleSearchView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        android:queryHint="Enter a .html">
+        <requestFocus />
+    </SearchView>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:translationY="50dp"
+        android:layout_below="@+id/search" />
+
+</WebView>

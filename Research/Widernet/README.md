@@ -1,0 +1,1 @@
+Project designed to use locally stored html files to serve a static version of the internet for Android 7.
