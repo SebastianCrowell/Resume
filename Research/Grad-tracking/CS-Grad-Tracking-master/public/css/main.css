@@ -1,0 +1,178 @@
+.sidebar {
+	background-color: lightblue;
+}
+
+.panelbg {
+	background-color: lightgrey;
+}
+
+html, body {
+	height: 100%;
+}
+
+.white-bg {
+	background-color: white;
+}
+
+.column-padding td {
+	padding:0 30px 0 30px;
+}
+
+table {
+	table-layout: fixed;
+}
+
+/* faculty table column widths*/
+.col-facultyOnyen {
+	width: 15%;
+}
+
+.col-facultyCSID {
+	width: 10%;
+}
+
+.col-facultyFirstname {
+	width: 15%;
+}
+
+.col-facultyLastname {
+	width: 15%;
+}
+
+.col-facultyPid {
+	width: 15%;
+}
+
+.col-facultySectionNumber{
+	width: 10%;
+}
+
+.col-facultyActive {
+	width: 10%;
+}
+
+.col-delete {
+	width: 10%;
+}
+
+.col-jobPosition{
+	width:10%;
+}
+
+/*course table column widths */
+
+.col-course-topic {
+	width:10%;
+}
+
+.col-course-number {
+	width:7.5%;
+}
+
+.col-course-univNumber{
+	width:10%;
+}
+
+.col-course-name {
+	width:20%;
+}
+
+.col-course-category {
+	width:10%;
+}
+
+.col-course-hours {
+	width:5%;
+}
+
+.col-course-section{
+	width:7.5%;
+}
+
+.col-course-faculty {
+	width:10%;
+}
+
+.col-course-semester {
+	width:10%;
+}
+
+.col-course-delete {
+	width:10%;
+}
+
+.editTag:hover {
+	text-decoration: none;
+	color: green;
+}
+
+.editTag {
+	color: green;
+}
+
+.space {
+	margin:10px;
+}
+
+.verticalSpace {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.fabutton {
+	background: none;
+	padding:0px;
+	border:none;
+}
+
+.colJobModify {
+	width:10%;
+}
+
+.whiteBg {
+	background: white;
+}
+
+.editRow{
+	display:flex;
+	flex-direction: row;
+	justify-content:center;
+}
+
+.editColumn{
+	margin:5px;
+	display: flex;
+	flex-direction: column;
+}
+
+.editColor {
+	color: black;
+}
+
+label.autoHyphen {
+	hyphens: auto;
+}
+
+div.container-fluid > div > div.col-lg-10 {
+	overflow-y : scroll;
+}
+
+/*
+This is for highlighting search text on index pages
+*/
+.searchTextColor {
+	color:#73a073;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.slider{
+	background-image:url("../../images/slider.png");
+} 
+
+#departmentInput{
+	font-size:10px;
+	height:38px;
+}

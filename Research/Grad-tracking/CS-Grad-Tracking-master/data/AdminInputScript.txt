@@ -1,0 +1,26 @@
+var mongoose = require('mongoose')
+db = require("./../models/schema.js")
+
+mongoose.connect('mongodb://localhost/cs_grad_data-dev', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+mongoose.connection
+  .on('error', console.error.bind(console, 'connection error:'))
+  .once('open', function () {
+
+    const admin = new db.Faculty ({
+        onyen: "person",
+        csid: "person",
+        email: "hannahbodnar.17@gmail.com",
+        firstName: "person",
+        lastName: "person",
+        pid: 000000000,
+        sectionNumber: 001,
+        active: true,
+        admin: true
+    })
+
+    admin.save(function (err, admin) {
+        if (err) return console.error(err);
+        console.log(admin);
+    });
+
+  })

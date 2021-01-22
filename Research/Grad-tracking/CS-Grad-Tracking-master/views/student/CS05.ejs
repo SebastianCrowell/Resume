@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<!-- views/student/CS05.ejs -->
+
+<html>
+	<head>
+		<title>CS05 Request for Appointment of M.S. Committee</title>
+		<%- include("../partials/head.ejs") %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col-lg-2 sidebar text-center">
+
+					<% if(!isStudent) {%>
+					
+					<%- include("../partials/admin-sidebar.ejs") %>
+
+					<%- include("./search-student.ejs") %>
+
+					<% } else{ %>
+
+					<%- include("../partials/logout.ejs") %>
+
+					<% } %>
+
+				</div>
+				<div align ="center" class="col-lg-10 panelbg text-center">
+
+					<% if(uploadSuccess == true) { %>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong>Submit success!</strong>
+					</div>
+					<% } %>
+
+					<% if(!isStudent) {%>
+					<%- include("./studentBarPartial.ejs") %>
+					<% } else { %>
+					<%- include("../partials/studentBarPartial.ejs") %>
+					<% } %>
+
+					<h4><%=student.lastName%>, <%=student.firstName%></h4>
+
+					<h3>Request for Appointment of M.S. Committee</h3>
+					<h3>CS-05</h3>
+
+					<div align="left">
+
+
+						<% if(hasAccess) { %>
+						
+						<form action="<%=postMethod%>" method="post">
+
+							<input type="hidden" class="form-control" name="student" value=<%=student._id%> />
+
+							<div class="row">
+								<div class="col-md-4">
+									<div>Name*</div>
+									<input type="text" class="form-control student-name" name="name" value="<%=student.lastName%>, <%=student.firstName%>" required/>
+								</div>
+								<div class="col-md-4">
+									<div>PID*</div>
+									<input type="number" class="form-control student-pid" name="pid" value=<%=student.pid%> required />
+								</div>
+								<div class="col-md-4">
+									<div>Date submitted*</div>
+									<input type="text" class="form-control date-submitted" name="dateSubmitted" value="<%=form.dateSubmitted%>" required />
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<div class="row">
+								<div class="col-md-2">
+									<div>Appointment for Oral Comprehensive Examination*</div>
+								</div>
+								<div class="col-md-2">
+									<select name="oralComprehensiveExam" class="form-control oral-comprehensive-exam" id="inputStatus">
+										<option value=<%=form.oralComprehensiveExam%>><%=form.oralComprehensiveExam%></option>
+										<option value=false>False</option>
+										<option value=true>True</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="verticalSpace"/>
+
+							<div class="row">
+								<div class="col-md-2">
+									<div>Thesis*</div>
+								</div>
+								<div class="col-md-2">
+									<select name="thesis" class="form-control thesis" id="inputStatus">
+										<option value=<%=form.thesis%>><%=form.thesis%></option>
+										<option value=false>False</option>
+										<option value=true>True</option>
+									</select>
+								</div>
+							</div>
+
+							<hr></hr>
+
+							
+
+							<div class="row">
+								<div class="col-md-4">
+									<strong>Nominee name</strong>
+								</div>
+								<div class="col-md-3">
+									<strong>Department</strong>
+								</div>
+								<% if(!isStudent) { %>
+								<div class="col-md-3">
+									<strong>Graduate Faculty status</strong>
+								</div>
+							    <% } %>
+								<div class="col-md-1">
+									<strong>advisor</strong>
+								</div>
+								<div class="col-md-1">
+									<strong>Chairman</strong>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-4">
+
+									<% for(var i = 0; i < 5; i++) { %>
+										<div class="form-group row">
+											<label class="col-md-1"><%= i+1 %>. </label>
+											<div class="col-md-11">
+												<input type="string" class="form-control nominees<%=i+1%>" name="nominees" <% if(form.nominees != null) { %> value="<%=form.nominees[i]%>" <% } %> id="nominee<%=i+1%>Name" />
+											</div>
+										</div>
+									<% } %>
+
+								</div>
+
+								<div class="col-md-3">
+
+									<% for(var i = 0; i < 5; i++) { %>
+										<div class="form-group row">
+											<label class="col-md-1"><%= i+1 %>. </label>
+											<div class="col-md-11">
+												<input type="string" class="form-control nominee-departments<%=i+1%>" name="nomineeDepartments" <% if(form.nomineeDepartments != null) { %> value="<%=form.nomineeDepartments[i]%>" <% } %> id="nominee<%=i+1%>Department" />
+											</div>
+										</div>
+									<% } %>
+								</div>
+
+								<% if(!isStudent) { %>
+								<div class="col-md-3">
+
+									<% for(var i = 0; i < 5; i++) { %>
+										<div class="form-group row">
+											<label class="col-md-1"><%= i+1 %>. </label>
+											<div class="col-md-11">
+												<input type="string" class="form-control nominee-statuses<%=i+1%>" name="nomineeStatuses" <% if(form.nomineeStatuses != null) { %> value="<%=form.nomineeStatuses[i]%>" <% } %> id="nominee<%=i+1%>Status" />
+											</div>
+										</div>
+									<% } %>
+
+								</div>
+								<% } %>
+
+								<div class="col-md-1">
+									<% for(var i = 1; i < 6; i++) { %>
+										<div class="form-group row">
+											<div class="col-md-12">
+												<button type="button" class="btn btn-outline-primary select-advisor<%=i%>" data-toggle="button" aria-pressed="false" autocomplete="off" 
+												id="advisor<%=i%>" onclick=selectadvisor(<%=i%>)>A</button>
+											</div>
+										</div>
+									<% } %>
+								</div>
+								<div class="col-md-1">
+									<% for(var i = 1; i < 6; i++) { %>
+										<div class="form-group row">
+											<div class="col-md-12">
+												<button type="button" class="btn btn-outline-primary select-chairman<%=i%>" data-toggle="button" aria-pressed="false" autocomplete="off" 
+												id="committee<%=i%>" onclick=selectCommittee(<%=i%>)>C</button>
+											</div>
+										</div>
+									<% } %>
+								</div>
+
+							</div>
+
+							<hr></hr>
+
+							<div class="row">
+								<div class="col-md-1">
+									<div>Thesis advisor:</div>
+								</div>
+								<div class="col-md-3">
+									<input type="hidden" class="form-control thesis-advisor" name="thesisadvisor" value="<%=form.thesisadvisor%>" id="thesisadvisorInput" required />
+									<%=form.thesisadvisor%>
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<div class="row">
+								<div class="col-md-1">
+									<div>Committee chairman:</div>
+									
+								</div>
+								<div class="col-md-3">
+									<input type="hidden" class="form-control committee-chairman" name="committeeChairman" value="<%=form.committeeChairman%>" id="committeeChairmanInput" required />
+									<%=form.committeeChairman%>
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<% if(!isStudent) {%>
+
+							<div>Director of Graduate Studies Signature:*</div>
+							<div class="row">
+								<div class="col-md-5">
+									<i><%=signature%></i>
+									<input type="text" class="form-control director-signature" name="directorSignature" value="<%=form.directorSignature%>" required />
+								</div>
+								<div class="col-md-3">
+									<div>Date signed*</div>
+									<input type="text" class="form-control director-date-signed" name="directorDateSigned" value="<%=form.directorDateSigned%>" required />
+								</div>
+							</div>
+
+							<% } else { %>
+
+							<div class="row">
+								<div class="col-md-5">
+									<div>Director of Graduate Studies Signature:*</div>
+									<%=form.directorSignature%>"
+								</div>
+								<div class="col-md-3">
+									<div>Date signed*</div>
+									<%=form.directorDateSigned%>
+								</div>
+							</div>
+							<% } %>
+
+							<div class="verticalSpace" />
+
+							<button type="submit" class="btn btn-primary CS05-submit">Submit</button>
+						</form>
+
+						<% } else{%>
+						<div> You do not have access</div>
+						<% } %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%- include("../partials/bootstrapScripts.ejs") %>
+	</body>
+	<script type="text/javascript">
+		function selectadvisor(number){
+			for(var i = 1; i < 6; i++){
+				if(i != number){
+					document.getElementById("advisor"+i).classList.remove("active");
+					document.getElementById("advisor"+i).ariaPressed = false;
+				}
+			}
+			var tempName = document.getElementById("nominee"+number+"Name").value;
+			document.getElementById("thesisadvisorInput").value = tempName;
+		}
+
+		function selectCommittee(number){
+			for(var i = 1; i < 6; i++){
+				if(i != number){
+					document.getElementById("committee"+i).classList.remove("active");
+					document.getElementById("committee"+i).ariaPressed = false;
+				}
+			}
+			var tempName = document.getElementById("nominee"+number+"Name").value;
+			document.getElementById("committeeChairmanInput").value = tempName;
+		}
+	</script>
+</html>

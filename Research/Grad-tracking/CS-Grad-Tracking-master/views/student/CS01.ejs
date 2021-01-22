@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<!-- views/student/CS01.ejs -->
+
+<html>
+	<head>
+		<title>CS01 Background Preparation Worksheet</title>
+		<%- include("../partials/head.ejs") %>
+	</head>
+
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col-lg-2 sidebar text-center">
+
+					<% if(!isStudent) {%>
+
+					<%- include("../partials/admin-sidebar.ejs") %>
+
+					<%- include("./search-student.ejs") %>
+
+					<% } else{ %>
+
+					<%- include("../partials/logout.ejs") %>
+
+					<% } %>
+				</div>
+				<div align ="center" class="col-lg-10 panelbg text-center">
+
+					<% if(uploadSuccess == true) { %>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong>Submit success!</strong>
+					</div>
+					<% } %>
+
+					<% if(!isStudent) {%>
+					<%- include("./studentBarPartial.ejs") %>
+					<% } else { %>
+					<%- include("../partials/studentBarPartial.ejs") %>
+					<% } %>
+
+					<h4><%=student.lastName%>, <%=student.firstName%></h4>
+
+					<h3>Background preparation worksheet</h3>
+					<h3>CS-01</h3>
+
+					<div align="left">
+						<p class="underline">Instructions:</p>
+						<p>The following UNC courses define the background preparation assumed in the M.S. and PhD programs.  This worksheet is intended to help identify possible missing areas in your preparation; it is entirely normal to include one or more background courses in the MS or PhD Program of Study in order to satisfy the background preparation requirement.
+						</p>
+						<p>  For each course, indicate how (e.g. course work, independent study, or work experience) and when you mastered the materials as defined by the list of principal topics.  For additional information on UNC course content, consult the online syllabi.  In case you are uncertain about the adequacy of your preparation for a given course, consult a course instructor or the instructor(s) of graduate courses that depend on the course in question</p>
+
+						<p><strong>All fields required!</strong></p>
+						<hr></hr>
+
+						<% if(hasAccess) { %>
+
+						<form action="<%=postMethod%>" method="post">
+
+							<input type="hidden" class="form-control" name="student" value=<%=student._id%> />
+
+							<div class="row">
+								<div class="col-md-6">
+									<div>Name</div>
+									<input type="text" class="form-control student-name" name="name" value="<%=student.lastName%>, <%=student.firstName%>" required/>
+								</div>
+								<div class="col-md-6">
+									<div>PID</div>
+									<input type="number" class="form-control student-pid" name="pid" value="<%=student.pid%>" required />
+								</div>
+							</div>
+							<hr></hr>
+
+							<h3>Background Course Information</h3>
+
+							<div class="verticalSpace"/>
+
+							<div class="row">
+								<div class="col-md-4">
+									<p><strong>COMP 283: Discrete Structures:</strong> Introduces discrete structures and the formal math used to establish their properties & those of algorithms that work with them.  Develops problem-solving skills through puzzles & applications central to CS. or <strong>MATH 381: Discrete Mathematics</strong> (see below)</p>
+								</div>
+								<div class="col-md-4">
+									<div>Covered by:</div>
+									<input type="text" class="form-control covered283" name="comp283Covered" value="<%=form.comp283Covered%>" required />
+								</div>
+								<div class="col-md-4">
+									<div>Dates:</div>
+									<input type="text" class="form-control date283" name="comp283Date" value="<%=form.comp283Date%>" required />
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<div class="row">
+								<div class="col-md-4">
+									<p><strong>COMP: 410:  Data Structures:</strong> The analysis of data structures and their associated algorithms.  Abstract data types, lists, stacks, queues, trees, and graphs.</p>
+								</div>
+								<div class="col-md-4">
+									<div>Covered by:</div>
+									<input type="text" class="form-control covered410" name="comp410Covered" value="<%=form.comp410Covered%>" required />
+								</div>
+								<div class="col-md-4">
+									<div>Dates:</div>
+									<input type="text" class="form-control date410" name="comp410Date" value="<%=form.comp410Date%>" required />
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<div class="row">
+								<div class="col-md-4">
+									<p><strong>COMP 411: Computer Organization:</strong> Data respresentation, computer architecture and implementation, assembly language programming.</p>
+								</div>
+								<div class="col-md-4">
+									<div>Covered by:</div>
+									<input type="text" class="form-control covered411" name="comp411Covered" value="<%=form.comp411Covered%>" required />
+								</div>
+								<div class="col-md-4">
+									<div>Dates:</div>
+									<input type="text" class="form-control date411" name="comp411Date" value="<%=form.comp411Date%>" required />
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<div class="row">
+								<div class="col-md-4">
+									<p><strong>COMP 455:  Models of Languages & Computation:</strong> Introduction to the theory of computation.  Boolean functions, finite automata, pushdown automata, & Turing machines.  Unsolvable problems.  The Chomsky hierarchy of formal languages & their acceptors.  Parsing. </p>
+								</div>
+								<div class="col-md-4">
+									<div>Covered by:</div>
+									<input type="text" class="form-control covered455" name="comp455Covered" value="<%=form.comp455Covered%>" required />
+								</div>
+								<div class="col-md-4">
+									<div>Dates:</div>
+									<input type="text" class="form-control date455" name="comp455Date" value="<%=form.comp455Date%>" required />
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<div class="row">
+								<div class="col-md-4">
+									<p><strong>*COMP 521:  Files & Databases:</strong> Placement of data on secondary storage.  File organization.  Database history, practice, major models, system structure and design. </p>
+								</div>
+								<div class="col-md-4">
+									<div>Covered by:</div>
+									<input type="text" class="form-control covered521" name="comp521Covered" id="521a" value="<%=form.comp521Covered%>" required />
+								</div>
+								<div class="col-md-4">
+									<div>Dates:</div>
+									<input type="text" class="form-control date521" name="comp521Date" id = "521b" value="<%=form.comp521Date%>" required />
+								</div>
+							</div>
+
+							<div class="verticalSpace" />
+
+							<div class="row">
+								<div class="col-md-4">
+									<p><strong>*COMP 520:  Files & Databases:</strong> Placement of data on secondary storage.  File organization.  Database history, practice, major models, system structure and design. </p>
+								</div>
+								<div class="col-md-4">
+									<div>Covered by:</div>
+									<input type="text" class="form-control covered520" name="comp520Covered" id="520a" value="<%=form.comp520Covered%>" required />
+								</div>
+								<div class="col-md-4">
+									<div>Dates:</div>
+									<input type="text" class="form-control date520" name="comp520Date" id="520b" value="<%=form.comp520Date%>" required />
+								</div>
+							</div>
+
+							<div class="verticalSpace" />
+
+							<div class="row">
+								<div class="col-md-4">
+									<p><strong>*COMP 530:  Files & Databases:</strong> Placement of data on secondary storage.  File organization.  Database history, practice, major models, system structure and design. </p>
+								</div>
+								<div class="col-md-4">
+									<div>Covered by:</div>
+									<input type="text" class="form-control covered530" id="530a" name="comp530Covered" value="<%=form.comp530Covered%>" required />
+								</div>
+								<div class="col-md-4">
+									<div>Dates:</div>
+									<input type="text" class="form-control date530" id="530b" name="comp530Date" value="<%=form.comp530Date%>" required />
+								</div>
+							</div>
+
+							<div class="verticalSpace" />
+
+							<div class="text-center">(*Any two of these three will suffice*)</div>
+
+							<hr></hr>
+
+							<div class="row">
+								<div class="col-md-4">
+									<p><strong>COMP: 524:  Programming Language Concepts Concepts:</strong> of high-level programming & their realization in specific languages.  Data types, scope, control structures, procedural abstraction, classes, concurrency.  Run-time implementation </p>
+								</div>
+								<div class="col-md-4">
+									<div>Covered by:</div>
+									<input type="text" class="form-control covered524" name="comp524Covered" value="<%=form.comp524Covered%>" required />
+								</div>
+								<div class="col-md-4">
+									<div>Dates:</div>
+									<input type="text" class="form-control date524" name="comp524Date" value="<%=form.comp524Date%>" required />
+								</div>
+							</div>
+
+							<hr/>
+
+							<div class="row">
+								<div class="col-md-4">
+									<p><strong>COMP 541:  Digital Logic & Computer Design:</strong> Digital logic, both combinational & sequential. State machines.  The structure & electronic design of modern processors. </p>
+								</div>
+								<div class="col-md-4">
+									<div>Covered by:</div>
+									<input type="text" class="form-control covered541" name="comp541Covered" value="<%=form.comp541Covered%>" required />
+								</div>
+								<div class="col-md-4">
+									<div>Dates:</div>
+									<input type="text" class="form-control date541" name="comp541Date" value="<%=form.comp541Date%>" required />
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<div class="row">
+								<div class="col-md-4">
+									<p><strong>COMP 550:  Algorithms & Analysis:</strong> Formal specification and verification of programs.  Techniques of algorithm analysis.  Problem-Solving paradigms. </p>
+								</div>
+								<div class="col-md-4">
+									<div>Covered by:</div>
+									<input type="text" class="form-control covered550" name="comp550Covered" value="<%=form.comp550Covered%>" required />
+								</div>
+								<div class="col-md-4">
+									<div>Dates:</div>
+									<input type="text" class="form-control date550" name="comp550Date" value="<%=form.comp550Date%>" required />
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<div class="row">
+								<div class="col-md-4">
+									<p><strong>MATH 233:  Calculus of Functions of Several Variables:</strong> Vector algebra, solid analytic geometry, partial derivatives, multiple integrals. </p>
+								</div>
+								<div class="col-md-4">
+									<div>Covered by:</div>
+									<input type="text" class="form-control covered233" name="math233Covered" value="<%=form.math233Covered%>" required />
+								</div>
+								<div class="col-md-4">
+									<div>Dates:</div>
+									<input type="text" class="form-control date233" name="math233Date" value="<%=form.math233Date%>" required />
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<div class="row">
+								<div class="col-md-4">
+									<p><strong>MATH 381:  Discrete Mathematics:</strong> Topics from the foundations of mathematics; logic, set theory, relations & functions, induction, permutations & combinations, recurrence. or <strong>COMP 283:  Discrete Structures</strong></p>
+								</div>
+								<div class="col-md-4">
+									<div>Covered by:</div>
+									<input type="text" class="form-control covered381" name="math381Covered" value="<%=form.math381Covered%>" required />
+								</div>
+								<div class="col-md-4">
+									<div>Dates:</div>
+									<input type="text" class="form-control date381" name="math381Date" value="<%=form.math381Date%>" required />
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<div class="row">
+								<div class="col-md-4">
+									<p><strong>MATH 547:  Linear Algebra for Applications:</strong> Algebra of matrices with applications; determinants; solution of linear systems by Gaussian elimination; Gram-Schmidt procedure; eigenvalues.  Math 116 may not be taken for credit after credit has been granted for Math 147. </p>
+								</div>
+								<div class="col-md-4">
+									<div>Covered by:</div>
+									<input type="text" class="form-control covered547" name="math547Covered" value="<%=form.math547Covered%>" required />
+								</div>
+								<div class="col-md-4">
+									<div>Dates:</div>
+									<input type="text" class="form-control date547" name="math547Date" value="<%=form.math547Date%>" required />
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<div class="row">
+								<div class="col-md-4">
+									<p><strong>MATH 661:  Introduction to Numerical Analysis:</strong> Error in computation; solution of nonlinear equations; interpolation; approximation of functions; Fourier methods; numerical integration & differentiation; introduction to numerical solution of ODE's; introductions to numerical linear algebra. </p>
+								</div>
+								<div class="col-md-4">
+									<div>Covered by:</div>
+									<input type="text" class="form-control covered661" name="math661Covered" value="<%=form.math661Covered%>" required />
+								</div>
+								<div class="col-md-4">
+									<div>Dates:</div>
+									<input type="text" class="form-control date661" name="math661Date" value="<%=form.math661Date%>" required />
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<div class="row">
+								<div class="col-md-4">
+									<p><strong>STAT 435:  Introduction to Probability (MATH 146):</strong> Introduction to mathematical theory of probability covering random variables, moments, binomial, Poisson, normal & related distributions, generating functions, sums & sequences of random variables, & statistical applications. </p>
+								</div>
+								<div class="col-md-4">
+									<div>Covered by:</div>
+									<input type="text" class="form-control covered435" name="stat435Covered" value="<%=form.stat435Covered%>" required />
+								</div>
+								<div class="col-md-4">
+									<div>Dates:</div>
+									<input type="text" class="form-control date435" name="stat435Date" value="<%=form.stat435Date%>" required />
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<div class="text-center">Review this worksheet with your advisor and submit the completed worksheet to the Student Services Coordinator preferably in electronic form.  Hard copies also accepted.  <strong>The worksheet is a component of the Program of Study for MS (CS-03) and/or PhD (CS-06).</strong></div>
+
+							<hr></hr>
+
+							<p>Student Signature:</p>
+							<div class="row">
+								<div class="col-md-5">
+									<i><%=signature%></i>
+									<input type="text" class="form-control student-signature" name="studentSignature" value="<%=form.studentSignature%>" required />
+								</div>
+								<div class="col-md-2">
+									<div>Date signed</div>
+									<input type="text" class="form-control student-signature-date" name="studentDateSigned" value="<%=form.studentDateSigned%>" required />
+								</div>
+							</div>
+
+							<div class="verticalSpace"/>
+
+							<% if(!isStudent) { %>
+							<div>Advisor Signature:</div>
+							<div class="row">
+								<div class="col-md-5">
+									<i><%=signature%></i>
+									<input type="text" class="form-control advisor-signature" name="advisorSignature" value="<%=form.advisorSignature%>" required />
+								</div>
+								<div class="col-md-2">
+									<div>Date signed</div>
+									<input type="text" class="form-control advisor-signature-date" name="advisorDateSigned" value="<%=form.advisorDateSigned%>" required />
+								</div>
+							</div>
+
+							 <% } else { %>
+
+
+
+							<div class="row">
+								<div class="col-md-5">
+									<div>Advisor Signature:</div>
+									<%=form.advisorSignature%>
+								</div>
+								<div class="col-md-2">
+									<div>Date signed:</div>
+									<%=form.advisorDateSigned%>
+								</div>
+							</div>
+
+							<% } %>
+
+							<div class="verticalSpace"/>
+
+							<button type="submit" class="btn btn-primary CS01-submit" onclick="refreshRequired()">Submit</button>
+						</form>
+						<% } else{%>
+						<div> You do not have access</div>
+						<% } %>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<%- include("../partials/bootstrapScripts.ejs") %>
+	</body>
+	<script type="text/javascript">
+		function refreshRequired(){
+			// only require two out of 3 of the following courses
+			const comp521Covered = document.getElementById("521a");
+			const comp521Date = document.getElementById("521b");
+
+			const comp520Covered = document.getElementById("520a");
+			const comp520Date = document.getElementById("520b");
+
+			const comp530Covered = document.getElementById("530a");
+			const comp530Date = document.getElementById("530b");
+
+			comp521Covered.required = !(comp520Covered.value.length != 0 && comp530Covered.value.length != 0);
+			comp521Date.required = !(comp520Covered.value.length != 0 && comp530Covered.value.length != 0);
+
+			comp520Covered.required = !(comp521Covered.value.length != 0 && comp530Covered.value.length != 0);
+			comp520Date.required = !(comp521Covered.value.length != 0 && comp530Covered.value.length != 0);
+
+			comp530Covered.required = !(comp521Covered.value.length != 0 && comp520Covered.value.length != 0);
+			comp530Date.required = !(comp521Covered.value.length != 0 && comp520Covered.value.length != 0);
+		}
+	</script>
+</html>

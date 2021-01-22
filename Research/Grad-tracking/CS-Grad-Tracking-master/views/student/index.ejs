@@ -1,0 +1,69 @@
+<!-- views/student/index.ejs -->
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Search students</title>
+		<%- include('../partials/head.ejs') %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+
+				<div class='col-lg-2 sidebar text-center'>
+
+					<%- include('../partials/admin-sidebar.ejs') %>
+
+					<%- include('./search-student.ejs') %>
+
+				</div>
+				
+				<div class='col-lg-10 panelbg text-center'>
+					<h1>Student</h1>
+					<h3 class="searchTextColor"><%=search%></h3>
+				 	<% if(students.length>0) { %>
+						<table align="center" border="1" class="table display-table table-striped table-bordered student-table">
+							<thead>
+								<tr>
+									<th scope="col" class="col-studentOnyen">Onyen</th>
+									<th scope="col" class="col-studentFirstname">First name</th>
+									<th scope="col" class="col-studentLastname">Last Name</th>
+									<th scope="col" class="col-studentPid">PID</th>
+									<th scope="col" class="col-studentStatus">Status</th>
+									<th scope="col" class="col-studentDelete"></th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<% for(var i=0; i<students.length; i++) { %>
+									<tr>
+										<td><%= students[i].onyen%></td>
+										<td><%= students[i].firstName%></td>
+										<td><%= students[i].lastName%></td>
+										<td><%= students[i].pid%></td>
+										<td><%= students[i].status%></td>
+										<td>
+											<div class="editRow">
+												<div class="editColumn">
+													<a href="/student/edit/<%=students[i]._id%>" class="editTag"><i class="fas fa-edit editColor edit-student-button"></i></a>
+												</div>
+												<div class="editColumn">
+													<form action="/student/delete/<%=students[i]._id%>" method="post">
+														<button type="submit" class="btn btn-default delete-student-submit" onclick="return confirm('Do you really want to delete this?');"><i class="fas fa-trash-alt"></i></button>
+													</form>
+												</div>
+											</div>
+										</td>
+									</tr>
+								<% } %>
+							</tbody>
+						</table>
+					<% } else { %>
+						<div>No student found.</div>
+					<% } %>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

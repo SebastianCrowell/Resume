@@ -1,0 +1,101 @@
+<!-- views/student/jobs.ejs -->
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Student jobs</title>
+		<%- include("../partials/head.ejs") %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col-lg-2 sidebar text-center">
+
+					<%- include("../partials/admin-sidebar.ejs") %>
+
+					<%- include("./search-student.ejs") %>
+
+				</div>
+				<div align ="center" class="col-lg-10 panelbg text-center">
+				
+					<%- include("./studentBarPartial.ejs") %>
+
+					<h4><%=student.lastName%>, <%=student.firstName%></h4>
+
+					<h1>Job history</h1>
+
+					<% if(student.jobHistory.length>0) { %>
+						<table align="center" border="1" class="table display-table table-striped table-bordered job-history-table">
+							<thead>
+								<tr>
+									<th scope="col">Position</th>
+									<th scope="col">Supervisor</th>
+									<th scope="col">Course</th>
+									<th scope="col">Semester</th>
+									<th scope="col">Hours</th>
+									<th scope="col">Description</th>
+									<th scope="col">Delete job</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% job = student.jobHistory %>
+								<% for(var i=0; i<job.length; i++) { %>
+									<tr>
+										<td><%= job[i].position%></td>
+										<td><%= job[i].supervisor.lastName%>, <%=job[i].supervisor.firstName%></td>
+										<% if(job[i].course != null) { %>
+										<td><%= job[i].course.department%> <%= job[i].course.number%>, <%=job[i].course.section%></td>
+										<% } else { %>
+										<td></td>
+										<% } %>
+										<td><%= job[i].semester.season%> <%=job[i].semester.year%></td>
+										<td><%= job[i].hours%> </td>
+										<% if(job[i].description != null) { %>
+										<td><%= job[i].description%></td>
+										<% } else { %>
+										<td></td>
+										<% } %>
+										<td>
+											<form action="/student/deleteJob" method="post">
+												<input type="hidden" name="studentId" value=<%=student._id%> />
+												<input type="hidden" name="jobId" value=<%=job[i]._id%> />
+												<button type="submit" class="btn btn-danger job-delete-button">Delete</button>
+											</form>
+										</td>
+									</tr>
+								<% } %>
+							</tbody>
+						</table>
+					<% } else { %>
+						<div>No jobs found.</div>
+					<% } %>
+
+					<h2 class="space">Add jobs</h2>
+					<form action="/student/addJobs" method="post">
+						<div class="form-group row">
+							<label for="inputJobs" class="col-md-2 offset-md-3">Jobs</label>
+							<div class="col-md-4">
+								<select name="jobs" class="form-control job-select" id="inputJobs" multiple required>
+									<option value=""></option>
+									<% for(var i=0; i < jobs.length; i++){ %>
+										<option value=<%=jobs[i]._id%>><%=jobs[i].position%>, <%=jobs[i].supervisor.lastName%>, <%=jobs[i].supervisor.firstName%>, <%=jobs[i].semester.season%> <%=jobs[i].semester.year%></option>
+									<% } %>
+								</select>
+							</div>
+						</div>
+
+						<input type="hidden" name="studentId" value=<%=student._id%> />
+
+						<div class="form-group row align-items-end">
+							<div class="col-md-4 offset-md-4">
+								<button type="submit" class="btn btn-primary job-select-submit-button">Submit</button>
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

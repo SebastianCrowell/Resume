@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- views/job/index.ejs -->
+
+<html>
+	<head>
+		<title>Jobs</title>
+		<%- include('../partials/head.ejs') %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+
+				<div class='col-lg-2 sidebar text-center'>
+
+					<%- include('../partials/admin-sidebar.ejs') %>
+
+					<%- include('./search-job.ejs') %>
+
+				</div>
+				
+				<div class='col-lg-10 panelbg text-center'>
+					<h1>Jobs</h1>
+					<h3 class="searchTextColor"><%=search%></h3>
+					 <% if(jobs.length>0) { %>
+						<table align="center" border="1" class="table table-striped table-bordered job-table">
+							<thead>
+								<tr>
+									<th scope="col" class="col-jobPosition">Position</th>
+									<th scope="col" class="col-jobSupervisor">Supervisor</th>
+									<th scope="col" class="col-jobCourse">Course</th>
+									<!--<th scope="col">Description</th>-->
+									<th scope="col" class="col-jobSemester">Semester</th>
+									<th scope="col" class="col-jobHours">Hours</th>
+									<th scope="col" 
+									class="col-jobStudents">Students</th>
+									<th scope="col" class="col-jobAssign">Assign</th>
+									<th scope="col" class="col-jobDelete"></th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<% for(var i=0; i<jobs.length; i++) { %>
+									<tr>
+										<td><%= jobs[i].position%></td>
+										<td><%= jobs[i].supervisor.lastName%>, <%= jobs[i].supervisor.firstName%></td>
+										<% if(jobs[i].course != null){ %>
+										<td><%= jobs[i].course.number%>-<%= jobs[i].course.section%>, <%=jobs[i].course.semester.season%> <%=jobs[i].course.semester.year%></td>
+										<% } else {%>
+										<td></td>
+										<% } %>
+
+
+										<!-- <% if(jobs[i].description != null) { %>
+										<td><%= jobs[i].description%></td>
+										<% } else {%>
+										<td></td>
+										<% } %> -->
+
+										<td><%= jobs[i].semester.season%> <%= jobs[i].semester.year%></td>
+
+										<td><%= jobs[i].hours%></td>
+
+										<td>
+										<% for(var j = 0; j < jobs[i].students.length; j++){ %>
+											<div><%= jobs[i].students[j].lastName %>, <%= jobs[i].students[j].firstName %></div>
+										<% } %>
+										</td>
+
+										<td>
+											<a href="/job/assign/<%=jobs[i]._id%>"><button class="btn btn-primary assign-job-button">Assign jobs</button></a>
+										</td>
+										<td>
+										<div class="editRow">
+											<div class="editColumn">	
+											<a href="/job/edit/<%=jobs[i]._id%>" class="editTag"><i class="fas fa-edit editColor"></i></a>
+											</div>
+											<div class="editColumn">
+											<form action="/job/delete/<%=jobs[i]._id%>" method="post">
+												<button type="submit" class="btn btn-default delete-job-button" onclick="return confirm('Do you really want to delete this?');"><i class="fas fa-trash-alt"></i></button>
+											</form>
+											</div>
+										</div>
+										</td>
+									</tr>
+								<% } %>
+							</tbody>
+						</table>
+					<% } else { %>
+						<div>No jobs found.</div>
+					<% } %>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Edit job</title>
+		<%- include('../partials/head.ejs') %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+
+				<div class='col-lg-2 sidebar text-center'>
+
+					<%- include('../partials/admin-sidebar.ejs') %>
+
+					<%- include('./search-job.ejs') %>
+
+				</div>
+				<div class='col-lg-10 panelbg text-center'>
+					<h1>Edit job</h1>
+					
+					<form action="/job/put" method="post">
+						<input type="hidden" name="_id" value=<%=job._id%>></input>
+						<div class="form-group row">
+							<label for="inputPosition" class="col-md-2 offset-md-3">Position *</label>
+							<div class="col-md-4">
+								<input type="text" class="form-control input-position" id="inputPosition" name="position" value="<%=job.position%>" required/>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputSupervisor" class="col-md-2 offset-md-3">Supervisor *</label>
+							<div class="col-md-4">
+								<select name="supervisor" class="form-control input-supervisor" id="inputSupervisor" required>
+									<% for(var i=0; i < faculty.length; i++){ %>
+										<option value=<%=faculty[i]._id%> <% if(job.supervisor._id.equals(faculty[i]._id)) { %> selected <% } %> ><%=faculty[i].lastName%>, <%=faculty[i].firstName%></option>
+									<% } %>
+								</select>
+							</div>
+						</div>
+
+						<% if(job.course != null) { %>
+						<div class="form-group row">
+							<label for="inputCourse" class="col-md-2 offset-md-3">Course</label>
+							<div class="col-md-4">
+								<select name="course" class="form-control input-course" id="inputCourse" required>
+									<% for(var i=0; i < courses.length; i++){ %>
+										<option value=<%=courses[i]._id%> <% if(job.course._id.equals(courses[i]._id)) { %> selected <% } %> ><%=courses[i].name%> <%=courses[i].number%>, section <%=courses[i].section%>, <%=courses[i].semester.season%> <%=courses[i].semester.year%></option>
+									<% } %>
+								</select>
+							</div>
+						</div>
+						<% } %>
+
+						
+						<div class="form-group row">
+							<label for="inputDescription" class="col-md-2 offset-md-3">Description</label>
+							<div class="col-md-4">
+								<input type="text" name="description" class="form-control input-description" id="inputDescription" value="<%=job.description%>"/>
+							</div>
+						</div>
+						
+						<div class="form-group row" id="hours">
+							<label for="inputHours" class="col-md-2 offset-md-3">Hours</label>
+							<div class="col-md-4">
+								<input type="number"
+								 name="hours" class="form-control input-hours" id="inputHours" value=<%=job.hours%>  min="0" max="24" />
+							</div>
+						</div>
+
+						<div class="form-group row" id="fundingSource">
+							<label for="inputFundingSource" class="col-md-2 offset-md-3">Funding source</label>
+							<div class="col-md-4">
+								<select name="fundingSource" class="form-control input-funding-source" id="inputFundingSource">
+									<% if(job.fundingSource != null) { %>
+										<option value=<%=job.fundingSource.name%> ><%=job.fundingSource.name%></option>
+									<% } else { %>
+										<option value="" ></option> %>
+									<% } %>
+									<% for(var i = 0; i < grants.length; i++){ %>
+									<option value="<%=grants[i]._id%>"><%=grants[i].name%></option>
+									<% } %>
+								</select>
+							</div>
+						</div>
+
+
+						<% if(job.course == null) { %>
+						<div class="form-group row">
+							<label for="inputSemester" class="col-md-2 offset-md-3">Semester *</label>
+							<div class="col-md-4">
+								<select name="semester" class="form-control input-semester" id="inputSemester" required>
+									<% for(var i=0; i < semesters.length; i++){ %>
+										<option value=<%=semesters[i]._id%> <% if(job.semester._id.equals(semesters[i]._id)) { %> selected <% } %> ><%=semesters[i].season%> <%=semesters[i].year%></option>
+									<% } %>
+								</select>
+							</div>
+						</div>
+						<% } else { %>
+
+						<input type="hidden" name="semester" value=<%=job.course.semester%> required ></input>
+
+						<% } %>
+							
+
+						<div class="form-group row align-items-end">
+							<div class="col-md-4 offset-md-4">
+								<button type="submit" class="btn btn-success">Update</button>
+							</div>
+						</div>
+					</form>
+					<form action="/job/delete/<%=job._id%>" method="post">
+						<button type="submit" class="btn btn-danger" onclick="return confirm('Do you really want to delete this?');">Delete</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

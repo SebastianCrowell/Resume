@@ -1,0 +1,40 @@
+<!-- /views/course/search-course.ejs -->
+<p>Search Courses</p>
+<div class="search-bar">
+	<form action="/course" method="get">
+		<div class="form-group row">
+			<label lang="en" for="searchNumber" class="col-md-4 autoHyphen">Course number:</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" id="searchNumber" name="number">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label lang="en" for="searchName" class="col-md-4 autoHyphen">Course name:</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" id="searchName" name="name">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label lang="en" for="searchSemester" class="col-md-4 autoHyphen">Semester:</label>
+			<div class="col-md-8">
+				<select name="semester" class="form-control" id="searchSemester">
+					<option value=""></option>
+					<% for(var i = 0; i < semesters.length; i++) { %>
+						<option value=<%=semesters[i]._id%>><%=semesters[i].season%> <%=semesters[i].year%></option>
+					<% } %>
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-md-4 offset-md-4">
+				<button type="submit" class="btn btn-primary search-course-button">Search</button>
+			</div>
+		</div>
+	</form>
+</div>
+<div>
+	<p><a href="/course/create" class="btn btn-primary btn-block create-course-button">Create course</a></p>
+	<p><a href="/course/upload/false" class="btn btn-primary btn-block upload-course-button">Upload courses</a></p>
+	<p><a href="/course/download" class="btn btn-primary btn-block download-course-button">Download courses</a></p>
+	<p><a href="/course/uploadInfo/false" class="btn btn-primary btn-block upload-course-info-button">Upload course info</a></p>
+</div>

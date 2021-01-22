@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- views/faculty/create.ejs -->
+
+<html>
+	<head>
+		<title>Create faculty</title>
+		<%- include("../partials/head.ejs") %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col-lg-2 sidebar text-center">
+
+					<%- include("../partials/admin-sidebar.ejs") %>
+
+					<%- include("./search-faculty.ejs") %>
+
+				</div>
+				<div align ="center" class="col-lg-10 panelbg text-center">
+					<h1>Create Faculty</h1>
+					<form action="/faculty/post" method="post">
+						<div class="form-group row">
+							<label for="inputOnyen" class="col-md-2 offset-md-3">Onyen *</label>
+							<div class="col-md-4">
+								<input type="text" class="form-control" id="inputOnyen" name="onyen" placeholder="Onyen" required/>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputCSID" class="col-md-2 offset-md-3">CSID *</label>
+							<div class="col-md-4">
+								<input type="text" class="form-control" id="inputCSID" name="csid" placeholder="CSID" required/>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputEmail" class="col-md-2 offset-md-3">Email *</label>
+							<div class="col-md-4">
+								<input type="email" class="form-control" id="inputEmail" name="email" placeholder="example@cs.unc.edu" required/>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputFirstname" class="col-md-2 offset-md-3">First name *</label>
+							<div class="col-md-4">
+								<input type="text" class="form-control" id="inputFirstname" name="firstName" placeholder="First name" required/>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputLastname" class="col-md-2 offset-md-3">Last name *</label>
+							<div class="col-md-4">
+								<input type="text" class="form-control" id="inputLastname" name="lastName" placeholder="Last name" required/>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputPid" class="col-md-2 offset-md-3">PID *</label>
+							<div class="col-md-4">
+								<input type="number" class="form-control" id="inputPid" name="pid" placeholder="PID" required/>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputSectionNumber" class="col-md-2 offset-md-3">Section number *</label>
+							<div class="col-md-4">
+								<input type="number" class="form-control" id="inputSectionNumber" name="sectionNumber" placeholder="Section number" required/>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputActive" class="col-md-2 offset-md-3">Active</label>
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" id="inputActive" name="active" checked />
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputAdmin" class="col-md-2 offset-md-3">Admin</label>
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" id="inputAdmin" name="admin" />
+							</div>
+						</div>
+
+						<div class="form-group row align-items-end">
+							<div class="col-md-4 offset-md-4">
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

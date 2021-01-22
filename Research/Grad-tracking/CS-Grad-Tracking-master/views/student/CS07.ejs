@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!-- views/student/CS07.ejs -->
+
+<html>
+	<head>
+		<title>CS07 Report of Disapproval of Dissertation Proposal</title>
+		<%- include("../partials/head.ejs") %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col-lg-2 sidebar text-center">
+
+					<% if(!isStudent) {%>
+					
+					<%- include("../partials/admin-sidebar.ejs") %>
+
+					<%- include("./search-student.ejs") %>
+
+					<% } else{ %>
+
+					<%- include("../partials/logout.ejs") %>
+
+					<% } %>
+
+				</div>
+				<div align ="center" class="col-lg-10 panelbg text-center">
+
+					<% if(uploadSuccess == true) { %>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong>Submit success!</strong>
+					</div>
+					<% } %>
+
+					<% if(!isStudent) {%>
+					<%- include("./studentBarPartial.ejs") %>
+					<% } else { %>
+					<%- include("../partials/studentBarPartial.ejs") %>
+					<% } %>
+
+					<h4><%=student.lastName%>, <%=student.firstName%></h4>
+
+					<h3>Report of Disapproval of Dissertation Proposal</h3>
+					<h3>CS-07</h3>
+
+					<strong class="verticalSpace">All fields required!</strong>
+
+					<div align="left">
+
+						<hr></hr>
+
+						<form action="<%=postMethod%>" method="post">
+
+							<input type="hidden" class="form-control" name="student" value=<%=student._id%> />
+
+							<div class="row">
+								<div class="col-md-6">
+									<div>Name</div>
+									<input type="text" class="form-control student-name" name="name" value="<%=student.lastName%>, <%=student.firstName%>" required/>
+								</div>
+								<div class="col-md-6">
+									<div>PID</div>
+									<input type="number" class="form-control student-pid" name="pid" value=<%=student.pid%> required />
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<div>The proposed dissertation project has been investigated by the student’s doctoral committee and the dissertation proposal is judged to be unsatisfactory.</div>
+
+							<strong>COMMENTS:</strong>
+							<div class="col-md-4">
+								<textarea class="form-control comments" rows="6" name="comments" required><%=form.comments%></textarea>
+							</div>
+
+							<% if(!isStudent) {%>
+							<hr></hr>
+							<div>Committee Chairman Signature</div>
+							<div class="row">
+								<div class="col-md-5">
+									
+									<i><%=signature%></i>
+									<input type="text" class="form-control chairman-signature" name="chairmanSignature" value="<%=form.chairmanSignature%>" required />
+								</div>
+								<div class="col-md-3">
+									Date
+									<input type="text" class="form-control chairman-date-signed" name="chairmanDateSigned" value="<%=form.chairmanDateSigned%>" required />
+								</div>
+							</div>
+
+							<% } else { %>
+							<hr></hr>
+							
+							<div class="row">
+								<div class="col-md-5">
+									
+									<div>Committee Chairman Signature</div>
+									<%=form.chairmanSignature%>
+								</div>
+								<div class="col-md-3">
+									<div>Date</div>
+									<%=form.chairmanDateSigned%>
+								</div>
+							</div>
+							<% } %>
+
+							<div class="verticalSpace"/>
+							
+							<button type="submit" class="btn btn-primary CS07-submit">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%- include("../partials/bootstrapScripts.ejs") %>
+	</body>
+	<script type="text/javascript">
+
+	</script>
+</html>

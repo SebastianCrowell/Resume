@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<p>Search Job</p>
+<div class="search-bar">
+	<form action="/job" method="get">
+		<div class="form-group row">
+			<label lang="en" for="searchPosition" class="col-md-4 autoHyphen">Position:</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" id="searchPosition" name="position"/>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label lang="en" for="searchSupervisor" class="col-md-4 autoHyphen">Supervisor:</label>
+			<div class="col-md-8">
+				<select name="supervisor" class="form-control" id="searchSupervisor">
+					<option></option>
+					<% for(var i=0; i < faculty.length; i++){ %>
+						<option value=<%=faculty[i]._id%>><%=faculty[i].lastName%>, <%=faculty[i].firstName%></option>
+					<% } %>
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label lang="en" for="searchCourse" class="col-md-4 autoHyphen">Course:</label>
+			<div class="col-md-8">
+				<select name="course" class="form-control" id="searchCourse">
+					<option></option>
+					<% for(var i=0; i < courses.length; i++){ %>
+						<option value=<%=courses[i]._id%><%=courses[i].number%>-<%=courses[i].section%>, <%=courses[i].semester.season%> <%=courses[i].semester.year%></option>
+					<% } %>
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label lang="en" for="searchSemester" class="col-md-4 autoHyphen">Semester:</label>
+			<div class="col-md-8">
+				<select name="semester" class="form-control" id="searchSemester">
+					<option></option>
+					<% for(var i=0; i < semesters.length; i++){ %>
+						<option value=<%=semesters[i]._id%>><%=semesters[i].season%> <%=semesters[i].year%></option>
+					<% } %>
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-md-4 offset-md-4">
+				<button type="submit" class="btn btn-primary search-job-submit">Search</button>
+			</div>
+		</div>
+	</form>
+</div>
+<div>
+	<p><a href="/job/create" class="btn btn-primary btn-block create-job-button">Create job</a></p>
+	<p><a href="/job/upload/false" class="btn btn-primary btn-block upload-job-button">Upload jobs</a></p>
+	<p><a href="/job/download" class="btn btn-primary btn-block download-job-button">Download jobs</a></p>
+	<p><a href="/job/uploadGrant/false" class="btn btn-primary btn-block upload-grant-button">Upload grant list</a></p>
+</div>

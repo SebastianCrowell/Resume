@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<!-- views/student/CS03.ejs -->
+
+<html>
+	<head>
+		<title>CS03 M.S. Program of Study</title>
+		<%- include("../partials/head.ejs") %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col-lg-2 sidebar text-center">
+
+					<% if(!isStudent) {%>
+					
+					<%- include("../partials/admin-sidebar.ejs") %>
+
+					<%- include("./search-student.ejs") %>
+
+					<% } else{ %>
+
+					<%- include("../partials/logout.ejs") %>
+
+					<% } %>
+				</div>
+				<div align ="center" class="col-lg-10 panelbg text-center">
+
+					<% if(uploadSuccess == true) { %>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong>Submit success!</strong>
+					</div>
+					<% } %>
+
+					<% if(!isStudent) {%>
+					<%- include("./studentBarPartial.ejs") %>
+					<% } else { %>
+					<%- include("../partials/studentBarPartial.ejs") %>
+					<% } %>
+
+					<div>
+						<h4><%=student.lastName%>, <%=student.firstName%></h4>
+						<h3>M.S. Program of Study</h3>
+						<h3>CS-03</h3>
+					</div>
+
+
+					<div align="left">
+
+						<hr></hr>
+
+						<% if(hasAccess) { %>
+
+						<form action="<%=postMethod%>" method="post">
+
+							<input type="hidden" class="form-control" name="student" value=<%=student._id%> />
+
+							<div class="row">
+								<div class="col-md-4">
+									<div>Name</div>
+									<input type="text" class="form-control student-name" name="name" value="<%=student.lastName%>, <%=student.firstName%>" required/>
+								</div>
+								<div class="col-md-4">
+									<div>PID</div>
+									<input type="number" class="form-control student-pid" name="pid" value=<%=student.pid%> required />
+								</div>
+								<div class="col-md-4">
+									<div>Date submitted</div>
+									<input type="text" class="form-control date-submitted" name="dateSubmitted" value="<%=form.dateSubmitted%>" required />
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<div>
+								<p>Instructions: <br>  This form details an individual program of study for the MS Degree.  It should be filed with the Student Services Manager when the program is substantially planned <strong>(typically after two semesters)</strong>, and can be amended subsequently.  Forms mentioned in this program of study can be filed separately and at a later date. </p>
+
+								<p><strong>All fields except Reason of Disapproval required!</strong></p>
+
+	<!--							<div class="verticalSpace"/>-->
+
+								<p><strong>I. Course Requirement</strong></p>
+
+									<p>	- Minimum 30 hours total of courses conferring graduate credit, including courses transferred from UNC-CH Continuing Education or another institution.  Courses transferred in must be approved by and on file with the Graduate School.</p>
+									<p>	- Minimum 18 hours of COMP courses. </p>
+									<p>	- Minimum 3 hours of COMP 992 or COMP 993 (formal thesis) - maximum of 6 hours. </p>
+									<p>	- If a minor is elected, see Graduate School Handbook (http://handbook.unc.edu/preface.html)</p>
+
+								<p>List the courses you expect to use to meet the MS requirements.  Include Section Number for COMP 790 and COMP 990-993 courses.  Do NOT list research team meeting seminars.  Indicate courses used to satisfy the distribution requirement with a mark in the Dist column.</p>
+								<div class="row">
+									<div class="col-md-4">A = Applications</div>
+									<div class="col-md-4">S = Systems & Hardware</div>
+									<div class="col-md-4">T = Theory & Formal Thinking</div>
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<div class="row">
+								<div class="col-md-1">
+									<div>Dist</div>
+									<% for(let i = 0; i < 13; i++) { %>
+									<input type="text" class="form-control DR<%=i+1%>" name="DR" <% if(form.DR != null) { %> value="<%=form.DR[i]%>" <% } %> required /> 
+								    <% } %>
+								</div>
+
+								<div class="col-md-2">
+									<div>University</div>
+									<% for(let i = 0; i < 13; i++) { %>
+									<input type="text" class="form-control university<%=i+1%>" name="university" value="UNC-CH" required />
+									<% } %>
+								</div>
+
+								<div class="col-md-1">
+									<div>Dept.</div>
+									<% for(let i = 0; i < 13; i++) { %>
+									<input id="departmentInput" type="text" class="form-control dept<%=i+1%>" name="dept" value="COMP" required />
+									<% } %>
+								</div>
+								<div class="col-md-2">
+									<div>Course</div>
+									<% for(let i = 0; i < 13; i++) { %>
+									<input type="text" class="form-control course<%=i+1%>" name="course" <% if(form.course != null) { %> value="<%=form.course[i]%>"  <% } %> required />
+									<% } %>
+								</div>
+								<div class="col-md-1">
+									<div>Hours</div>
+									<% for(let i = 0; i < 13; i++) { %>
+									<input type="number" class="form-control hours<%=i+1%>" name="hours" <% if(form.hours != null) { %>  value="<%=form.hours[i]%>" <% } %> required />
+									<% } %>
+								</div>
+								<div class="col-md-2">
+									<div>Semester</div>
+									<% for(let i = 0; i < 13; i++) { %>
+									<input type="text" class="form-control semester<%=i+1%>" name="semester" <% if(form.semester != null) { %>  value="<%=form.semester[i]%>"  <% } %>  required />
+									<% } %>
+								</div>
+								<div class="col-md-3">
+									<div>Brief Title</div>
+									<% for(let i = 0; i < 13; i++) { %>
+									<input type="text" class="form-control title<%=i+1%>" name="title" <% if(form.title != null) { %> value="<%=form.title[i]%>" <% } %> required />
+									<% } %>
+								</div>
+							</div>
+
+							<hr/>
+
+							<div>
+								<p><strong>II. Additional Requirements</strong></p>
+								<div>
+									<p>A. Background Preparation</p>
+									<div class="row">
+										<div class="col-md-3">
+											<select name="backgroundPrep" class="form-control background-prep" id="inputStatus" required>
+												<option value=<%=form.backgroundPrep%>><%=form.backgroundPrep%></option>
+												<option value=false>Did not file CS01</option>
+												<option value=true>Filed CS01</option>
+											</select>
+										</div>
+										<div class="col-md-2">
+											File Form CS-01
+										</div>
+									</div>
+								</div>
+
+								<div class="verticalSpace"/>
+
+								<div>
+									<p>B. Distribution Requirements</p>
+									<p>Indicate the three courses in the Course List used to satisfy the breadth requirement (consult the official MS degree rule for eligible courses and grade requirements - http://www.cs.unc.edu/cms/academics/graduate-programs/master-of-science-official-degree-requirements ) </p>
+								</div>
+
+								<div>
+									<p>C. Program Product</p>
+									<div class="row">
+										<div class="col-md-3">
+											<select name="programProduct" class="form-control program-product" id="inputStatus" required>
+												<option value=<%=form.programProduct%>><%=form.programProduct%></option>
+												<option value=false>Did not file CS13</option>
+												<option value=true>Filed CS13</option>
+											</select>
+										</div>
+										<div class="col-md-2">
+											File Form CS-13
+										</div>
+									</div>
+								</div>
+
+								<div class="verticalSpace"/>
+
+								<div>
+									<p>D. Writing Requirement(One of the following)</p>
+									<div class="row">
+										<div class="col-md-3">
+											<select name="comprehensivePaper" class="form-control comprehensive-paper" id="inputStatus" required>
+												<option value="<%=form.comprehensivePaper%>"><%=form.comprehensivePaper%></option>
+												<option value=false>False</option>
+												<option value=true>True</option>
+											</select>
+										</div>
+										<div class="col-md-4">
+											Comprehensive Paper (CS-08)
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-3">
+											<select name="thesis" class="form-control thesis" id="inputStatus" required>
+												<option value=<%=form.thesis%>><%=form.thesis%></option>
+												<option value=false>False</option>
+												<option value=true>True</option>
+											</select>
+										</div>
+										<div class="col-md-2">
+											Thesis (CS-05)
+										</div>
+									</div>
+
+
+									<div class="row">
+										<div class="col-md-3">
+											<select name="outsideReview" class="form-control outside-review" id="inputStatus" required>
+												<option value=<%=form.outsideReview%>><%=form.outsideReview%></option>
+												<option value=false>False</option>
+												<option value=true>True</option>
+											</select>
+										</div>
+										<div class="col-md-3">
+											Outside Review (CS-04)
+										</div>
+									</div>
+								</div>
+							</div>
+							
+
+							<hr/>
+
+							<div>
+								<p><strong>III. Comprehensive Exam</strong></p>
+								<div class="row">
+									<div class="col-md-3">
+										<select name="comprehensiveExam" class="form-control comprehensive-exam" id="inputStatus" required>
+											<option value="<%=form.comprehensiveExam%>"><%=form.comprehensiveExam%></option>
+											<option value="Comprehensive Paper">Comprehensive Paper(CS-08)</option>
+											<option value="MS Oral Comprehensive Exam">MS Oral Comprehensive Exam</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+							<hr/>
+
+							<div>
+								<p><strong>IV. Signatures</strong></p>
+
+								<p><i><%=signature%></i></p>
+								<div class="row">
+									<div class="col-md-2">
+										Student signature:
+									</div>
+									<div class="col-md-4">
+										<input type="text" class="form-control student-signature" name="studentSignature" value="<%=form.studentSignature%>" required />
+									</div>
+								</div>
+							</div>
+
+								<div class="verticalSpace"/>
+
+							<% if(!isStudent){ %>
+
+							<div>
+								<i><%=signature%></i>
+								<div class="row">
+									<div class="col-md-2">
+										advisor signature:
+									</div>
+									<div class="col-md-4">
+										<input type="text" class="form-control advisor-signature" name="advisorSignature" value="<%=form.advisorSignature%>" required />
+									</div>
+								</div>
+							</div>
+
+							<hr/>
+
+							<div>
+								<p>Approved:</p>
+								<div class="row">
+									<div class="col-md-3">
+										<select name="approved" class="form-control approved" id="inputStatus" required>
+											<option value="<%=form.approved%>"><%=form.approved%></option>
+											<option value="Approved by Graduate Studies Committee">Approved by Graduate Studies Committee</option>
+											<option value="Disapproved">Disapproved</option>
+										</select>
+									</div>
+								</div>
+
+								<p>Reason of Disapproval:</p>
+								<div class="row">
+									<div class="col-md-4">
+										<textarea class="form-control approval-reason" rows="6" name="approvalReason"><%=form.approvalReason%></textarea>
+									</div>
+								</div>
+							</div>
+
+							<hr/>
+
+							<div>
+								<i><%=signature%></i>
+								<div class="row">
+									<div class="col-md-4">
+										<p>Director Signature:</p>
+										<input type="text" class="form-control director-signature" name="directorSignature" value="<%=form.directorSignature%>" required />
+									</div>
+									<div class="col-md-4">
+										<p>Date signed:</p>
+										<input type="text" class="form-control director-date-signed" name="directorDateSigned" value="<%=form.directorDateSigned%>" required />
+									</div>
+							</div>
+
+							<% } else { %>
+							<div class="row">
+								<div class="col-md-2">
+									advisor signature:
+								</div>
+								<div class="col-md-4">
+									<%=form.advisorSignature%>
+								</div>
+							</div>
+
+							<hr/>
+
+							<div>
+								<p>Approved:</p>
+								<div class="row">
+									<div class="col-md-3">
+											<%=form.approved%>
+										</select>
+									</div>
+								</div>
+
+								<p>Reason of Disapproval:</p>
+								<div class="row">
+									<div class="col-md-4">
+										<%=form.approvalReason%>
+									</div>
+								</div>
+							</div>
+
+							<hr/>
+
+							<div class="row">
+								<div class="col-md-4">
+									<p>Director Signature:</p>
+									<%=form.directorSignature%>
+								</div>
+								<div class="col-md-4">
+									<p>Date signed:</p>
+									<%=form.directorDateSigned%>
+								</div>
+							</div>
+							<% } %>
+
+							<div>
+								<button type="submit" class="btn btn-primary CS03-submit">Submit</button>
+							</div>
+
+						</form>
+
+						<% } else{%>
+						<div> You do not have access</div>
+						<% } %>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<%- include("../partials/bootstrapScripts.ejs") %>
+	</body>
+	<script type="text/javascript">
+
+	</script>
+</html>

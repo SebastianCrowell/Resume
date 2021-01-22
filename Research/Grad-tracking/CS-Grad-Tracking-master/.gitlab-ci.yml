@@ -1,0 +1,86 @@
+image: node:latest
+
+variables:
+    mode: "testing"
+    databaseString: "mongodb://mongo:27017/cs_grad_data-test"
+    port: "8080"
+    host: "127.0.0.1"
+    npm_config_cache: "$CI_PROJECT_DIR/.npm"
+    CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+
+
+before_script:
+  ##
+  ## Install ssh-agent if not already installed, it is required by Docker.
+  ## (change apt-get to yum if you use an RPM-based image)
+  ##
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git -y )'
+
+  ##
+  ## Run ssh-agent (inside the build environment)
+  ##
+  - eval $(ssh-agent -s)
+ 
+  ##
+  ## Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+  ## SSH_PRIVATE_KEY is stored on gitlab.com - Settings - CI/CD - Variables
+  ## We're using tr to fix line endings which makes ed25519 keys work
+  ## without extra base64 encoding.
+  ## https://gitlab.com/gitlab-examples/ssh-private-key/issues/1#note_48526556
+  ##
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+
+  ##
+  ## Create the SSH directory and give it the right permissions
+  ##
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+
+  - ssh-keyscan csgrad.cs.unc.edu >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+
+  - git config --global user.email "takoda@cs.unc.edu"
+  - git config --global user.name "takoda1"
+
+services:
+    - mongo:latest
+
+stages:
+  - build
+  - test
+  - deploy
+
+
+cache:
+  paths:
+    - .npm
+    - node_modules/
+    - cache/Cypress
+
+install_dependencies:
+  stage: build
+  tags:
+    - nodejs
+  script:
+    - npm ci
+    - npx cypress cache path
+    - npx cypress cache list
+  artifacts:
+    paths:
+      - node_modules/
+
+testing_testing:
+  image: cypress/base:10
+  tags:
+    - nodejs
+  stage: test
+  script:
+    - npm install -g start-server-and-test
+    - npm run ci
+
+deployment:
+  stage: deploy
+  tags:
+    - nodejs
+  script:
+    - ssh root@csgrad.cs.unc.edu "cd ~ && cd ../CS-Grad-Tracking && git checkout master && git pull && npm install && pm2 stop \"npm start\" && pm2 start \"npm start\" "

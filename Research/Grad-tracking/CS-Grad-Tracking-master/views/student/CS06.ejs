@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<!-- views/student/CS06.ejs -->
+
+<html>
+	<head>
+		<title>CS06 PhD Program of Study</title>
+		<%- include("../partials/head.ejs") %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col-lg-2 sidebar text-center">
+
+					<% if(!isStudent) {%>
+					
+					<%- include("../partials/admin-sidebar.ejs") %>
+
+					<%- include("./search-student.ejs") %>
+
+					<% } else{ %>
+
+					<%- include("../partials/logout.ejs") %>
+
+					<% } %>
+
+				</div>
+				<div align ="center" class="col-lg-10 panelbg text-center">
+
+					<% if(uploadSuccess == true) { %>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong>Submit success!</strong>
+					</div>
+					<% } %>
+
+					<% if(!isStudent) {%>
+					<%- include("./studentBarPartial.ejs") %>
+					<% } else { %>
+					<%- include("../partials/studentBarPartial.ejs") %>
+					<% } %>
+
+					<h4><%=student.lastName%>, <%=student.firstName%></h4>
+
+					<h3>PhD Program of Study</h3>
+					<h3>CS-06</h3>
+
+					<div align="left">
+
+						<form action="<%=postMethod%>" method="post">
+
+							<input type="hidden" class="form-control" name="student" value=<%=student._id%> />
+
+							<div class="row">
+								<div class="col-md-3">
+									<div>Name*</div>
+									<input type="text" class="form-control student-name" name="name" value="<%=student.lastName%>, <%=student.firstName%>" required/>
+								</div>
+								<div class="col-md-3">
+									<div>PID*</div>
+									<input type="number" class="form-control student-pid" name="pid" value=<%=student.pid%> required />
+								</div>
+								<div class="col-md-3">
+									<div>Date submitted*</div>
+									<input type="text" class="form-control date-submitted" name="dateSubmitted" value="<%=form.dateSubmitted%>" required />
+								</div>
+								<div class="col-md-3">
+									<div>Date entered program*</div>
+									<input type="text" class="form-control date-entered" name="dateEntered" value="<%=form.dateEntered%>" required />
+								</div>
+
+							</div>
+
+							<hr></hr>
+
+							<p><strong>Instructions:</strong></p>
+							<p>This form details an individual program of study for the PhD Degree.  It should be filed with the Student Services Manager when the PhD program is substantially planned (typically by the <strong>6th semester</strong>) and can be amended subsequently.  Forms mentioned in this program of study can be filed separately and at a later date. </p>
+
+							<div class="verticalSpace" />
+
+							<div class="row">
+								<div class="col-md-2">
+									Title of Dissertation or Topic of Research Area*
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control diss-title" name="dissTitle" value="<%=form.dissTitle%>" required />
+								</div>
+							</div>
+
+							<hr />
+
+							<p><strong>I. Course Requirements </strong></p>
+
+							<p><div>Note:  For Courses taken other than at UNC-CH, attach at least a catalog description and preferably a syllabus. </div></p>
+
+							<p><strong>A. Required Courses</strong></p>
+
+							<div class="row">
+								<div class="col-md-2">
+									<div>Comp 915: Technical Communication in CS. File CS-02 if waived.*</div>
+								</div>
+								<div class="col-md-2">
+									<select name="comp915" class="form-control comp915" >
+										<option value=<%=form.comp915%>><%=form.comp915%></option>
+										<option value=false>False</option>
+										<option value=true>True</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="verticalSpace"><p>Breadth Requirement: List courses below</p></div>
+
+							<hr />
+
+							<p><strong>Breadth Requirement Courses</strong></p>
+							<p>List the 6 courses taken to satisfy the distribution requirement.  Include the following information:<br>
+							<a href="https://cs.unc.edu/academics/graduate/ms-requirements/course-categories" target="_blank">(click link for list of courses & categories)</a></p>
+							<div class="verticalSpace" />
+							<p>T = Theory & Formal Thinking <br>
+								S = Systems & Hardware <br>
+								A = Applications <br>
+								O = Outside of CS</p>
+							<p>-Include the sections numbers with any COMP 790 course listed. <br>
+								-Courses taken outside UNC-CH must be graduate courses and not counted toward an undergraduate degree, and require submission of a <a href="https://cs.unc.edu/academics/graduate/ms-requirements/progress-forms" target="_blank" >course waiver.</a> <br>
+								-Consult the official <a href="https://cs.unc.edu/academics/graduate/phd-requirements" target="_blank">CS PhD Degree Requirements</a> for eligible course and grade requirements.</p>
+
+							<hr></hr>
+
+							<div class="row">
+								<div class="col-md-2">
+									<div>Category*</div>
+
+									<% for(var i = 0; i < 6; i++) { %>
+										<select name="breadthCourseCategory" class="form-control breadth-course-category<%=i+1%>" required>
+											<% if(form.breadthCourseCategory != null) { %> <option value=<%=form.breadthCourseCategory[i]%> > <%=form.breadthCourseCategory[i]%> </option> <% } %>
+											<option value="T">T</option>
+											<option value="S">S</option>
+											<option value="A">A</option>
+											<option value="O">O</option>
+										</select>
+									<% } %>
+
+								</div>
+
+
+								<div class="col-md-6">
+
+									<div>Course Number, Title, & Name of Univ.*</div>
+
+									<% for(var i = 0; i < 6; i++) { %>
+										<input type="text" class="form-control breadth-course-info<%=i+1%>" name="breadthCourseInfo" <% if(form.breadthCourseInfo != null) { %> value="<%=form.breadthCourseInfo[i]%>" <% } %> required />
+									<% } %>
+								</div>
+
+								<div class="col-md-2">
+									<div>Semester/Year*</div>
+
+									<% for(var i = 0; i < 6; i++) { %>
+										<input type="text" class="form-control breadth-course-date<%=i+1%>" name="breadthCourseDate" <% if(form.breadthCourseDate != null) { %> value="<%=form.breadthCourseDate[i]%>" <% } %> required />
+									<% } %>
+								</div>
+
+								<div class="col-md-2">
+									<div>Grade*</div>
+									<% for(var i = 0; i < 6; i++) { %>
+										<input type="text" class="form-control breadth-course-grade<%=i+1%>" name="breadthCourseGrade" <% if(form.breadthCourseGrade != null) { %> value="<%=form.breadthCourseGrade[i]%>" <% } %> required />
+									<% } %>
+
+								</div>
+							</div>
+
+							<hr/>
+							<p><strong>B. Primary Concentration</strong></p>
+							<p>Three or four courses not listed in (A) of which at least two support in depth the specific dissertation topic and at least one that of which supports more generally the area of computer science in which the dissertation topic falls.  The courses do not need to be related to each other except in that they support the dissertation.  These courses may have been taken as an undergraduate and may have been counted toward an undergraduate degree. </p>
+							<p>Include the following information:</p>
+
+							<hr/>
+							<div class="row">
+								<div class="col-md-6">
+									<div>Course Number, Title, & Name of Univ*</div>
+
+									<% for(var i = 0; i < 4; i++) { %>
+										<input type="text" class="form-control concentration-course-info<%=i+1%>" name="concentrationCourseInfo" <% if(form.concentrationCourseInfo != null) { %> value="<%=form.concentrationCourseInfo[i]%>" <% } %> <% if(i < 3) { %> required <% } %>/>
+										<div class="invalid-feedback"></div>
+									<% } %>
+
+								</div>
+								<div class="col-md-3">
+									<div>Semester/Year*</div>
+
+									<% for(var i = 0; i < 4; i++) { %>
+										<input type="text" class="form-control concentration-course-date<%=i+1%>" name="concentrationCourseDate" <% if(form.concentrationCourseDate != null) { %> value="<%=form.concentrationCourseDate[i]%>" <% } %> <% if(i < 3) { %> required <% } %>/>
+									<% } %>
+
+								</div>
+								<div class="col-md-3">
+									<div>Credit/Hours*</div>
+
+									<% for(var i = 0; i < 4; i++) { %>
+										<input type="number" class="form-control concentration-course-hours<%=i+1%>" name="concentrationCourseHours" <% if(form.concentrationCourseHours != null) { %> value="<%=form.concentrationCourseHours[i]%>" <% } %> <% if(i < 3) { %> required <% } %>/>
+									<% } %>
+
+								</div>
+							</div>
+							
+							<hr/>
+
+							<p><strong>C. Other courses required by your dissertation committee</strong></p>
+							<p>Indicate department, course number, title, and credit hours.  Add note if not taken at UNC-CH. </p>
+
+							<div class="row">
+								<div class="col-md-4">
+									<div>Course Number & Title*</div>
+
+									<% for(var i = 0; i < 4; i++) { %>
+										<input type="text" class="form-control other-course-info<%=i+1%>" name="otherCourseInfo" <% if(form.otherCourseInfo != null) { %> value="<%=form.otherCourseInfo[i]%>" <% } %>/>
+									<% } %>
+
+								</div>
+								<div class="col-md-2">
+									<div>Credit Hours*</div>
+
+									
+									<% for(var i = 0; i < 4; i++) { %>
+										<input type="number" class="form-control other-course-hours<%=i+1%>" name="otherCourseHours" <% if(form.otherCourseHours != null) { %> value="<%=form.otherCourseHours[i]%>" <% } %>/>
+									<% } %>
+
+								</div>
+							</div>
+
+							<div class="verticalSpace" />
+
+							<div class="row">
+								<div class="col-md-4">
+									<div>Note:</div>
+									<textarea class="form-control note" rows="6" name="note"><%=form.note%></textarea>
+								</div>
+							</div>
+
+							<hr/>
+							<div class="row">
+								<div class="col-md-4">
+									<p>List any other courses here that you believe are relevant to your program of study.</p>
+									<textarea class="form-control other-courses" rows="6" name="otherCourses"><%=form.otherCourses%></textarea>
+								</div>
+							</div>
+
+							<hr/>
+
+							<p><strong>D. Formal Minor(if applicable)</strong></p>
+							<div class="row">
+								<div class="col-md-4">
+									<p>See policy in <a href="https://handbook.unc.edu/phd.html">The Graduate School Handbook</a></p>
+									<textarea class="form-control minor" rows="6" name="minor"><%=form.minor%></textarea>
+								</div>
+							</div>
+
+							<hr/>
+
+							<p><strong>Other Requirements</strong></p>
+
+							<p><strong>Check if completed</strong><br>
+								(it is not necessary to have all other requirements completed to turn in your program of study)</p>
+
+							<p>A. Background Preparation worksheet*</p>
+							<div class="col-md-4">
+								
+								<select name="backgroundPrepWorkSheet" class="form-control background-prep-worksheet" >
+									<option value=<%=form.backgroundPrepWorkSheet%>><%=form.backgroundPrepWorkSheet%></option>
+									<option value=false>False</option>
+									<option value=true>True</option>
+								</select>
+							</div>
+
+							<div class="verticalSpace"/>
+
+							<p>B. Program Product requirement*</p>
+							<div class="col-md-4">
+								
+								<select name="programProductRequirement" class="form-control program-product-requirement">
+									<option value=<%=form.programProductRequirement%>><%=form.programProductRequirement%></option>
+									<option value=false>False</option>
+									<option value=true>True</option>
+								</select>
+							</div>
+
+							<div class="verticalSpace"/>
+
+							<p>C. PhD. Written Exam(a.k.a. the writing requirement)*</p>
+							<div class="col-md-4">
+								<select name="PHDWrittenExam" class="form-control phd-written-exam">
+									<option value=<%=form.PHDWrittenExam%>><%=form.PHDWrittenExam%></option>
+									<option value=false>False</option>
+									<option value=true>True</option>
+								</select>
+							</div>
+
+							<div class="verticalSpace"/>
+
+							<p>D. PhD Oral Comprehensive Exam*</p>
+							<div class="col-md-4">
+								<select name="PHDOralExam" class="form-control phd-oral-exam" >
+									<option value=<%=form.PHDOralExam%>><%=form.PHDOralExam%></option>
+									<option value=false>False</option>
+									<option value=true>True</option>
+								</select>
+							</div>
+
+							<hr/>
+
+							<p><strong>III. Committee Members -</strong></p>
+							<p>List the names of your PhD Committee members. (5 minimum, majority must be Dept. of Computer Science faculty.)</p>
+							<p>Each committee member should review the program of study.  The Chairperson is requested to check off or initial beside each member who has reviewed this program of study. </p>
+
+
+							<div class="row">
+								<div class="col-md-6">
+									<strong>Committee Member</strong>
+								</div>
+								<div class="col-md-2">
+									Select Advisor
+								</div>
+								<div class="col-md-2">
+									Select Chairman
+								</div>
+							</div>
+
+
+							<div class="row">
+								<div class="col-md-6">
+									
+									<% for(var i = 0; i < 6; i++) { %>
+										<div class="form-group row">
+											<label class="col-md-2"><%=i+1%>.* </label>
+											<div class="col-md-10">
+												<input type="text" class="form-control committee<%=i+1%>" id="committeeName<%=i+1%>" name="committee" <% if(form.committee != null) { %> value="<%=form.committee[i]%>" <% } %> required />
+											</div>
+										</div>
+									<% } %>
+
+								</div>
+
+								<div class="col-md-2">
+									<% for(var i = 1; i < 7; i++) { %>
+										<div class="form-group row">
+											<div class="col-md-12">
+												<button type="button" class="btn btn-outline-primary select-advisor<%=i%>" data-toggle="button" aria-pressed="false" autocomplete="off" 
+												id="advisor<%=i%>" onclick=selectadvisor(<%=i%>)>A</button>
+											</div>
+										</div>
+									<% } %>
+								</div>
+								<div class="col-md-2">
+									<% for(var i = 1; i < 7; i++) { %>
+										<div class="form-group row">
+											<div class="col-md-12">
+												<button type="button" class="btn btn-outline-primary select-chairman<%=i%>" data-toggle="button" aria-pressed="false" autocomplete="off" 
+												id="chairman<%=i%>" onclick=selectChairman(<%=i%>)>C</button>
+											</div>
+										</div>
+									<% } %>
+								</div>
+
+							</div>
+
+
+							<div class="verticalSpace"/>
+							
+
+							<div class="row">
+								<div class="col-md-1">
+									<div>advisor:</div>
+								</div>
+								<div class="col-md-3">
+									<input type="hidden" class="form-control advisor" name="advisor" id="advisorInput" value="<%=form.advisor%>" required />
+									<%=form.advisor%>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-1">
+									<div>Chairman:</div>
+									
+								</div>
+								<div class="col-md-3">
+									<input type="hidden" class="form-control chairman" name="chairman" id="chairmanInput" value="<%=form.chairman%>" required />
+									<%=form.chairman%>
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<p><strong>Committee advisor</strong> (or Chair if different from advisor)*</p>
+							<p>By signing here, the chair indicates that all items above have been approved by the majority of the committee.</p>
+							<p><i><%=signature%></i></p>
+							<div class="col-md-4">
+								<input type="text" class="form-control chair-signature" name="chairSignature" value="<%=form.chairSignature%>" required />
+							</div>
+
+							<hr/>
+
+							<p><strong>IV. Approval</strong></p>
+
+							<p><strong>PhD Program of Study APPROVAL PROCESS*</strong><br>
+								The PhD Program of Study will be reviewed by the GCS (Graduate Studies Committee).  GSC meets a number of times during each semester.  In order for your Program of Study to be reviewed in a timely manner, it is highly recommended to submit it early, preferably in your 6th semester or around the time you have your proposal meeting</p>
+
+							<div class="col-md-4">
+								<select name="approved" class="form-control approved">
+									<option value=<%=form.approved%>><%=form.approved%></option>
+									<option value="Approved">Approved</option>
+									<option value="Disapproved">Disapproved</option>
+								</select>
+							</div>
+
+							<hr/>
+
+							<div class="row">
+								<div class="col-md-4">
+									<p>Reason for Disapproval and Needed Adjustments Stated Here </p>
+									<textarea class="form-control reason-approved" rows="6" name="reasonApproved"><%=form.reasonApproved%></textarea>
+								</div>
+							</div>
+
+							<hr/>
+
+							<% if(!isStudent) {%>
+
+							<div class="row">
+								<div class="col-md-4">
+									<div>Director of Graduate Studies Signature:*</div>
+									<i><%=signature%></i>
+									<input type="text" class="form-control director-signature" name="directorSignature" value="<%=form.directorSignature%>" required />
+								</div>
+							</div>
+
+							<% } else { %>
+							<div class="row">
+								<div class="col-md-4">
+									<div>Director of Graduate Studies Signature:*</div>
+									<%=form.directorSignature%>
+								</div>
+							</div>
+							<% } %>
+
+							<div class="verticalSpace" />
+
+							<button type="submit" class="btn btn-primary CS06-submit" onclick="validate()">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%- include("../partials/bootstrapScripts.ejs") %>
+	</body>
+	<script type="text/javascript">
+		function selectadvisor(number){
+			for(var i = 1; i < 7; i++){
+				if(i != number){
+					document.getElementById("advisor"+i).classList.remove("active");
+					document.getElementById("advisor"+i).ariaPressed = false;
+				}
+			}
+			var tempName = document.getElementById("committeeName"+number).value;
+			document.getElementById("advisorInput").value = tempName;
+		}
+
+		function selectChairman(number){
+			for(var i = 1; i < 7; i++){
+				if(i != number){
+					document.getElementById("chairman"+i).classList.remove("active");
+					document.getElementById("chairman"+i).ariaPressed = false;
+				}
+			}
+			var tempName = document.getElementById("committeeName"+number).value;
+			document.getElementById("chairmanInput").value = tempName;
+		}
+
+		function validate() {
+			const breadth = document.getElementsByName("breadthCourseInfo");
+			const concentration = document.getElementsByName("concentrationCourseInfo");
+			const other = document.getElementsByName("otherCourseInfo");
+
+			// check if any courses in B are already listed in A
+			for (var i = 0; i < concentration.length; i++) {
+				for (var j = 0; j < breadth.length; j++) {
+					if (concentration[i].value == breadth[j].value) {
+						concentration[i].setCustomValidity("Course listed in A.");
+						return false;
+					} else {
+						concentration[i].setCustomValidity("");
+					}
+				}
+			}
+
+			// check if any courses in C are already listed in A or B
+			for (var i = 0; i < other.length; i++) {
+				for (var j = 0; j < breadth.length; j++) {
+					if (other[i].value == breadth[j].value) {
+						other[i].setCustomValidity("Course listed in A.");
+						return false;
+					} else {
+						other[i].setCustomValidity("");
+					}
+				}
+
+				for (var j = 0; j < concentration.length; j++) {
+					if (other[i].value == concentration[j].value) {
+						other[i].setCustomValidity("Course listed in B.");
+						return false;
+					} else {
+						other[i].setCustomValidity("");
+					}
+				}
+			}
+
+		}
+	</script>
+</html>

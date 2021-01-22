@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- views/report/index.ejs -->
+
+
+<html>
+	<head>
+		<title>Reports</title>
+		<%- include("../partials/head.ejs") %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col-lg-2 sidebar text-center">
+
+					<%- include("../partials/admin-sidebar.ejs") %>
+
+				</div>
+				<div align ="center" class="col-lg-10 panelbg text-center">
+
+					<h3 class="space">View a report</h3>
+					
+					<div class="col-md-4 offset-md-4">
+						<a href="/report/progressReport" class="progress-report">Progress Reports</a>
+					</div>
+					<div class="col-md-4 offset-md-4">
+						<a href="/report/tuitionReport" class="tuition-report">Tuition Reports</a>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+		<%- include("../partials/bootstrapScripts.ejs") %>
+	</body>
+
+	<script type="text/javascript"> </script>
+	
+</html>

@@ -1,0 +1,8 @@
+<p>Welcome <%=locals.user%></p>
+<p>
+  <% if(locals.isAuthenticated){ %>
+    <a href="/logout" class="btn btn-primary btn-block">Logout</a>
+  <% } else { %>
+  <a href="/login" class="btn btn-primary btn-block">Login</a>
+  <% } %>
+</p>

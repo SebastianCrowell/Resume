@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<!-- views/student/create.ejs -->
+
+<html>
+	<head>
+		<title>Create student</title>
+		<%- include("../partials/head.ejs") %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col-lg-2 sidebar text-center">
+
+					<%- include("../partials/admin-sidebar.ejs") %>
+					<%- include("./search-student.ejs") %>
+
+				</div>
+				<div align ="center" class="col-lg-10 panelbg text-center">
+					<h1>Create student</h1>
+					<form action="/student/post" method="post">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="form-group row">
+									<label for="inputOnyen" class="col-md-4">Onyen *</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control input-onyen" id="inputOnyen" name="onyen" placeholder="Onyen" required/>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputCsid" class="col-md-4">CSID *</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control input-csid" id="inputCsid" name="csid" placeholder="CSID" required/>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputEmail" class="col-md-4">Email *</label>
+									<div class="col-md-8">
+										<input type="email" class="form-control input-email" id="inputEmail" name="email" placeholder="example@cs.unc.edu" required/>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputFirstName" class="col-md-4">First name *</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control input-first-name" id="inputFirstName" name="firstName" placeholder="First name" required/>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputLastName" class="col-md-4">Last name *</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control input-last-name" id="inputLasNname" name="lastName" placeholder="Last name" required/>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputPronouns" class="col-md-4">Pronouns</label>
+									<div class="col-md-8">
+										<select name="pronouns" class="form-control input-pronouns" id="inputPronouns">
+											<option value=""></option>
+											<% for(var i=0; i<pronouns.length; i++) { %>
+												<option value="<%= pronouns[i]%>"> <%=pronouns[i]%> </option>
+											<% } %>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputPid" class="col-md-4">PID *</label>
+									<div class="col-md-8">
+										<input type="number" class="form-control input-pid" id="inputPid" name="pid" placeholder="PID" required/>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputStatus" class="col-md-4">Status</label>
+									<div class="col-md-8">
+										<select name="status" class="form-control input-status" id="inputStatus">
+											<option value=""></option>
+											<% for(var i=0; i<status.length; i++) { %>
+												<option value=<%= status[i]%>> <%=status[i]%> </option>
+											<% } %>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputAltname" class="col-md-4">Alternative name</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control input-alternative-name" id="inputAltname" name="alternativeName" placeholder="Alternative name"/>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputGender" class="col-md-4">Gender</label>
+									<div class="col-md-8">
+										<select name="gender" class="form-control input-gender" id="inputGender">
+											<option value=""></option>
+											<% for(var i=0; i<genders.length; i++) { %>
+												<option value=<%= genders[i]%>><%=genders[i]%></option>
+											<% } %>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputEthnicity" class="col-md-4">Ethnicity</label>
+									<div class="col-md-8">
+										<select name="ethnicity" class="form-control input-ethnicity" id="inputEthnicity">
+											<option value=""></option>
+											<% for(var i=0; i<ethnicities.length; i++) { %>
+												<option value=<%= ethnicities[i]%>><%=ethnicities[i]%></option>
+											<% } %>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputResidency" class="col-md-4">Residency</label>
+									<div class="col-md-8">
+										<select name="residency" class="form-control input-residency" id="inputResidency">
+											<option value=""></option>
+											<% for(var i=0; i<residencies.length; i++) { %>
+												<option value=<%= residencies[i]%>><%=residencies[i]%></option>
+											<% } %>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputEnteringStatus" class="col-md-4">Entering status</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control input-entering-status" id="inputEnteringStatus" name="enteringStatus" placeholder="Entering status"/>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputResearchArea" class="col-md-4">Research area</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control input-research-area" id="inputResearchArea" name="researchArea" placeholder="Research area"/>
+									</div>
+								</div>
+
+							</div>
+							<div class="col-md-4">
+
+								<div class="form-group row">
+									<label for="inputLeaveExtension" class="col-md-4">Leave extension</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control input-leave-extension" id="inputLeaveExtension" name="leaveExtension" placeholder="Leave extension"/>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputIntendedDegree" class="col-md-4">Intended degree</label>
+									<div class="col-md-8">
+										<select name="intendedDegree" class="form-control input-intended-degree" id="inputIntendedDegree">
+											<option value=""></option>
+											<% for(var i=0; i<degrees.length; i++) { %>
+												<option value=<%= degrees[i]%>><%=degrees[i]%></option>
+											<% } %>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputHoursCompleted" class="col-md-4">Hours completed</label>
+									<div class="col-md-8">
+										<input type="number" class="form-control input-hours-completed" id="inputHoursCompleted" name="hoursCompleted" placeholder="Hours completed"/>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputCitizenship" class="col-md-4">Citizenship</label>
+									<div class="col-md-8">
+										<input type="checkbox" class="form-check-input input-citizenship" id="inputCitizenship" name="citizenship" value="true" />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputFundingEligibility" class="col-md-4">Funding eligibility</label>
+									<div class="col-md-8">
+										<select name="fundingEligibility" class="form-control input-funding-eligibility" id="inputFundingEligibility">
+											<option value=""></option>
+											<% for(var i=0; i<eligibility.length; i++) { %>
+												<option value=<%= eligibility[i]%>><%=eligibility[i]%></option>
+											<% } %>
+										</select>
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label for="inputSemestersOnLeave" class="col-md-4">Semesters on Leave</label>
+									<div class="col-md-8">
+										<input type="number" class="form-control input-semesters-on-leave" id="inputSemestersOnLeave" name="semestersOnLeave" />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputBackgroundApproved" class="col-md-4">Background approved</label>
+									<div class="col-md-8">
+										<input type="date" class="form-control input-background-approved" id="inputBackgroundApproved" name="backgroundApproved"  />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputMastersAwarded" class="col-md-4">Masters awarded</label>
+									<div class="col-md-8">
+										<input type="date" class="form-control input-masters-awarded" id="inputMastersAwarded" name="mastersAwarded"  />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputPrpPassed" class="col-md-4">prp passed</label>
+									<div class="col-md-8">
+										<input type="date" class="form-control input-prp-passed" id="inputPrpPassed" name="prpPassed" />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputTechnicalWritingApproved" class="col-md-4">Technical writing approved</label>
+									<div class="col-md-8">
+										<input type="date" class="form-control input-technical-writing-approved" id="inputTechnicalWritingApproved" name="technicalWritingApproved" />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputBackgroundPrepWorksheetApproved" class="col-md-4">Background prep worksheet approved</label>
+									<div class="col-md-8">
+										<input type="date" class="form-control input-background-prep-worksheet-approved" id="inputBackgroundPrepWorksheetApproved" name="backgroundPrepWorksheetApproved"  />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputProgramOfStudyApproved" class="col-md-4">Program of study approved</label>
+									<div class="col-md-8">
+										<input type="date" class="form-control input-program-of-study-approved" id="inputProgramOfStudyApproved" name="programOfStudyApproved"  />
+									</div>
+								</div>
+
+							</div>
+							<div class="col-md-4">
+
+								<div class="form-group row">
+									<label for="inputResearchPlanningMeeting" class="col-md-4">Research planning meeting</label>
+									<div class="col-md-8">
+										<input type="date" class="form-control input-research-planning-meeting" id="inputResearchPlanningMeeting" name="researchPlanningMeeting"  />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputprogramProductRequirement" class="col-md-4">Program product requirement</label>
+									<div class="col-md-8">
+										<input type="date" class="form-control input-program-product-requirement" id="inputProgramProductRequirement" name="programProductRequirement"  />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputCommitteeCompApproved" class="col-md-4">Committee comp approved</label>
+									<div class="col-md-8">
+										<input type="date" class="form-control input-committee-comp-approved" id="inputCommitteeCompApproved" name="committeeCompApproved"  />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputPhdProposalApproved" class="col-md-4">phD proposal approved</label>
+									<div class="col-md-8">
+										<input type="date" class="form-control input-phd-proposal-approved" id="inputPhdProposalApproved" name="phdProposalApproved"  />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputOralExamPassed" class="col-md-4">Oral exam passed</label>
+									<div class="col-md-8">
+										<input type="date" class="form-control input-oral-exam-passed" id="inputOralExamPassed" name="oralExamPassed"  />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputDissertationDefencePassed" class="col-md-4">Dissertation defence passed</label>
+									<div class="col-md-8">
+										<input type="date" class="form-control input-dissertation-defence-passed" id="inputDissertationDefencePassed" name="dissertationDefencePassed"  />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputDissertationSubmitted" class="col-md-4">Dissertation submitted</label>
+									<div class="col-md-8">
+										<input type="date" class="form-control input-dissertation-submitted" id="inputDissertationSubmitted" name="dissertationSubmitted"  />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputPHDAwarded" class="col-md-4">PhD. Awarded</label>
+									<div class="col-md-8">
+										<input type="date" class="form-control input-phd-awarded" id="inputPHDAwarded" name="phdAwarded"  />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputSemesterStarted" class="col-md-4">Semester started</label>
+									<div class="col-md-8">
+										<select name="semesterStarted" class="form-control input-semester-started" id="inputSemesterStarted">
+											<option value=""></option>
+											<% for(var i=0; i<semesters.length; i++) { %>
+												<option value=<%= semesters[i]._id%>><%=semesters[i].season%> <%=semesters[i].year%></option>
+											<% } %>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="inputAdvisor" class="col-md-4">Advisor *</label>
+									<div class="col-md-8">
+										<select name="advisor" class="form-control input-advisor" id="inputAdvisor" required>
+											<option value=""></option>
+											<% for(var i=0; i<faculty.length; i++) { %>
+												<option value=<%= faculty[i]._id%>><%=faculty[i].lastName%>, <%=faculty[i].firstName%></option>
+											<% } %>
+										</select>
+									</div>
+								</div>
+
+								<!-- no courseHistory field, have a dedicated page for adding courseHistory to students -->
+
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary create-student-submit">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

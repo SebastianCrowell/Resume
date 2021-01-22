@@ -1,0 +1,70 @@
+<!-- views/student/uploadCourses.ejs -->
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Upload grades </title>
+		<%- include("../partials/head.ejs") %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col-lg-2 sidebar text-center">
+
+					<%- include("../partials/admin-sidebar.ejs") %>
+
+					<%- include("./search-student.ejs") %>
+
+				</div>
+				<div align ="center" class="col-lg-10 panelbg text-center">
+
+					<% if(uploadSuccess == true) { %>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong>Upload success!</strong>
+					</div>
+					<% } %>
+
+					<h1>Upload grades (CHANGES PENDING -- WILL BREAK)</h1>
+					<form action="/student/uploadCourses" enctype="multipart/form-data" method="post">
+						<div class="form-group row">
+							<label for="inputSheet" class="col-md-3 offset-md-3">Spreadsheet</label>
+							<div class="col-md-4">
+								<input type="file" name="upload" class="form-control-file" id="inputSheet" accept=".csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required/>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputCourse" class="col-md-2 offset-md-3">Course</label>
+							<div class="col-md-4">
+								<select name="courses" class="form-control" id="inputCourse" required>
+									<option value=""></option>
+									<% for(var i=0; i< courses.length; i++) { %>
+										<option value=<%= courses[i]._id%>><%=courses[i].number%>, <%=courses[i].name%>, <%=courses[i].section%>, <%=courses[i].semester%></option>
+									<% } %>
+								</select>
+							</div>
+						</div>
+
+						<div class="col-md-4 offset-md-4">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+						<h3>Upload format</h3>
+						<img src="/images/gradeUploadFormat.png">
+						
+						<div class="col-md-4 offset-md-4">
+							<h3>Requirements</h2>
+							<ul class="list-group">
+								<li class="list-group-item">Columns must be in order displayed above, headers don't have to be what is displayed.</li>
+								<li class="list-group-item">Only grade is not required</li>
+							</ul>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- views/student/forms.ejs -->
+
+
+<html>
+	<head>
+		<title>Student forms</title>
+		<%- include("../partials/head.ejs") %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col-lg-2 sidebar text-center">
+
+					<%- include("../partials/admin-sidebar.ejs") %>
+					<%- include("./search-student.ejs") %>
+
+				</div>
+				<div align ="center" class="col-lg-10 panelbg text-center">
+
+					<%- include("./studentBarPartial.ejs") %>
+					<h4><%=student.lastName%>, <%=student.firstName%></h4>
+
+					<h3 class="space">View a form</h3>
+					<div class="col-md-4 offset-md-4">
+						<a href="/student/forms/viewForm/<%=student._id%>/CS01/false" class="CS01">CS01-Background Preperation Worksheet</a>
+					</div>
+
+					<div class="col-md-4 offset-md-4">
+						<a href="/student/forms/viewForm/<%=student._id%>/CS01BSMS/false" class="CS01BSMS">CS01BSMS-Background Preperation Worksheet</a>
+					</div>
+
+					<div class="col-md-4 offset-md-4">
+						<a href="/student/forms/viewForm/<%=student._id%>/CS02/false" class="CS02">CS02-Course Waiver</a>
+					</div>
+
+					<div class="col-md-4 offset-md-4">
+						<a href="/student/forms/viewForm/<%=student._id%>/CS03/false" class="CS03">CS03-M.S. Program of Study</a>
+					</div>
+
+					<div class="col-md-4 offset-md-4">
+						<a href="/student/forms/viewForm/<%=student._id%>/CS04/false" class="CS04">CS04-Outside Review Option</a>
+					</div>
+
+					<div class="col-md-4 offset-md-4">
+						<a href="/student/forms/viewForm/<%=student._id%>/CS05/false" class="CS05">CS05-Request for Appointment of M.S. Committee</a>
+					</div>
+
+					<div class="col-md-4 offset-md-4">
+						<a href="/student/forms/viewForm/<%=student._id%>/CS06/false" class="CS06">CS06-Ph.D. Program of Study</a>
+					</div>
+
+					<div class="col-md-4 offset-md-4">
+						<a href="/student/forms/viewForm/<%=student._id%>/CS07/false" class="CS07">CS07-Report of Disapproval of Dissertation Proposal</a>
+					</div>
+
+					<div class="col-md-4 offset-md-4">
+						<a href="/student/forms/viewForm/<%=student._id%>/CS08/false" class="CS08">CS08-Technical Writing Requirement</a>
+					</div>
+
+					<div class="col-md-4 offset-md-4">
+						<a href="/student/forms/viewForm/<%=student._id%>/CS09/false" class="CS09">CS09-Report of Preliminiary Research Presentation</a>
+					</div>
+
+					<div class="col-md-4 offset-md-4">
+						<a href="/student/forms/viewForm/<%=student._id%>/CS11/false" class="CS11">CS11-Teaching Requirement</a>
+					</div>
+
+					<div class="col-md-4 offset-md-4">
+						<a href="/student/forms/viewForm/<%=student._id%>/CS12/false" class="CS12">CS12-Report of Research Discussion</a>
+					</div>
+
+					<div class="col-md-4 offset-md-4">
+						<a href="/student/forms/viewForm/<%=student._id%>/CS13/false" class="CS13">CS13-Program Product Requirement</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<%- include("../partials/bootstrapScripts.ejs") %>
+	</body>
+
+	<script type="text/javascript"> </script>
+	
+</html>

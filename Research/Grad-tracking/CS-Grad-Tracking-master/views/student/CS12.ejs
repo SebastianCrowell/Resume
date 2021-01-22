@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!-- views/student/CS12.ejs -->
+
+<html>
+	<head>
+		<title>CS12 Report of research discussion</title>
+		<%- include("../partials/head.ejs") %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col-lg-2 sidebar text-center">
+
+					<% if(!isStudent) {%>
+					
+					<%- include("../partials/admin-sidebar.ejs") %>
+
+					<%- include("./search-student.ejs") %>
+
+					<% } else{ %>
+
+					<%- include("../partials/logout.ejs") %>
+
+					<% } %>
+
+				</div>
+				<div align ="center" class="col-lg-10 panelbg text-center">
+
+					<% if(uploadSuccess == true) { %>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong>Submit success!</strong>
+					</div>
+					<% } %>
+
+					<% if(!isStudent) {%>
+					<%- include("./studentBarPartial.ejs") %>
+					<% } else { %>
+					<%- include("../partials/studentBarPartial.ejs") %>
+					<% } %>
+
+					<h4><%=student.lastName%>, <%=student.firstName%></h4>
+
+					<h3>Report of research discussion</h3>
+					<h3>CS-12</h3>
+
+					<div align="left">
+
+						<hr></hr>
+
+						<form action="<%=postMethod%>" method="post">
+
+							<input type="hidden" class="form-control" name="student" value=<%=student._id%> />
+
+							<div class="row">
+								<div class="col-md-6">
+									<div>Name*</div>
+									<input type="text" class="form-control student-name" name="name" value="<%=student.lastName%>, <%=student.firstName%>" required/>
+								</div>
+								<div class="col-md-6">
+									<div>PID*</div>
+									<input type="number" class="form-control student-pid" name="pid" value=<%=student.pid%> required />
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-6">
+									<div>Email address*</div>
+									<input type="text" class="form-control email" name="email" value="<%=form.email%>" required/>
+								</div>
+								<div class="col-md-6">
+									<div>Date met*</div>
+									<input type="text" class="form-control date" name="dateMet" value="<%=form.dateMet%>" required />
+								</div>
+							</div>
+
+							<hr/>
+							<div>On the date indicated above, I met jointly with the undersigned three or more (potential) members of my doctoral committee to discuss my proposed research.</div>
+
+							<hr/>
+
+							<% if(!isStudent) {%>
+
+							<i><%=signature%></i>
+							<% for(let i = 0; i < 6; i++){ %>
+							<div class="row">
+								<div class="col-md-3">
+									<div>Committee <%= i + 1 %> signature*</div>
+									
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control committee<%=i+1%>" name="committeeSignature" <% if(form.committeeSignature != null) { %>  value="<%=form.committeeSignature[i]%>" <% }%> required/>
+								</div>
+							</div>
+							<% } %>
+							
+							<% } else{ %>
+							<% for(let i = 0; i < 6; i++){ %>
+							<div class="row">
+								<div class="col-md-3">
+									<div>Committee <%= i + 1 %> signature*</div>
+									
+								</div>
+								<div class="col-md-3">
+									<% if(form.committeeSignature != null) { %> 
+										<%=form.committeeSignature[i]%>
+									<% } %>
+								</div>
+							</div>
+							<% } %>
+							<% } %>
+							<div class="verticalSpace"/>
+							
+							<button type="submit" class="btn btn-primary CS12-submit">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%- include("../partials/bootstrapScripts.ejs") %>
+	</body>
+	<script type="text/javascript">
+	</script>
+</html>

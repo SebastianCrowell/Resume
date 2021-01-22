@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!-- views/job/create.ejs -->
+
+<html>
+	<head>
+		<title>Create job</title>
+		<%- include("../partials/head.ejs") %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col-lg-2 sidebar text-center">
+
+					<%- include("../partials/admin-sidebar.ejs") %>
+
+					<%- include("./search-job.ejs") %>
+
+				</div>
+				<div align="center" class="col-lg-10 panelbg text-center">
+					<h1>Create job</h1>
+					<form action="/job/post" method="post">
+						<div class="form-group row">
+							<label for="inputPosition" class="col-md-2 offset-md-3">Position *</label>
+							<div class="col-md-4">
+								<select name="position" class="form-control input-position" id="inputPosition" required>
+									<option value=""></option>
+									<% for(var i=0; i < jobTitles.length; i++){ %>
+										<option value=<%=jobTitles[i]%>><%=jobTitles[i]%></option>
+									<% } %>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputSupervisor" class="col-md-2 offset-md-3">Supervisor *</label>
+							<div class="col-md-4">
+								<select name="supervisor" class="form-control input-supervisor" id="inputSupervisor" required>
+									<option value=""></option>
+									<% for(var i=0; i < faculty.length; i++){ %>
+										<option value=<%=faculty[i]._id%>><%=faculty[i].lastName%>, <%=faculty[i].firstName%></option>
+									<% } %>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row" id="course" hidden>
+							<label for="inputCourse" class="col-md-2 offset-md-3">Course *</label>
+							<div class="col-md-4">
+								<select name="course" class="form-control input-course" id="inputCourse">
+								<option value=""/>
+								<% for(var i=0; i < courses.length; i++){ %>
+									<option value=<%=courses[i]._id%>
+										id=<%=courses[i].faculty._id%> class=<%=courses[i].semester._id%>>
+										<%=courses[i].number%>-<%=courses[i].section%>, <%=courses[i].semester.season%> <%=courses[i].semester.year%>
+									</option>
+								<% } %>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row input-semester-block" id="semester">
+							<label for="inputSemester" class="col-md-2 offset-md-3">Semester *</label>
+							<div class="col-md-4">
+								<select name="semester" class="form-control input-semester" id="inputSemester" required>
+									<option value=""></option>
+									<% for(var i=0; i < semesters.length; i++){ %>
+										<option value=<%=semesters[i]._id%>><%=semesters[i].season%> <%=semesters[i].year%></option>
+									<% } %>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row" id="description">
+							<label for="inputDescription" class="col-md-2 offset-md-3">Description</label>
+							<div class="col-md-4">
+								<input type="text"
+								 name="description" class="form-control input-description" id="inputDescription" placeholder="Description" />
+							</div>
+						</div>
+
+						<div class="form-group row" id="hours">
+							<label for="inputHours" class="col-md-2 offset-md-3">Hours</label>
+							<div class="col-md-4">
+								<input type="number"
+								 name="hours" class="form-control input-hours" id="inputHours" min="0" max="24"/>
+							</div>
+						</div>
+
+						<div class="form-group row" id="fundingSource">
+							<label for="inputFundingSource" class="col-md-2 offset-md-3">Funding source</label>
+							<div class="col-md-4">
+								<select name="fundingSource" class="form-control input-funding-source" id="inputFundingSource">
+									<option></option>
+									<% for(var i = 0; i < grants.length; i++){ %>
+									<option value="<%=grants[i]._id%>"><%=grants[i].name%></option>
+									<% } %>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row align-items-end">
+							<div class="col-md-4 offset-md-4">
+								<button type="submit" class="btn btn-primary submit-job">Submit</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		document.getElementById("inputPosition").addEventListener("change", function(){
+			var val = document.getElementById("inputPosition").value;
+
+			if(val === "TA"){
+				document.getElementById("course").hidden = false;
+				document.getElementById("inputCourse").required = true;
+				document.getElementById("semester").hidden = true;
+			}
+			else{
+				document.getElementById("course").hidden = true;
+				document.getElementById("inputCourse").required = false;
+				document.getElementById("semester").hidden = false;
+			}
+
+			document.getElementById("inputSupervisor").options[0].selected = true;
+			document.getElementById("inputCourse").options[0].selected = true;
+			document.getElementById("inputSemester").options[0].selected = true;
+			document.getElementById("inputDescription").value = "";
+
+		}, false);
+
+		document.getElementById("inputSupervisor").addEventListener("change", function(){
+			if(document.getElementById("inputPosition").value === "TA"){
+				document.getElementById("inputCourse").options[0].selected = true;
+				var facultyId = document.getElementById("inputSupervisor").value;
+				var selectCourseElement = document.getElementById("inputCourse");
+				for(var i = 0; i < selectCourseElement.options.length; i++){
+					if(selectCourseElement.options[i].id === facultyId){
+						selectCourseElement.options[i].hidden = false;
+					}
+					else{
+						selectCourseElement.options[i].hidden = true;
+					}
+					
+				}
+			}
+		}, false);
+
+		document.getElementById("inputCourse").addEventListener("change", function(){
+			if(document.getElementById("inputPosition").value === "TA"){
+				var courseSelect = document.getElementById("inputCourse");
+				var semesterId = courseSelect.options[courseSelect.selectedIndex].className;
+				var semesterSelect = document.getElementById("inputSemester");
+				semesterSelect.options[0].selected = true;
+				semesterSelect.options[0].value = semesterId;
+			}
+		}, false);
+	</script>
+</html>

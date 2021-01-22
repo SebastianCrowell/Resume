@@ -1,0 +1,29 @@
+version: "2"
+services:
+  #Nodejs app built from dockerfile
+  app:
+    container_name: app
+    #Auto restart on fail
+    restart: always
+    #Builds the docker container
+    build: .
+    #Expose some ports
+    ports:
+      - "8080:8080"
+    #Link to mongoDB
+    depends_on:
+      - mongo
+    #Volume for app
+    volumes:
+      - .:/app
+  #Database name
+  mongo:
+    container_name: mongo
+    #Builds a mongo image from docker
+    image: mongo
+    #Expose ports for mongo
+    ports:
+      - "27017:27017"
+    #Volume for db
+    volumes:
+      - .:/dbdata

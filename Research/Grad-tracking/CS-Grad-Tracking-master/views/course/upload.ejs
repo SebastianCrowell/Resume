@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- views/course/upload.ejs -->
+
+<html>
+	<head>
+		<title>Upload course</title>
+		<%- include('../partials/head.ejs') %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+
+				<div class='col-lg-2 sidebar text-center'>
+					<%- include('../partials/admin-sidebar.ejs') %>
+
+					<%- include('./search-course.ejs') %>
+				</div>
+
+				<div class='col-lg-10 panelbg text-center'>
+
+					<% if(uploadSuccess == true) { %>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong>Upload success!</strong>
+					</div>
+					<% } %>
+
+					<h1>Upload courses</h1>
+					<form action="/course/upload" enctype="multipart/form-data" method="post">
+						<div class="form-group row">
+							<label for="inputSheet" class="col-md-3 offset-md-3">Spreadsheet</label>
+							<div class="col-md-4">
+								<input type="file" name="upload" class="form-control-file course-upload-input" id="inputSheet" accept=".csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required/>
+							</div>
+						</div>
+						<div class="col-md-4 offset-md-4">
+							<button type="submit" value="Upload" class="btn btn-primary course-upload-submit-button">Submit</button>
+						</div>
+						<h3>Upload format</h3>
+						<img src="/images/courseUploadFormat.png">
+
+						<div class="col-md-4 offset-md-4">
+							<h3>Requirements</h2>
+							<ul class="list-group">
+								<li class="list-group-item">Headers must be exactly as displayed</li>
+								<li class="list-group-item">Get a sample of the spreadsheet here: https://gitlab.com/unc-cs-toolsmiths/CS-Grad-Tracking/tree/master/data/InOrderUploadTests  and use 3courseUpload.xlsx</li>
+								<li class="list-group-item">Category must be the single letter abbreviation (s,t,a), lower or upper case, or the full name (Applications, Systems, Theory).</li>
+								<li class="list-group-item">Faculty must be LASTNAME, FIRSTNAME (case does not matter).</li>
+								<li class="list-group-item">Semester must be SS YYYY (case for season does not matter, can be FA, SP, S1, S2).</li>
+								<li class="list-group-item">Headers must be exactly as displayed</li>
+							</ul>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<%- include("../partials/bootstrapScripts.ejs") %>
+	</body>
+</html>

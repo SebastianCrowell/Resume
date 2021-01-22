@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!-- views/course/create.ejs -->
+ 
+<html>
+	<head>
+		<title>Create course</title>
+		<%- include('../partials/head.ejs') %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+
+				<div class='col-lg-2 sidebar text-center'>
+					<%- include('../partials/admin-sidebar.ejs') %>
+					<%- include('./search-course.ejs') %>
+				</div>
+				
+				<div class='col-lg-10 panelbg text-center'>
+					<h1>Create course</h1>
+					<form action="/course/post" method="post">
+						<div class="form-group row">
+							<label class="col-md-2 offset-md-3">Department</label>
+							<div class="col-md-4">
+								<div>COMP</div>
+								<input type="hidden" class="form-control" name="department" value="COMP" required/>
+							</div>
+						</div>
+
+						<!-- <div class="form-group row">
+							<label for="inputDepartment" class="col-md-2 offset-md-3">Department</label>
+							<div class="col-md-4">
+								<input type="text" class="form-control" id="inputDepartment" name="department" placeholder="Department" minlength="4" maxlength="4" required/>
+							</div>
+						</div> -->
+
+						<div class="form-group row">
+							<label for="inputCourse" class="col-md-2 offset-md-3">Course</label>
+							<div class="col-md-4">
+								<select name="courseInfo" class="form-control input-course-info" id="inputCourse" required>
+									<option value=""></option>
+									<% for(var i=0; i<courseInfo.length; i++) { %>
+										<option value=<%= courseInfo[i]._id%>><%=courseInfo[i].number%>, <%=courseInfo[i].name%>, <%=courseInfo[i].hours%> hours</option>
+									<% } %>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputUnivNumber" class="col-md-2 offset-md-3">University course number</label>
+							<div class="col-md-4">
+								<input type="number" class="form-control" id="inputUnivNumber" placeholder="University course number" name="univNumber" required/>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputCategory" class="col-md-2 offset-md-3">Category</label>
+							<div class="col-md-4">
+								<select name="category" class="form-control" id="inputCategory" required>
+									<option value=""></option>
+									<% for(var i=0; i<categories.length; i++) { %>
+										<option value=<%= categories[i]%>><%=categories[i]%></option>
+									<% } %>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputTopic" class="col-md-2 offset-md-3">Topic</label>
+							<div class="col-md-4">
+								<input type="text" class="form-control" id="inputTopic" placeholder="Topic" name="topic" value="N/A" required/>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputSection" class="col-md-2 offset-md-3">Section</label>
+							<div class="col-md-4">
+								<input type="string" class="form-control" id="inputSection" placeholder="Section" name="section" required/>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputFaculty" class="col-md-2 offset-md-3">Faculty</label>
+							<div class="col-md-4">
+								<select name="faculty" class="form-control" id="inputFaculty" required>
+									<option value=""></option>
+									<% for(var i=0; i<faculty.length; i++) { %>
+										<option value=<%= faculty[i]._id%>><%=faculty[i].lastName%>, <%=faculty[i].firstName%></option>
+									<% } %>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="inputSemester" class="col-md-2 offset-md-3">Semester</label>
+							<div class="col-md-4">
+								<select name="semester" class="form-control input-semester" id="inputSemester" required>
+									<option value=""></option>
+									<% for(var i=0; i<semesters.length; i++) { %>
+										<option value= <%= semesters[i]._id%>><%=semesters[i].season%> <%=semesters[i].year%></option>
+									<% } %>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row align-items-end">
+							<div class="col-md-4 offset-md-4">
+								<button type="submit" class="btn btn-primary submit-course">Submit</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

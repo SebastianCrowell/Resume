@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+var mongoose = require('mongoose')
+mongoose.Promise = require('bluebird')
+
+/*
+Load environmental variables: databaseString, port, and host
+*/
+require('dotenv').config();
+
+var app = require('../app.js')
+
+global.server = {}
+
+/*
+Once a connection with the database has been secured, start the app
+on host:port
+*/
+mongoose.connect(process.env.databaseString, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+mongoose.connection
+  .on('error', console.error.bind(console, 'connection error:'))
+  .once('open', function () {
+    console.log("App running at " + process.env.host + ":" + process.env.port);
+    global.server = app.listen(process.env.port, process.env.host)
+  })

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!-- views/student/CS11.ejs -->
+
+<html>
+	<head>
+		<title>CS11 Teaching requirement</title>
+		<%- include("../partials/head.ejs") %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col-lg-2 sidebar text-center">
+
+					<% if(!isStudent) {%>
+					
+					<%- include("../partials/admin-sidebar.ejs") %>
+
+					<%- include("./search-student.ejs") %>
+
+					<% } else{ %>
+
+					<%- include("../partials/logout.ejs") %>
+
+					<% } %>
+
+				</div>
+				<div align ="center" class="col-lg-10 panelbg text-center">
+
+					<% if(uploadSuccess == true) { %>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong>Submit success!</strong>
+					</div>
+					<% } %>
+
+					<% if(!isStudent) {%>
+					<%- include("./studentBarPartial.ejs") %>
+					<% } else { %>
+					<%- include("../partials/studentBarPartial.ejs") %>
+					<% } %>
+
+					<h4><%=student.lastName%>, <%=student.firstName%></h4>
+
+					<h3>Teaching requirement</h3>
+					<h3>CS-11</h3>
+
+					<strong class="verticalSpace">All fields required!</strong>
+
+					<div align="left">
+
+						<hr></hr>
+
+						<form action="<%=postMethod%>" method="post">
+
+							<input type="hidden" class="form-control" name="student" value=<%=student._id%> />
+
+							<div class="row">
+								<div class="col-md-6">
+									<div>Name</div>
+									<input type="text" class="form-control student-name" name="name" value="<%=student.lastName%>, <%=student.firstName%>" required/>
+								</div>
+								<div class="col-md-6">
+									<div>PID</div>
+									<input type="number" class="form-control student-pid" name="pid" value=<%=student.pid%> required />
+								</div>
+							</div>
+
+							<hr/>
+
+							<div class="row">
+								<div class="col-md-3">
+									<div>Full responsibility for COMP:</div>
+									<div>(Full responsibility includes planning, teaching, and grading)</div>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control full-responsibility" name="fullResponsibility" value="<%=form.fullResponsibility%>" required/>
+								</div>
+							</div>
+
+							<hr/>
+
+							<div class="row">
+								<div class="col-md-3">
+									<div>Partial responsibility for COMP:</div>
+									<div>(Graduate Course)</div>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control partial-responsibility" name="partialResponsibility" value="<%=form.partialResponsibility%>" required/>
+								</div>
+							</div>
+
+							<hr/>
+
+							<div class="row">
+								<div class="col-md-3">
+									<div>Semester:</div>
+									<div>(Fall, Spring, Summer I/II, Maymester)</div>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control semester" name="semester" value="<%=form.semester%>" required/>
+								</div>
+								<div class="col-md-1">
+									<div>Year:</div>
+								</div>
+								<div class="col-md-2">
+									<input type="number" class="form-control year" name="year" value="<%=form.year%>" required/>
+								</div>
+							</div>
+
+							<hr/>
+
+							<div class="row">
+								<div class="col-md-3">
+									<div>Supervising Faculty Member:</div>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control supervisor" name="supervisor" value="<%=form.supervisor%>" required/>
+								</div>
+							</div>
+
+							<hr/>
+
+							<div class="row">
+								<div class="col-md-3">
+									<div>Signature of supervisor:</div>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control supervisor-signature" name="supervisorSignature" value="<%=form.supervisorSignature%>" required/>
+								</div>
+								<div class="col-md-1">
+									<div>Date:</div>
+								</div>
+								<div class="col-md-2">
+									<input type="text" class="form-control supervisor-date-signed" name="supervisorDateSigned" value="<%=form.supervisorDateSigned%>" required/>
+								</div>
+							</div>
+
+							<hr/>
+
+							<strong>Other (please describe and attach supporting material)</strong>
+							<div class="col-md-4">
+								<textarea class="form-control other" rows="6" name="other"><%=form.other%></textarea>
+							</div>
+
+							<hr/>
+
+							<% if(!isStudent) {%>
+							<div class="row">
+								<div class="col-md-1">
+									<div>Approved:</div>
+								</div>
+								<div class="col-md-3">
+									<select name="approved" class="form-control approved" id="inputStatus">
+										<option value=<%=form.approved%>><%=form.approved%></option>
+										<option value="Approved">Approved</option>
+										<option value="Disapproved">Disapproved</option>
+									</select>
+								</div>
+							</div>
+
+							<hr/>
+
+							<div class="row">
+								<div class="col-md-4">
+									Director of Graduate Studies signature
+									<input type="text" class="form-control director-signature" name="directorSignature" value="<%=form.directorSignature%>" required />
+								</div>
+								<div class="col-md-2">
+									Date signed
+									<input type="text" class="form-control director-date-signed" name="directorDateSigned" value="<%=form.directorDateSigned%>" required />
+								</div>
+							</div>
+							
+							<% } else{ %>
+							<div class="row">
+								<div class="col-md-1">
+									<div>Approved:</div>
+								</div>
+								<div class="col-md-3">
+									<%=form.approved%>
+								</div>
+							</div>
+
+							<hr/>
+
+							<div class="row">
+								<div class="col-md-4">
+									<div>Director of Graduate Studies signature</div>
+									<%=form.directorSignature%>
+								</div>
+								<div class="col-md-2">
+									<div>Date signed</div>
+									<%=form.directorDateSigned%>
+								</div>
+							</div>
+							<% } %>
+
+							<div class="verticalSpace"/>
+							
+							<button type="submit" class="btn btn-primary CS11-submit">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%- include("../partials/bootstrapScripts.ejs") %>
+	</body>
+	<script type="text/javascript">
+	</script>
+</html>

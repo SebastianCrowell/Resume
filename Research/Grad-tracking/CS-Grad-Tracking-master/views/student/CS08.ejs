@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!-- views/student/CS08.ejs -->
+
+<html>
+	<head>
+		<title>CS08 M.S. Technical Writing Requirement</title>
+		<%- include("../partials/head.ejs") %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col-lg-2 sidebar text-center">
+
+					<% if(!isStudent) {%>
+					
+					<%- include("../partials/admin-sidebar.ejs") %>
+
+					<%- include("./search-student.ejs") %>
+
+					<% } else{ %>
+
+					<%- include("../partials/logout.ejs") %>
+
+					<% } %>
+
+				</div>
+				<div align ="center" class="col-lg-10 panelbg text-center">
+
+					<% if(uploadSuccess == true) { %>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong>Submit success!</strong>
+					</div>
+					<% } %>
+
+					<% if(!isStudent) {%>
+					<%- include("./studentBarPartial.ejs") %>
+					<% } else { %>
+					<%- include("../partials/studentBarPartial.ejs") %>
+					<% } %>
+
+					<h4><%=student.lastName%>, <%=student.firstName%></h4>
+
+					<h3>M.S. Technical Writing Requirement</h3>
+					<h3>CS-08</h3>
+
+					<strong class="verticalSpace">All fields required!</strong>
+
+					<div align="left">
+
+						<hr></hr>
+
+						<form action="<%=postMethod%>" method="post">
+
+							<input type="hidden" class="form-control" name="student" value=<%=student._id%> />
+
+							<div class="row">
+								<div class="col-md-6">
+									<div>Name</div>
+									<input type="text" class="form-control student-name" name="name" value="<%=student.lastName%>, <%=student.firstName%>" required/>
+								</div>
+								<div class="col-md-6">
+									<div>PID</div>
+									<input type="number" class="form-control student-pid" name="pid" value=<%=student.pid%> required />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div>Semester</div>
+									<input type="text" class="form-control semester" name="semester" value="<%=form.semester%>" required/>
+								</div>
+								<div class="col-md-6">
+									<div>Year</div>
+									<input type="number" class="form-control year" name="year" value=<%=form.year%> required />
+								</div>
+							</div>
+
+							<hr></hr>
+
+							<strong>Title of Paper:</strong>
+							<div class="col-md-4">
+								<textarea class="form-control title" rows="6" name="title" required><%=form.title%></textarea>
+							</div>
+
+
+
+							<hr/>
+
+							
+
+							<strong>Agreement to Review</strong>
+							<div>The final draft to the primary reader must be delivered 4 weeks before the last day of classes of the semester in which the student plans to graduate.  We recommend that you work with the primary reader throughout the semester, first creating an outline, and then iterating over several drafts.</div>
+
+							<% if(!isStudent) {%>
+
+							<div class="row">
+								<div class="col-md-6">
+									<div>Primary Reader</div>
+									<input type="text" class="form-control primary-reader" name="primaryReader" value="<%=form.primaryReader%>" required/>
+								</div>
+								<div class="col-md-6">
+									<div>Date Draft Received</div>
+									<input type="text" class="form-control primary-date" name="primaryDate" value="<%=form.primaryDate%>" required />
+								</div>
+							</div>
+
+							<div>The final draft to the secondary reader must be delivered 2 weeks before the last day of classes of the semester in which the student plans to graduate.</div>
+
+							<div class="row">
+								<div class="col-md-6">
+									<div>Secondary Reader</div>
+									<input type="text" class="form-control secondary-reader" name="secondaryReader" value="<%=form.secondaryReader%>" required/>
+								</div>
+								<div class="col-md-6">
+									<div>Date Draft Received</div>
+									<input type="text" class="form-control secondary-date" name="secondaryDate" value="<%=form.secondaryDate%>" required />
+								</div>
+							</div>
+
+							<hr/>
+
+							
+
+							<strong>Approval</strong>
+
+							<div>We have judged this paper to be of thesis quality in both substance and presentation. It therefore satisfies the writing requirement for the M.S. in Computer Science.</div>
+
+							<div>Primary Reader signature</div>
+							<div class="row">
+								<div class="col-md-6">
+									<i><%=signature%></i>
+									<input type="text" class="form-control primary-signature" name="primarySignature" value="<%=form.primarySignature%>" required/>
+								</div>
+								<div class="col-md-6">
+									<div>Date</div>
+									<input type="text" class="form-control primary-signed-date" name="primarySignedDate" value="<%=form.primarySignedDate%>" required />
+								</div>
+							</div>
+
+							<div>Secondary Reader signature:</div>
+							<div class="row">
+								<div class="col-md-6">
+									<i><%=signature%></i>
+									<input type="text" class="form-control secondary-signature" name="secondarySignature" value="<%=form.secondarySignature%>" required/>
+								</div>
+								<div class="col-md-6">
+									<div>Date</div>
+									<input type="text" class="form-control secondary-signed-date" name="secondarySignedDate" value="<%=form.secondarySignedDate%>" required />
+								</div>
+							</div>
+
+							<% } else { %>
+
+							<div class="row">
+								<div class="col-md-6">
+									<div>Primary Reader</div>
+									<%=form.primaryReader%>
+								</div>
+								<div class="col-md-6">
+									<div>Date Draft Received</div>
+									<%=form.primaryDate%>
+								</div>
+							</div>
+
+							<div>The final draft to the secondary reader must be delivered 2 weeks before the last day of classes of the semester in which the student plans to graduate.</div>
+
+							<div class="row">
+								<div class="col-md-6">
+									<div>Secondary Reader</div>
+									<%=form.secondaryReader%>
+								</div>
+								<div class="col-md-6">
+									<div>Date Draft Received</div>
+									<%=form.secondaryDate%>
+								</div>
+							</div>
+
+							<hr/>
+
+							<strong>Approval</strong>
+
+							<div>We have judged this paper to be of thesis quality in both substance and presentation. It therefore satisfies the writing requirement for the M.S. in Computer Science.</div>
+
+							
+							<div class="row">
+								<div class="col-md-6">
+									<div>Primary Reader signature:</div>
+									<%=form.primarySignature%>
+								</div>
+								<div class="col-md-6">
+									<div>Date</div>
+									<%=form.primarySignedDate%>
+								</div>
+							</div>
+
+							
+							<div class="row">
+								<div class="col-md-6">
+									<div>Secondary Reader signature:</div>
+									<%=form.secondarySignature%>
+								</div>
+								<div class="col-md-6">
+									<div>Date</div>
+									<%=form.secondarySignedDate%>
+								</div>
+							</div>
+							<% } %>
+
+							<div class="verticalSpace"/>
+							
+							<button type="submit" class="btn btn-primary CS08-submit">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%- include("../partials/bootstrapScripts.ejs") %>
+	</body>
+	<script type="text/javascript">
+
+	</script>
+</html>

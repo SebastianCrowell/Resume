@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- views/report/progressReport.ejs -->
+
+
+<html>
+	<head>
+		<title>Reports</title>
+		<%- include("../partials/head.ejs") %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col-lg-2 sidebar text-center">
+
+					<%- include("../partials/admin-sidebar.ejs") %>
+
+				</div>
+				<div align ="center" class="col-lg-10 panelbg text-center">
+
+					<h3 class="space">Progress Report</h3>
+					
+					<% if(report.length>0) { %>
+						<table align="center" border="1" class="table display-table table-striped table-bordered progress-report-table">
+							<thead>
+								<tr>
+                                    <th scope="col" class="col-tuition-report-last">Last name</th>
+                                    <th scope="col" class="col-tuition-report-first">First name</th>
+									<th scope="col" class="col-tuition-report-residency">In-state</th>
+                                    <th scope="col" class="col-tuition-report-fundingEligibility">Guaranteed</th>
+                                    <th scope="col" class="col-tuition-report-number-semesters">Number of semesters</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<% for(var i=0; i<report.length; i++) { %>
+									<tr>
+										<td><%= report[i].lastName%></td>
+										<td><%= report[i].firstName%></td>
+										<td><%= report[i].residency%></td>
+                                        <td><%= report[i].fundingEligibility%></td>
+                                        <td><%= report[i].activeSemesters%></td>
+									</tr>
+								<% } %>
+							</tbody>
+						</table>
+					<% } else { %>
+						<div>No students found.</div>
+					<% } %>
+
+				</div>
+			</div>
+		</div>
+		<%- include("../partials/bootstrapScripts.ejs") %>
+	</body>
+
+	<script type="text/javascript"> </script>
+	
+</html>

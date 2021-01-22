@@ -1,0 +1,42 @@
+<!-- /views/student/search-student.ejs -->
+<p>Search students</p>
+<div class="search-bar">
+	<form action="/student" method="get">
+		<div class="form-group row">
+			<label lang="en" for="searchLastName" class="col-md-4 autoHyphen">Last Name:</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control search-last-name" id="searchLastName" name="lastName"/>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label lang="en" for="searchPid" class="col-md-4 autoHyphen">PID:</label>
+			<div class="col-md-8">
+				<input type="number" pattern=".{9,9}" class="form-control search-pid" id="searchPid" name="pid"/>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label lang="en" for="searchStatus" class="col-md-4 autoHyphen">Status:</label>
+			<div class="col-md-8">
+				<select name="status" class="form-control search-status">
+					<option value=""></option>
+					<%for(var i = 0; i < locals.status.length; i++){ %>
+					<option value=<%=locals.status[i]%> > <%=locals.status[i]%> </option>
+					<% } %>
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-md-4 offset-md-4">
+				<button type="submit" class="btn btn-primary search-student-submit">Search</button>
+			</div>
+		</div>
+	</form>
+</div>
+<div>
+	<% if(locals.admin) { %>
+	<p><a href="/student/create" class="btn btn-primary btn-block create-student-button">Create student</a></p>
+	<p><a href="/student/upload/false" class="btn btn-primary btn-block upload-student-button">Upload students</a></p>
+	<p><a href="/student/download" class="btn btn-primary btn-block download-student-button">Download students</a></p>
+	<p><a href="/student/uploadCourses/false" class="btn btn-primary btn-block upload-courses-button">Upload courses</a></p>
+	<% } %>
+</div>

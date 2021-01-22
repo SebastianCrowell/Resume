@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<!-- views/student/cs13.ejs -->
+
+<html>
+
+<head>
+	<title>CS13</title>
+	<%- include("../partials/head.ejs") %>
+</head>
+
+<body>
+	<div class="container-fluid h-100">
+		<div class="row h-100">
+			<div class="col-lg-2 sidebar text-center">
+
+				<% if(!isStudent) {%>
+
+				<%- include("../partials/admin-sidebar.ejs") %>
+
+				<%- include("./search-student.ejs") %>
+
+				<% } else{ %>
+
+				<%- include("../partials/logout.ejs") %>
+
+				<% } %>
+
+			</div>
+			<div align="center" class="col-lg-10 panelbg text-center">
+
+				<% if(uploadSuccess == true) { %>
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<strong>Submit success!</strong>
+				</div>
+				<% } %>
+
+
+				<% if(!isStudent) {%>
+				<%- include("./studentBarPartial.ejs") %>
+				<% } else { %>
+				<%- include("../partials/studentBarPartial.ejs") %>
+				<% } %>
+
+				<h4><%=student.lastName%>, <%=student.firstName%></h4>
+
+				<h3>Program Product Requirement</h3>
+				<h3>CS-13</h3>
+
+				<div align="left">
+					<div>Program Product Definition: A program product is a piece of software that is developed for the
+						use of people other than the developer and that is expected to be used and maintained by other
+						developers after the initial developer is no longer working on it.
+					</div>
+					<p class="underline" align="center"><br><strong>Complete only the section that is most appropriate
+							for your Program Product Requirement.</strong><br></p>
+
+					<form action="<%=postMethod%>" method="post" onsubmit="return validateAndSend()">
+
+						<input type="hidden" class="form-control" name="student" value=<%=student._id%> />
+
+						<div class="row">
+							<div class="col-md-6">
+								<div>Name</div>
+								<input type="text" class="form-control student-name" name="name"
+									value="<%=student.firstName%>, <%=student.lastName%>" required />
+							</div>
+							<div class="col-md-6">
+								<div>PID</div>
+								<input type="number" class="form-control student-pid" name="pid" value=<%=student.pid%>
+									required />
+							</div>
+						</div>
+						<div class="verticalSpace"> </div>
+						<div class="row">
+							<div class="col-md-6">
+								<div>E-mail Address</div>
+								<input type="text" class="form-control email" name="email" value="<%=form.email%>"
+									required />
+							</div>
+							<div class="col-md-6">
+								<div>Date</div>
+								<input type="text" class="form-control date" name="dateMet" value="<%=form.dateMet%>"
+									required />
+							</div>
+						</div>
+						<hr size="50" color="black">
+						</hr>
+
+						<h4 class="underline">Comp 523</h4>
+						<div class="row">
+							<div class="col-md-2">
+								<select name="comp523" class="form-control comp523" id="inputStatus523" required>
+									<option value=<%=form.comp523%>><%=form.comp523%></option>
+									<option value=false>False</option>
+									<option value=true>True</option>
+								</select>
+							</div>
+							<div class="col-md-10">
+								Or equivalent software engineering course. Syllabus must be provided.
+							</div>
+						</div>
+						<div class="verticalSpace"> </div>
+
+
+						<div class="row">
+							<div class="col-md-6">
+								<div>COMP 523 Instructor Signature</div>
+							</div>
+							<div class="col-md-4">
+								<div>Instructor Printed Name</div>
+							</div>
+						</div>
+						<% if(!isStudent) {%>
+
+						<div class="row">
+							<div class="col-md-6">
+								<input type="text" class="form-control comp523-signature" name="comp523Signature"
+									value="<%=form.comp523Signature%>" required />
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control comp523-name" name="comp523Name"
+									value="<%=form.comp523Name%>" required />
+							</div>
+						</div>
+
+						<% } else { %>
+						<div class="row">
+							<div class="col-md-6">
+								<%=form.comp523Signature%>
+							</div>
+							<div class="col-md-6">
+								<%=form.comp523Name%>
+							</div>
+						</div>
+
+						<% } %>
+
+						<hr size="50" color="black">
+						</hr>
+
+						<h4 class="underline">Industry Experience</h4>
+						<div class="row">
+							<div class="col-md-2">
+								<select name="hadJob" class="form-control had-job" id="inputStatusIndustry" required>
+									<option value=<%=form.hadJob%>><%=form.hadJob%></option>
+									<option value=false>False</option>
+									<option value=true>True</option>
+								</select>
+							</div>
+							<div class="col-md-10">
+								Student has spent at least 3 months in a software development job in an organization
+								with an established development process and participated substantively in the
+								development of a program product.<br>
+							</div>
+						</div>
+						<div class="verticalSpace"> </div>
+						<div class="row">
+							<div class="col-md-12">
+								<div>Company, Development Experience, and Duration<br></div>
+								<!-- required taken out -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<input type="textarea" class="form-control job-info" name="jobInfo"
+									value="<%=form.jobInfo%>"  id="jobInfo"/>
+							</div>
+						</div>
+						<div class="verticalSpace"> </div>
+
+						<% if(!isStudent) {%>
+
+						<div class="row">
+							<div class="col-md-2">
+								<div>advisor Name:</div>
+							</div>
+							<div class="col-md-4">
+								<input type="text" class="form-control advisor-name" name="advisorName"
+									value="<%=form.advisorName%>" required />
+							</div>
+							<div class="col-md-2">
+								<div>advisor Signature:</div>
+							</div>
+							<div class="col-md-4">
+								<input type="text" class="form-control advisor-signature" name="advisorSignature"
+									value="<%=form.advisorSignature%>" required />
+							</div>
+						</div>
+
+						<% } else {%>
+						<div class="row">
+							<div class="col-md-2">
+								<div>advisor Name:</div>
+							</div>
+							<div class="col-md-4">
+								<%=form.advisorName%>
+							</div>
+							<div class="col-md-2">
+								<div>advisor Signature:</div>
+							</div>
+							<div class="col-md-4">
+								<%=form.advisorSignature%>
+							</div>
+						</div>
+						<% } %>
+
+						<hr size="50" color="black">
+						</hr>
+
+						<h4 class="underline">Alternative</h4>
+						<div class="row">
+							<div class="col-md-2">
+								<select name="alternative" class="form-control alternative" id="inputStatusAlt"
+									required>
+									<option value=<%=form.alternative%>><%=form.alternative%></option>
+									<option value=false>False</option>
+									<option value=true>True</option>
+								</select>
+							</div>
+							<div class="col-md-10">
+								Student has developed a program product, as defined above, and has met the expectations
+								of the client, including product delivery and documentation for both users and other
+								developers. <br> Note: two signatures are required below.<br>
+							</div>
+						</div>
+						<div class="verticalSpace"> </div>
+						<div class="row">
+							<div class="col-md-12">
+								<div>Product and Deliverables:<br></div>
+								<!-- required taken out -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<input type="textarea" class="form-control product" name="product"
+									value="<%=form.product%>" id="productInfo"/>
+							</div>
+						</div>
+						<div class="verticalSpace"> </div>
+						<div class="row">
+							<div class="col-md-2">
+								<div>Client:</div>
+								<!-- required taken out -->
+							</div>
+							<div class="col-md-4">
+								<input type="text" class="form-control client" name="client" value="<%=form.client%>" id="clientInfo"/>
+							</div>
+							<div class="col-md-2">
+								<div>Position:</div>
+								<!-- required taken out -->
+							</div>
+							<div class="col-md-4">
+								<input type="text" class="form-control position" name="position"
+									value="<%=form.position%>" id="positionInfo"/>
+							</div>
+						</div>
+						<div class="verticalSpace"> </div>
+
+						<% if(!isStudent) {%>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div>advisor or CS Faculty Member Signature (required)</div>
+							</div>
+							<div class="col-md-6">
+								<div>advisor or CS Faculty Member Signature (required)</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<input type="text" class="form-control alt-signature1" name="altSignature1"
+									value="<%=form.altSignature1%>" required />
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control alt-signature2" name="altSignature2"
+									value="<%=form.altSignature2%>" required />
+							</div>
+						</div>
+						<div class="verticalSpace"> </div>
+						<% } else { %>
+						<div class="row">
+							<div class="col-md-6">
+								<div>advisor or CS Faculty Member Signature</div>
+							</div>
+							<div class="col-md-6">
+								<div>advisor or CS Faculty Member Signature</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<%=form.altSignature1%>
+							</div>
+							<div class="col-md-6">
+								<%=form.altSignature2%>
+							</div>
+						</div>
+						<div class="verticalSpace"> </div>
+						<% } %>
+
+						<!--
+							<div class="row">
+								<div class="col-md-6">
+									<div>Printed Name:</div>
+								</div>
+								<div class="col-md-6">
+									<div>Printed Name:</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<input type="text" class="form-control" name="altPrint1" value="<%=form.altPrint1%>" required/>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" name="altPrint2" value="<%=form.altPrint2%>" required/>
+								</div>
+							</div>
+
+							-->
+
+						<div class="verticalSpace"> </div>
+						<div class="verticalSpace"> </div>
+						<button type="submit" onclick="refreshRequired()"
+							class="btn btn-primary CS13-submit">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%- include("../partials/bootstrapScripts.ejs") %>
+</body>
+<script type="text/javascript">
+	function refreshRequired(){
+		// refreshing the required values upon clicking submit
+		const select523 = document.getElementById("inputStatus523").value;
+		const selectIndustry = document.getElementById("inputStatusIndustry").value;
+		const selectAlt = document.getElementById("inputStatusAlt").value;
+
+		//check if values filled in if section selected as true
+		document.getElementById("jobInfo").required = (selectIndustry == 'true') ? true: false;
+		document.getElementById("clientInfo").required = (selectAlt == 'true') ? true: false;
+		document.getElementById("positionInfo").required = (selectAlt == 'true') ? true: false;
+		document.getElementById("productInfo").required = (selectAlt == 'true') ? true: false;
+	}
+	function validateAndSend() {		
+		// Retrieving values for the select buttons
+		const select523 = document.getElementById("inputStatus523").value;
+		const selectIndustry = document.getElementById("inputStatusIndustry").value;
+		const selectAlt = document.getElementById("inputStatusAlt").value;
+
+
+		// Retrieving values for the optional fields
+		const jobInfo = document.getElementById("jobInfo").value;
+		const clientInfo = document.getElementById("clientInfo").value;
+		const positionInfo = document.getElementById("positionInfo").value;
+		const productInfo = document.getElementById("productInfo").value;
+
+		// document.getElementById("jobInfo").setAttribute("required", ""); 
+
+		// // checking if all requirements for the section is complete
+		const comp523 = (select523 == 'true') ? true : false;
+		const industry = (selectIndustry == 'true') ? true : false;
+		const alternative = (selectAlt == 'true') ? true : false;
+
+
+		// If one of the sections is complete then submit
+		const valid  =  (comp523 || industry || alternative);
+		if(!valid) {
+			alert("Please make sure that you fill out one of the sections")
+		}
+
+
+ 		return (valid) ? true : false;
+	}
+</script>
+
+</html>

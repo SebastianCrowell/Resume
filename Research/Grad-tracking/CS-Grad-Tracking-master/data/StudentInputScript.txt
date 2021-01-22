@@ -1,0 +1,22 @@
+var mongoose = require('mongoose')
+db = require("./../models/schema.js")
+
+mongoose.connect('mongodb://localhost/cs_grad_data-dev', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+mongoose.connection
+  .on('error', console.error.bind(console, 'connection error:'))
+  .once('open', function () {
+
+    const student = new db.Student ({
+        onyen: 'hmbodnar',
+          csid: '000000',
+          email: 'hannahbodnar.17+student@gmail.com',
+          firstName: 'hannah',
+          lastName: 'bodnar',
+    })
+
+    student.save(function (err, student) {
+        if (err) return console.error(err);
+        console.log(student);
+    });
+
+  })

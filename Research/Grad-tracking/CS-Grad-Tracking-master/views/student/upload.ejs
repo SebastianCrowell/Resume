@@ -1,0 +1,67 @@
+<!-- views/student/upload.ejs -->
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Upload students</title>
+		<%- include('../partials/head.ejs') %>
+	</head>
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+
+				<div class='col-lg-2 sidebar text-center'>
+
+					<%- include('../partials/admin-sidebar.ejs') %>
+
+					<%- include('./search-student.ejs') %>
+				</div>
+
+				<div class='col-lg-10 panelbg text-center'>
+
+					<% if(uploadSuccess == true) { %>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong>Upload success!</strong>
+					</div>
+					<% } %>
+
+					<h1>Upload students</h1>
+					<form action="/student/upload" enctype="multipart/form-data" method="post">
+						<div class="form-group row">
+							<label for="inputSheet" class="col-md-3 offset-md-3">Spreadsheet</label>
+							<div class="col-md-4">
+								<input type="file" name="upload" class="form-control-file student-upload-input" id="inputSheet" accept=".csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required/>
+							</div>
+						</div>
+						<div class="col-md-4 offset-md-4">
+							<button type="submit" class="btn btn-primary student-upload-submit-button">Submit</button>
+						</div>
+						<h3>Upload format</h3>
+						<img class="space" src="/images/studentUploadFormat1.png">
+						<img class="space" src="/images/studentUploadFormat2.png">
+						<img class="space" src="/images/studentUploadFormat3.png">
+						<img class="space" src="/images/studentUploadFormat4.png">
+						
+						<div class="col-md-6 offset-md-3">
+							<h3>Requirements</h2>
+							<ul class="list-group">
+								<li class="list-group-item">Get a sample of the spreadsheet here: https://gitlab.com/unc-cs-toolsmiths/CS-Grad-Tracking/tree/master/data/InOrderUploadTests  and use 2studentUpload.xlsx</li>
+								<li class="list-group-item">Columns must be in order displayed above, headers have to be exactly what is displayed.</li>
+								<li class="list-group-item">onyen, csid, first name, last name, and pid are required.</li>
+								<li class="list-group-item">Columns Background approved through dissertation submitted should be mm/dd/yyyy</li>
+								<li class="list-group-item">Active, citizenship, funding eligibility, and funding status are true/false</li>
+								<li class="list-group-item">Look at the dropdowns in "Create student" for the values of pronouns, status, gender, ethnicity, residency, intendedDegree and funding eligibility</li>
+								<li class="list-group-item space">advisor should be: LASTNAME, FIRSTNAME    And semesterStarted should be in format: SS YYYY</li>
+							</ul>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<%- include("../partials/bootstrapScripts.ejs") %>
+	</body>
+</html>
