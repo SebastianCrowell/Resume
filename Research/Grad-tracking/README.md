@@ -15,6 +15,7 @@ In the past, Shane Flannigan worked on this project.
 
 # Contacts
 Takoda Ren ... takoda.ren@gmail.com
+Sebastian Crowell ... sebastiancrowell@yahoo.com
 
 # Context
 Current graduate student forms and progress data is all either in paper or in a
