@@ -33,9 +33,9 @@ COMP 562
 
 COMP 495
 
-Nano-OS
+Nano-OS (in-progress)
 
-Nano-IS
+Nano-IS (in-progress)
 
 Edible-campus
 
@@ -47,6 +47,6 @@ Widernet
 
 ML Piano (Key Assist)
 
-Nano-robotics
+Nano-robotics (in-progress)
 
 Trello
