@@ -1,0 +1,230 @@
+.mapp-header {
+  z-index: 2;
+  max-height: 100px;
+  -webkit-filter: drop-shadow(0px 0px 12px #BBB);
+          filter: drop-shadow(0px 0px 12px #BBB);
+  margin: auto;
+}
+
+.mapp-nav-button-row, .home-link-caption {
+  z-index: 3;
+  -webkit-filter: drop-shadow(0px 0px 12px #ccc);
+          filter: drop-shadow(0px 0px 12px #ccc);
+}
+
+.mapp-map {
+  z-index: 1;
+}
+
+.home-link-icon {
+  display: inline-table;
+  color: #1D3E15;
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  border: 2px solid #346117;
+  text-align: center;
+  border-radius: 30px;
+}
+
+.garden-link-icon {
+  width: 100%;
+  background: #346117;
+  padding: 3px;
+  color: #fff;
+  opacity: .9;
+}
+
+.garden-icon-row {
+  margin-top: 15%;
+}
+
+body {
+  height: 100%;
+  max-height: 100%;
+}
+
+.back-button {
+  font-size: 1.5em;
+  vertical-align: middle;
+  color: #346117;
+}
+
+.mapp-nav-button-row .home-link-icon svg {
+  width: 1.5em;
+  height: 3.33em;
+}
+
+.home-link-caption {
+  color: #346117;
+}
+
+.garden-col {
+  margin-bottom: 30px;
+}
+
+.garden-card {
+  height: 100%;
+}
+
+.garden-card img {
+  min-height: 100%;
+}
+
+.garden-marker-main {
+  max-height: 20px;
+}
+
+.garden-marker {
+  color: #444;
+}
+
+.garden-single-card img {
+  max-height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#mapp .garden-stats-btn {
+  background: rgba(54, 99, 23, 0.1);
+  margin-top: 5px;
+  border: none;
+  color: #346117;
+  width: 100%;
+  text-align: left;
+}
+
+#mapp .garden-stats-btn a {
+  color: #346117;
+}
+
+.grayscale {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  filter: grayscale(100%);
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.grayscale:hover {
+  -webkit-filter: grayscale(0);
+  -moz-filter: grayscale(0);
+  filter: grayscale(0);
+}
+
+#root .green-overlay {
+  background: rgba(101, 255, 113, 0.2);
+  padding: .99rem;
+}
+
+.circle img {
+  display: inline-table;
+  color: #1D3E15;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border: 2px solid #fff;
+  text-align: center;
+  border-radius: 25px;
+}
+
+.garden-stats div {
+  text-align: center;
+}
+
+.more-plants, .bed-locations {
+  background: rgba(54, 99, 23, 0.1);
+  padding: .7rem;
+  border-radius: .25em;
+}
+
+.all-plants {
+  background-color: rgba(54, 99, 23, 0.1);
+}
+
+.garden-description {
+  margin-top: 1rem;
+}
+
+.botanical-logo {
+  max-height: 2.5rem;
+  padding: .1rem;
+}
+
+.edible-campus-links a {
+  color: #346117;
+}
+
+#mapp .more-plants h4 {
+  color: #346117;
+}
+
+.more-plants .figure-caption {
+  word-break: break-word;
+}
+
+.plant-single-card img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 215px;
+}
+
+.green-background {
+  background: rgba(54, 99, 23, 0.1);
+}
+
+#root .green {
+  background: #346117;
+}
+
+#faq a {
+  color: #fff;
+}
+
+#accordion button {
+  color: #346117;
+  white-space: normal;
+}
+
+.full-height {
+  left: 0;
+  right: 0;
+  height: 100%;
+}
+
+.map-infobox {
+  z-index: 1000;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 0s, opacity 0.5s linear;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.garden-marker:hover + .map-infobox {
+  z-index: 1000;
+  position: absolute;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 2px;
+  font-size: 1.5em;
+  width: 100px;
+  text-align: center;
+  padding: .3em;
+  line-height: 1.4em;
+}
+
+@font-face {
+  font-family: OpenSans;
+  src: url("../fonts/OpenSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: OpenSans;
+  font-weight: bold;
+  src: url("../fonts/OpenSans-Bold.ttf") format("truetype");
+}
+/*# sourceMappingURL=scss.css.map */
