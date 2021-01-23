@@ -7,7 +7,8 @@ A place to collect code snippets and show understanding of subjects.
 2.Advanced
 3.Research
 
-[Sebastian's Hackerrannk](https://www.hackerrank.com/sebastiancrowell)
+[Sebastian's Hackerrannk 
+link](https://www.hackerrank.com/sebastiancrowell)
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
