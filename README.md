@@ -1,14 +1,13 @@
 # Resume
 A place to collect code snippets and show understanding of subjects.
 
+[Sebastian's Hackerrannk link](https://www.hackerrank.com/sebastiancrowell)
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.Basics
 2.Advanced
 3.Research
-
-[Sebastian's Hackerrannk 
-link](https://www.hackerrank.com/sebastiancrowell)
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
