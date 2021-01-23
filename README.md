@@ -1,7 +1,7 @@
 # Resume
 A place to collect code snippets and show understanding of subjects.
 
-[Sebastian's Hackerrannk link](https://www.hackerrank.com/sebastiancrowell)
+[Sebastian's Hackerrannk](https://www.hackerrank.com/sebastiancrowell)
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
