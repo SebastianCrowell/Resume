@@ -3,15 +3,7 @@ A place to collect code snippets and show understanding of subjects.
 
 [Sebastian's Hackerrannk](https://www.hackerrank.com/sebastiancrowell)
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 1.Basics
-2.Advanced
-3.Research
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1.
 
 [COMP 401](https://github.com/SebastianCrowell/Resume/tree/main/Basic/COMP401),
 [COMP 410](https://github.com/SebastianCrowell/Resume/tree/main/Basic/COMP410),
@@ -19,13 +11,13 @@ A place to collect code snippets and show understanding of subjects.
 [COMP 426](https://github.com/SebastianCrowell/Resume/tree/main/Basic/COMP426),
 [COMP 455](https://github.com/SebastianCrowell/Resume/tree/main/Basic/COMP455)
 
-2.
+2.Advanced
 
 [COMP 550](https://github.com/SebastianCrowell/Resume/tree/main/Advanced/COMP550),
 [COMP 560](https://github.com/SebastianCrowell/Resume/tree/main/Advanced/COMP560),
 [COMP 562](https://github.com/SebastianCrowell/Resume/tree/main/Advanced/COMP562)
 
-3.
+3.Research
 
 [COMP 495](https://github.com/SebastianCrowell/Resume/tree/main/Research/COMP495),
 Nano-OS (in-progress),
