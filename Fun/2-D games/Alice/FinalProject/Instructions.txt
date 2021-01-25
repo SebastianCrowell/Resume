@@ -1,0 +1,5 @@
+TO MOVE LEFT AND RIGHT
+     "A" & "D"
+
+     TO ATTACK
+     "SPACEBAR"
