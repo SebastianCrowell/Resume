@@ -1,1 +1,1 @@
-![](design.jpg)
+![](design.png)
