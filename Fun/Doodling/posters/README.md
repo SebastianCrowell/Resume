@@ -1,5 +1,5 @@
 ![](FindYourPathwayPoster.png)
-![](Flier.png)
+![](Flier.pptx)
 ![](0315181633.jpg)
 ![](STEM.jpg)
 ![](Phi.jpg)
