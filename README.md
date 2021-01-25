@@ -37,7 +37,7 @@ Nano-robotics (in-progress),
 
 4.Fun
 
-[Doodling](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Doodling}
+[Doodling](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Doodling)
 
 [PhysGame](https://github.com/SebastianCrowell/Resume/tree/main/Fun/2-D%20games/2-D-Phys-Game),
 [AliceGame](https://github.com/SebastianCrowell/Resume/tree/main/Fun/2-D%20games/Alice)
