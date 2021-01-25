@@ -31,13 +31,13 @@ Nano-IS (in-progress),
 [Edible-campus](https://github.com/SebastianCrowell/Resume/tree/main/Research/Edible-campus),
 [Grad-tracking](https://github.com/SebastianCrowell/Resume/tree/main/Research/Grad-tracking),
 [Widernet](https://github.com/SebastianCrowell/Resume/tree/main/Research/Widernet),
-
 [ML Piano (Key Assist)](https://github.com/SebastianCrowell/Resume/tree/main/Research/Piano),
 Nano-robotics (in-progress),
 [Trello](https://github.com/SebastianCrowell/Resume/tree/main/Research/Trello)
 
 4.Fun
-[Doodling]
-[2-D games]
-*[PhysGame](https://github.com/SebastianCrowell/Resume/tree/main/Research/2-D-Phys-Game)
-*[AliceGame]
+
+[Doodling](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Doodling}
+
+[PhysGame](https://github.com/SebastianCrowell/Resume/tree/main/Fun/2-D%20games/2-D-Phys-Game),
+[AliceGame](https://github.com/SebastianCrowell/Resume/tree/main/Fun/2-D%20games/Alice)
