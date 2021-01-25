@@ -5,6 +5,10 @@ A place to collect code snippets and show understanding of subjects.
 
 [LinkedIn](https://www.linkedin.com/in/sebastian-crowell-8847aa204/)
 
+[Twitter](https://twitter.com/NokLoque)
+
+[Facebook](https://www.facebook.com/sebastian.crowell.14)
+
 1.Basics
 
 [COMP 401](https://github.com/SebastianCrowell/Resume/tree/main/Basic/COMP401),
