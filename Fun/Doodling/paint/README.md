@@ -1,3 +1,5 @@
 ![](nice.png)
 ![](soda+pickle.png)
 ![](wavey+vey.png)
+![](Logo_Sebastian_t100_CCCC.png)
+![](Logo_Sebastian_t100_CCCC_greyscale.png)
