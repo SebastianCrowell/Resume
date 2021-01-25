@@ -41,3 +41,7 @@ Nano-robotics (in-progress),
 
 [PhysGame](https://github.com/SebastianCrowell/Resume/tree/main/Fun/2-D%20games/2-D-Phys-Game),
 [AliceGame](https://github.com/SebastianCrowell/Resume/tree/main/Fun/2-D%20games/Alice)
+
+[Free time](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Free%20time)
+
+[Science](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Science)
