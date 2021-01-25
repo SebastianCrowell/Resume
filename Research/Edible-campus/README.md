@@ -20,3 +20,8 @@ Coverage from UNC Chapel Hill website: https://www.unc.edu/posts/2019/07/19/new-
     ``` 
     npm start
     ```
+
+
+![](home.png)
+![](garden.png)
+![](plant.png)
