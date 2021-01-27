@@ -26,14 +26,15 @@ A place to collect code snippets and show understanding of subjects.
 3.Research
 
 [COMP 495](https://github.com/SebastianCrowell/Resume/tree/main/Research/COMP495),
-Nano-OS (in-progress),
-Nano-IS (in-progress),
 [Edible-campus](https://github.com/SebastianCrowell/Resume/tree/main/Research/Edible-campus),
 [Grad-tracking](https://github.com/SebastianCrowell/Resume/tree/main/Research/Grad-tracking),
 [Widernet](https://github.com/SebastianCrowell/Resume/tree/main/Research/Widernet),
 [ML Piano (Key Assist)](https://github.com/SebastianCrowell/Resume/tree/main/Research/Piano),
+[Trello](https://github.com/SebastianCrowell/Resume/tree/main/Research/Trello),
+Junkyard Wineyard (in-progress),
 Nano-robotics (in-progress),
-[Trello](https://github.com/SebastianCrowell/Resume/tree/main/Research/Trello)
+Nano-OS (in-progress),
+Nano-IS (in-progress)
 
 4.Fun
 
