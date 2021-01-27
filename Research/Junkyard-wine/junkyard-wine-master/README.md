@@ -1,4 +1,4 @@
-Site made by Sebastian Crowell.
+Site maintained by Sebastian Crowell.
 
 # Getting Started with Create React App
 

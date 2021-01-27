@@ -38,7 +38,7 @@
 }
 
 .bg-image {
-  background-image: url('./pages/cher.jpg');
+  background-image: url('./assets/cher.jpg');
   background-color: #282c34;
   height: 550px;
   background-position: center;
@@ -48,13 +48,13 @@
 }
 
 .est-image {
-  background-image: url('./pages/est.png');
+  background-image: url('./assets/est.png');
   height: 40px;
   background-repeat: no-repeat;
 }
 
 .nav-brand {
-  background-image: url('./pages/favicon.ico');
+  background-image: url('./assets/favicon.ico');
   height: 50px;
   background-repeat: no-repeat;
 }
@@ -64,12 +64,12 @@
 }
 
 .location-image1 {
-  background-image: url('./pages/locationimage1.jpg');
+  background-image: url('./assets/locationimage1.jpg');
   background-repeat: no-repeat;
 }
 
 .location-image2 {
-  background-image: url('./pages/locationimage2.jpg');
+  background-image: url('./assets/locationimage2.jpg');
   background-repeat: no-repeat;
   background-size: contain;
 }
