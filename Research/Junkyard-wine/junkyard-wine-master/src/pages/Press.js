@@ -9,7 +9,18 @@ class Press extends Component {
         return (
             <div>
                 <NavBar/>
+                <Content/>
                 <Footer/>
+            </div>
+        )
+    }
+}
+
+class Content extends Component {
+    render() {
+        return ( 
+            <div>
+                
             </div>
         )
     }

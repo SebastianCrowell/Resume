@@ -23,7 +23,7 @@ class Content extends Component {
       return (
           <div class="bg-image">
               <div class="container" style={{paddingTop:15+'px'}}>
-                  <iframe title="Wine" width="420" height="315" src="https://www.youtube.com/embed/7gquYRxLMFI"></iframe>
+                  <iframe title="Wine" width="420" height="315" src="https://www.youtube.com/embed/7gquYRxLMFI"/>
               </div>
           </div>
       )

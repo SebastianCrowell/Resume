@@ -73,3 +73,31 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+.employee-profile {
+  background-image: url('./assets/img_avatar1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.contact-h1 {
+  font-size: 2.2em;
+  font-family: 'Crimson Text', serif;
+  margin: 15px 0 15px 0;
+  text-align: center;
+}
+
+.contact-h2 {
+  font-size: 1.2em;
+  font-family: 'Crimson Text', serif;
+  text-align: left;
+}
+
+.form-section {
+  background-color: #bfe8ff;
+}
+
+.form-contact {
+  display: block;
+  margin-top: 0em;
+}
