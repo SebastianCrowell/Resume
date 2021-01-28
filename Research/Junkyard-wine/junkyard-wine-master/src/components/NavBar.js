@@ -40,12 +40,16 @@ class NavBar extends Component{
                           Wines
                       </DropdownToggle>
                       <DropdownMenu right>
+                          <a href='/traditional'>
                           <DropdownItem>
-                          Traditional
+                              Traditional
                           </DropdownItem>
+                          </a>
+                          <a href='/specialty'>
                           <DropdownItem>
                           Specialty
                           </DropdownItem>
+                          </a>
                       </DropdownMenu>
                       </UncontrolledDropdown>
                   </ul>

@@ -3,10 +3,10 @@ import '../App.css';
 import '@fortawesome/fontawesome-free/js/all.js';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import NewsCard from '../components/NewsCard';
+import Wine from '../components/Wine';
 
-class Press extends Component {
-    render () {
+class Traditional extends Component {
+    render(){
         return (
             <div>
                 <NavBar/>
@@ -18,13 +18,19 @@ class Press extends Component {
 }
 
 class Content extends Component {
-    render() {
-        return ( 
-            <div>
-                <NewsCard/>
+    render(){
+        return (
+            <div class="row">
+                <div class="column-traditional">
+                    <div class="col-wines">
+                        <ul>
+                            <Wine/>
+                        </ul>
+                    </div>
+                </div>
             </div>
         )
     }
 }
 
-export default Press;
+export default Traditional;
