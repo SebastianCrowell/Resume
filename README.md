@@ -1,6 +1,8 @@
 # Resume
 A place to collect code snippets and show understanding of subjects.
 
+[Khan Academy](https://www.khanacademy.org/profile/kaid_707908581881657804560718/)
+
 [Sebastian's Hackerrannk](https://www.hackerrank.com/sebastiancrowell)
 
 [LinkedIn](https://www.linkedin.com/in/sebastian-crowell-8847aa204/)
