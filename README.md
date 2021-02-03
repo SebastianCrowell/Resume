@@ -3,6 +3,7 @@ https://img.shields.io/github/commit-activity/w/SebastianCrowell/Resume?label=Co
 https://img.shields.io/github/last-commit/SebastianCrowell/Resume?label=Last%20Commit&style=plastic
 https://img.shields.io/github/languages/code-size/SebastianCrowell/Resume?label=Code%20Size&style=plastic
 https://img.shields.io/github/search/SebastianCrowell/Resume/goto?label=Goto%20Counter
+
 ##A place to collect code snippets and show understanding of subjects.
 
 [Khan Academy](https://www.khanacademy.org/profile/kaid_707908581881657804560718/)
