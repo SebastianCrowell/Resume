@@ -1,11 +1,5 @@
 # Resume
-https://img.shields.io/github/commit-activity/w/SebastianCrowell/Resume?label=Commit%20Activity&style=plastic
-
-https://img.shields.io/github/last-commit/SebastianCrowell/Resume?label=Last%20Commit&style=plastic
-
-https://img.shields.io/github/languages/code-size/SebastianCrowell/Resume?label=Code%20Size&style=plastic
-
-https://img.shields.io/github/search/SebastianCrowell/Resume/goto?label=Goto%20Counter
+.. image:: https://img.shields.io/github/commit-activity/y/SebastianCrowell/Resume?label=Commit%20Activity   :alt: GitHub commit activity
 
 ##A place to collect code snippets and show understanding of subjects.
 
