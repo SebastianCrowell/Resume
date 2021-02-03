@@ -1,5 +1,5 @@
 # Resume
-.. image:: https://img.shields.io/github/commit-activity/y/SebastianCrowell/Resume?label=Commit%20Activity   :alt: GitHub commit activity
+image:https://img.shields.io/github/commit-activity/y/SebastianCrowell/Resume?label=Commit%20Activity[GitHub commit activity]
 
 ##A place to collect code snippets and show understanding of subjects.
 
