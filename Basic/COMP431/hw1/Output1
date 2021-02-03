@@ -1,0 +1,53 @@
+220 COMP 431 FTP server ready.
+user anonymous
+331 Guest access OK, send password.
+PASS word
+501 Syntax error in parameter.
+USER anonymous
+331 Guest access OK, send password.
+PASS 
+501 Syntax error in parameter.
+UsEr anonymous
+501 Syntax error in parameter.
+USERCS anonymous
+500 Syntax error, command unrecognized.
+PASS password
+503 Bad sequence of commands.
+USER anonymous
+331 Guest access OK, send password.
+PASS password
+230 Guest login OK.
+TYPE A
+200 Type set to A.
+type I
+200 Type set to I.
+type B
+501 Syntax error in parameter.
+SYST
+215 UNIX Type: L8.
+syST
+215 UNIX Type: L8.
+SYST 
+215 UNIX Type: L8.
+NOOP
+200 Command OK.
+NOOP 
+200 Command OK.
+noop
+200 Command OK.
+PORT 1,2,3,4,5
+501 Syntax error in parameter.
+PORT 1, 2, 3, 4, 5, 6
+501 Syntax error in parameter.
+PORT 1,2,3,4,5,6
+200 Port command successful successful (1.2.3.4,1286).
+RETR MakeInput1.py
+['RETR', 'MakeInput1.py']
+150 File status okay.
+MakeInput1.py
+250 Requested file action completed.
+RETR MakeInput2.py
+503 Bad sequence of commands.
+quit
+oQUIT
+503 Bad sequence of commands.

@@ -1,0 +1,25 @@
+user anonymous
+PASS word
+USER anonymous
+PASS 
+UsEr anonymous
+USERCS anonymous
+PASS password
+USER anonymous
+PASS password
+TYPE A
+type I
+type B
+SYST
+syST
+SYST 
+NOOP
+NOOP 
+noop
+PORT 1,2,3,4,5
+PORT 1, 2, 3, 4, 5, 6
+PORT 1,2,3,4,5,6
+RETR MakeInput1.py
+RETR MakeInput2.py
+quit
+QUIT

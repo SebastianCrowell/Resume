@@ -7,6 +7,7 @@
 
 import os
 import sys
+import shutil
 
 # Define important ASCII character decimal representations
 # These are helpful for defining various command grammars  
@@ -16,18 +17,26 @@ lf = ord('\n')  # = 10
 crlf_vals = [cr, lf]
 
 # Define known server commands (case insensitive). Add to this as commands are added
-command_list = ["USER"]
+command_list = ["USER", "QUIT", "PASS", "TYPE", "SYST", "NOOP", "PORT", "RETR"]
 
 # Manage valid response messages for every command
 valid_responses = {
+    "RETR" : "150 File status okay.\r\n",
+    "PORT" : "\r\n",
     "USER" : "331 Guest access OK, send password.\r\n",
+    "QUIT" : "200 Command OK.\r\n",
+    "NOOP" : "200 Command OK.\r\n",
+    "SYST" : "215 UNIX Type: L8.\r\n",
+    "PASS" : "230 Guest login OK.\r\n",
+    "RETR" : "250 Requested file action completed.\r\n",
 }
 
 ##############################################################################################
 #                                                                                            # 
-#     This function is intended to manage the command processing loop.                       #
-#     The general idea is to loop over the input stream, identify which command              #
-#     was entered, and then delegate the command-processing to the appropriate function.     #
+#     This function is intended to manage the command processing loop.  # 
+#     The general idea is to loop over the input stream, identify which 
+#     command # was entered, and then delegate the command-processing to the 
+#     appropriate function.  #
 #                                                                                            #
 ##############################################################################################
 def read_commands():
@@ -42,14 +51,16 @@ def read_commands():
 
         # Split command into its tokens and parse relevant command
         tokens = command.split()    # Assume tokens are delimited by <SP>, <CR>, <LF>, or <CRLF>
+        # print(tokens[1])
 
         # Check to make sure there are tokens in the line, and assign command_name
         command_name = tokens[0].upper() if len(tokens) > 0 else "UNKNOWN"       # Commands are case-insensitive
         # Check first token in list to see if it matches any valid commands
+        # sys.stdout.write(command_name)
         if command_name in command_list and not command[0].isspace():
             if command_name in expected_commands:
                 #############################################################
-                #  This is intended to delegate command processing to       #
+	                #  This is intended to delegate command processing to       #
                 #  the appropriate helper function. Helper function parses  #
                 #  command, performs any necessary work, and returns        #
                 #  updated list of expected commands                        #
@@ -57,6 +68,26 @@ def read_commands():
                 if command_name == "USER":         
                     result, expected_commands = parse_user(tokens)
 
+                if command_name == "PASS":         
+                    result, expected_commands = parse_pass(tokens)
+
+                if command_name == "QUIT":         
+                    result, expected_commands = parse_quit()
+
+                if command_name == "SYST":         
+                    result, expected_commands = parse_syst()
+
+                if command_name == "NOOP":         
+                    result, expected_commands = parse_noop()
+
+                if command_name == "TYPE":         
+                    result, expected_commands = parse_type(tokens)
+
+                if command_name == "PORT":         
+                    result, expected_commands = parse_port(tokens)
+
+                if command_name == "RETR":         
+                    result, expected_commands = parse_retr(tokens)
                 ##################################################
                 #  After command processing, the following code  #
                 #  prints the appropriate response message       #
@@ -73,6 +104,8 @@ def read_commands():
                         #  changes the possible commands that can come next  #     
                         ######################################################
                         if command_name == "USER":
+                            expected_commands = ["USER", "QUIT"]
+                        if command_name == "PASS":
                             expected_commands = ["USER", "QUIT"]
             else:
                 # Out of order command received
@@ -100,5 +133,98 @@ def parse_user(tokens):
                 if ord(char) > 127 or ord(char) in crlf_vals:     # Byte values > 127 along with <CRLF> are not valid for usernames
                     return "501 Syntax error in parameter.\r\n", ["USER", "QUIT"]
     return "ok", ["USER", "PASS", "QUIT"]      # If the function makes it here, the input adheres to the grammar for this command
+
+
+def parse_pass(tokens):
+    # Check to make sure there is similar to USER, at least one token after "PASS"
+    if len(tokens) == 1:
+        return "501 Syntax error in parameter.\r\n", ["USER", "QUIT"]
+    else:
+        # Iterate tokens to check that a valid password is entered
+        for token in tokens[1:]:
+            for char in token:
+                if ord(char) > 127 or ord(char) in crlf_vals:	 # Byte vals like above
+                    return "501 Syntax error in parameter.\r\n", ["USER", "QUIT"]
+    return "ok", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]	# Everything was correct (need the other things available after correct pass as well)
+
+def parse_quit():
+    # Stop all reading of commands
+    return "ok"
+
+def parse_syst():
+    # Documentation lacking to create more advanced output
+    return "ok", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+
+def parse_noop():
+    # Documentation lacking to create more advanced output
+    return "ok", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+
+def parse_type(tokens):
+    # Check to see if A or I
+    # print(tokens[1])
+    if len(tokens) == 1:
+        return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+    else:
+        # Check the token for A or I
+        for token in tokens[1:]:
+            for char in token:
+                if ord(char) > 127 or ord(char) in crlf_vals: # Byte char check
+                    return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+    # immutable nature of python makes it difficult to return the character to print
+    if tokens[1].upper() == "A":
+        return "200 Type set to A.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+    if tokens[1].upper() == "I":
+        return "200 Type set to I.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+    # type_char = tokens[1]
+    return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+
+def parse_port(tokens):
+    # Check to see the number of ints in tokens
+    # print(tokens)
+    split_token = tokens[1].split(',')
+    # print(split_token)
+    if len(tokens) == 1:
+       return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+    else:
+       # Check the tokens
+       for token in tokens[1:]:
+           for char in token:
+               if ord(char) > 127 or ord(char) in crlf_vals: # Byte char check
+                   return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+               if len(tokens) > 2:
+                   return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+               if len(split_token) < 6:
+                   return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+    converter = str(int(split_token[4]) * 256 + int(split_token[5]))
+    return "200 Port command successful successful (%s.%s.%s.%s,%s).\r\n" %(split_token[0], split_token[1], split_token[2], split_token[3], converter), ["QUIT", "PORT", "SYST", "NOOP", "TYPE", "RETR"]
+
+def parse_retr(tokens):
+    # Check path?
+    print(tokens)
+    if len(tokens) == 1:
+       return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+    else:
+       # Check token
+       for token in tokens[1:]:
+           for char in token:
+               if ord(char) > 127 or ord(char) in crlf_vals: # Byte char check
+                   return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+    token_path = tokens[1]
+    if token_path[0] == "/":
+       file_path = token_path[1:]
+       #if not file_path:
+       #   return "550 File not found or access denied.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+       #else:
+       sys.stdout.write("150 File status okay.\r\n");
+       shutil.copyfile('%s' %(file_path), 'retr_files/%s' %(file_path))
+    else:
+       file_path = token_path
+       #if not file_path:
+       #   return "550 File not found or access denied.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+       #else:
+       sys.stdout.write("150 File status okay.\r\n");
+       shutil.copyfile('%s' %(file_path), 'retr_files/%s' %(file_path))
+    print(file_path)
+    return "ok", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
 
 read_commands()
