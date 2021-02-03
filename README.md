@@ -1,5 +1,9 @@
 # Resume
-A place to collect code snippets and show understanding of subjects.
+https://img.shields.io/github/commit-activity/w/SebastianCrowell/Resume?label=Commit%20Activity&style=plastic
+https://img.shields.io/github/last-commit/SebastianCrowell/Resume?label=Last%20Commit&style=plastic
+https://img.shields.io/github/languages/code-size/SebastianCrowell/Resume?label=Code%20Size&style=plastic
+https://img.shields.io/github/search/SebastianCrowell/Resume/goto?label=Goto%20Counter
+##A place to collect code snippets and show understanding of subjects.
 
 [Khan Academy](https://www.khanacademy.org/profile/kaid_707908581881657804560718/)
 
@@ -11,21 +15,22 @@ A place to collect code snippets and show understanding of subjects.
 
 [Facebook](https://www.facebook.com/sebastian.crowell.14)
 
-1.Basics
+###1.Basics
 
 [COMP 401](https://github.com/SebastianCrowell/Resume/tree/main/Basic/COMP401),
 [COMP 410](https://github.com/SebastianCrowell/Resume/tree/main/Basic/COMP410),
 [COMP 411](https://github.com/SebastianCrowell/Resume/tree/main/Basic/COMP411),
 [COMP 426](https://github.com/SebastianCrowell/Resume/tree/main/Basic/COMP426),
+[COMP 431](https://github.com/SebastianCrowell/Resume/tree/main/Basic/COMP431),
 [COMP 455](https://github.com/SebastianCrowell/Resume/tree/main/Basic/COMP455)
 
-2.Advanced
+###2.Advanced
 
 [COMP 550](https://github.com/SebastianCrowell/Resume/tree/main/Advanced/COMP550),
 [COMP 560](https://github.com/SebastianCrowell/Resume/tree/main/Advanced/COMP560),
 [COMP 562](https://github.com/SebastianCrowell/Resume/tree/main/Advanced/COMP562)
 
-3.Research
+###3.Research
 
 [COMP 495](https://github.com/SebastianCrowell/Resume/tree/main/Research/COMP495),
 [Edible-campus](https://github.com/SebastianCrowell/Resume/tree/main/Research/Edible-campus),
@@ -38,7 +43,7 @@ Nano-robotics (in-progress),
 Nano-OS (in-progress),
 Nano-IS (in-progress)
 
-4.Fun
+###4.Fun
 
 [Doodling](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Doodling)
 
