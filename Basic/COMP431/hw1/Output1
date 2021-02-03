@@ -12,7 +12,7 @@ UsEr anonymous
 USERCS anonymous
 500 Syntax error, command unrecognized.
 PASS password
-503 Bad sequence of commands.
+530 Not logged in.
 USER anonymous
 331 Guest access OK, send password.
 PASS password
@@ -28,11 +28,11 @@ SYST
 syST
 215 UNIX Type: L8.
 SYST 
-215 UNIX Type: L8.
+501 Syntax error in parameter.
 NOOP
 200 Command OK.
 NOOP 
-200 Command OK.
+501 Syntax error in parameter.
 noop
 200 Command OK.
 PORT 1,2,3,4,5
@@ -40,14 +40,13 @@ PORT 1,2,3,4,5
 PORT 1, 2, 3, 4, 5, 6
 501 Syntax error in parameter.
 PORT 1,2,3,4,5,6
-200 Port command successful successful (1.2.3.4,1286).
+200 Port command successful (1.2.3.4,1286).
 RETR MakeInput1.py
-['RETR', 'MakeInput1.py']
 150 File status okay.
-MakeInput1.py
 250 Requested file action completed.
 RETR MakeInput2.py
 503 Bad sequence of commands.
 quit
-oQUIT
-503 Bad sequence of commands.
+501 Syntax error in parameter.
+QUIT
+200 Command OK.

@@ -1,0 +1,24 @@
+220 COMP 431 FTP server ready.
+USEr anonymous person
+331 Guest access OK, send password.
+SYST
+530 Not logged in.
+PASS foobar
+530 Not logged in.
+user updated starter code
+331 Guest access OK, send password.
+pASS valid password this is
+230 Guest login OK.
+TYPE AI
+501 Syntax error in parameter.
+noop hello world
+501 Syntax error in parameter.
+PORT 152,2,131,205,31,144
+200 Port command successful (152.2.131.205,8080).
+RETR MakeInput4.py
+150 File status okay.
+250 Requested file action completed.
+RETR MakeInput4.py
+503 Bad sequence of commands.
+QUIT
+200 Command OK.

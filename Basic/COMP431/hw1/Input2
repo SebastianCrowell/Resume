@@ -1,0 +1,8 @@
+USER anonymous
+PASS foobar
+syST
+type I
+NOOP
+PORT 152,2,131,205,31,144
+RETR MakeOutput1.py
+QUIT

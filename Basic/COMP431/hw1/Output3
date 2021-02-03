@@ -1,0 +1,7 @@
+220 COMP 431 FTP server ready.
+USER anonymous
+331 Guest access OK, send password.
+user anonymous
+331 Guest access OK, send password.
+QUIT
+200 Command OK.

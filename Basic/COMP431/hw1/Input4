@@ -1,0 +1,11 @@
+USEr anonymous person
+SYST
+PASS foobar
+user updated starter code
+pASS valid password this is
+TYPE AI
+noop hello world
+PORT 152,2,131,205,31,144
+RETR MakeInput4.py
+RETR MakeInput4.py
+QUIT

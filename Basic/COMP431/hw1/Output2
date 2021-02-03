@@ -1,0 +1,18 @@
+220 COMP 431 FTP server ready.
+USER anonymous
+331 Guest access OK, send password.
+PASS foobar
+230 Guest login OK.
+syST
+215 UNIX Type: L8.
+type I
+200 Type set to I.
+NOOP
+200 Command OK.
+PORT 152,2,131,205,31,144
+200 Port command successful (152.2.131.205,8080).
+RETR MakeOutput1.py
+150 File status okay.
+250 Requested file action completed.
+QUIT
+200 Command OK.

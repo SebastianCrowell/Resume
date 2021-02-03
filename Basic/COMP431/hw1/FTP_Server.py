@@ -22,7 +22,6 @@ command_list = ["USER", "QUIT", "PASS", "TYPE", "SYST", "NOOP", "PORT", "RETR"]
 # Manage valid response messages for every command
 valid_responses = {
     "RETR" : "150 File status okay.\r\n",
-    "PORT" : "\r\n",
     "USER" : "331 Guest access OK, send password.\r\n",
     "QUIT" : "200 Command OK.\r\n",
     "NOOP" : "200 Command OK.\r\n",
@@ -39,6 +38,7 @@ valid_responses = {
 #     appropriate function.  #
 #                                                                                            #
 ##############################################################################################
+login = 0
 def read_commands():
     # FTP service always begins with "220 COMP 431 FTP server ready.\r\n"
     sys.stdout.write("220 COMP 431 FTP server ready.\r\n")
@@ -46,6 +46,8 @@ def read_commands():
     # Keep track of the expected commands, initially only "USER" and "QUIT" are valid commands
     expected_commands = ["USER", "QUIT"]
     for command in sys.stdin:       # Iterate over lines from input stream until EOF is found
+        if login == -1:
+            break
         # Echo the line of input
         sys.stdout.write(command)
 
@@ -72,13 +74,13 @@ def read_commands():
                     result, expected_commands = parse_pass(tokens)
 
                 if command_name == "QUIT":         
-                    result, expected_commands = parse_quit()
+                    result, parse_quit()
 
                 if command_name == "SYST":         
-                    result, expected_commands = parse_syst()
+                    result, expected_commands = parse_syst(command)
 
                 if command_name == "NOOP":         
-                    result, expected_commands = parse_noop()
+                    result, expected_commands = parse_noop(command)
 
                 if command_name == "TYPE":         
                     result, expected_commands = parse_type(tokens)
@@ -104,12 +106,44 @@ def read_commands():
                         #  changes the possible commands that can come next  #     
                         ######################################################
                         if command_name == "USER":
-                            expected_commands = ["USER", "QUIT"]
+                            if login != 2:
+                                globals()['login'] = 0;
+                            expected_commands = ["USER", "PASS", "QUIT"]
                         if command_name == "PASS":
+                            if login != 2:
+                                globals()['login'] = 0;
+                            expected_commands = ["USER", "QUIT"]
+                        if command_name == "QUIT":
+                            if login != 2:
+                                globals()['login'] = 0;
+                            expected_commands = ["USER", "QUIT"]
+                        if command_name == "SYST":
+                            if login != 2:
+                                globals()['login'] = 0;
+                            expected_commands = ["USER", "QUIT"]
+                        if command_name == "NOOP":
+                            if login != 2:
+                                globals()['login'] = 0;
+                            expected_commands = ["USER", "QUIT"]
+                        if command_name == "TYPE":
+                            if login != 2:
+                                globals()['login'] = 0;
+                            expected_commands = ["USER", "QUIT"]
+                        if command_name == "PORT":
+                            if login != 2:
+                                globals()['login'] = 0;
+                            expected_commands = ["USER", "QUIT"]
+                        if command_name == "RETR":
+                            if login != 2:
+                                globals()['login'] = 0;
                             expected_commands = ["USER", "QUIT"]
             else:
                 # Out of order command received
-                sys.stdout.write("503 Bad sequence of commands.\r\n")
+                if login != 2:
+                    globals()['login'] = 0;
+                    sys.stdout.write("530 Not logged in.\r\n")
+                else:
+                    sys.stdout.write("503 Bad sequence of commands.\r\n")
         else:
             # No valid command was input
             sys.stdout.write("500 Syntax error, command unrecognized.\r\n")
@@ -124,6 +158,8 @@ def read_commands():
 ################################################################################
 def parse_user(tokens):
     # Check to make sure there is at least one token after "USER"
+    if globals()['login'] != 2:
+        globals()['login'] = 0;
     if len(tokens) == 1:
         return "501 Syntax error in parameter.\r\n", ["USER", "QUIT"]
     else:
@@ -132,12 +168,15 @@ def parse_user(tokens):
             for char in token:
                 if ord(char) > 127 or ord(char) in crlf_vals:     # Byte values > 127 along with <CRLF> are not valid for usernames
                     return "501 Syntax error in parameter.\r\n", ["USER", "QUIT"]
+    globals()['login'] = 1;
     return "ok", ["USER", "PASS", "QUIT"]      # If the function makes it here, the input adheres to the grammar for this command
 
 
 def parse_pass(tokens):
     # Check to make sure there is similar to USER, at least one token after "PASS"
+    # print(login)
     if len(tokens) == 1:
+        globals()['login'] = 0;
         return "501 Syntax error in parameter.\r\n", ["USER", "QUIT"]
     else:
         # Iterate tokens to check that a valid password is entered
@@ -145,18 +184,35 @@ def parse_pass(tokens):
             for char in token:
                 if ord(char) > 127 or ord(char) in crlf_vals:	 # Byte vals like above
                     return "501 Syntax error in parameter.\r\n", ["USER", "QUIT"]
+    if login >= 1:
+       globals()['login'] = 2;
+    else:
+       return "530 Not logged in.\r\n", ["USER", "QUIT"]
     return "ok", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]	# Everything was correct (need the other things available after correct pass as well)
 
 def parse_quit():
     # Stop all reading of commands
-    return "ok"
+    globals()['login'] = -1;
+    return "ok";
 
-def parse_syst():
+def parse_syst(command):
     # Documentation lacking to create more advanced output
+    if len(command) != 6:
+        return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+    if command[4] != '\r':
+        return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+    if command[5] != '\n':
+        return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
     return "ok", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
 
-def parse_noop():
+def parse_noop(command):
     # Documentation lacking to create more advanced output
+    if len(command) != 6:
+        return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+    if command[4] != '\r':
+        return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+    if command[5] != '\n':
+        return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
     return "ok", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
 
 def parse_type(tokens):
@@ -180,8 +236,17 @@ def parse_type(tokens):
 
 def parse_port(tokens):
     # Check to see the number of ints in tokens
-    # print(tokens)
     split_token = tokens[1].split(',')
+    simple_bool = True
+    for num in split_token:
+    #   print(num)
+    #   print(num.isdigit())
+       if not num.isdigit():
+           simple_bool = False
+    if simple_bool == False:
+       return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+    # print(simple_bool)
+    # print(split_token.isdigit())
     # print(split_token)
     if len(tokens) == 1:
        return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
@@ -195,36 +260,50 @@ def parse_port(tokens):
                    return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
                if len(split_token) < 6:
                    return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+               #if not tokens[1].isdigit()
+               #    return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
     converter = str(int(split_token[4]) * 256 + int(split_token[5]))
-    return "200 Port command successful successful (%s.%s.%s.%s,%s).\r\n" %(split_token[0], split_token[1], split_token[2], split_token[3], converter), ["QUIT", "PORT", "SYST", "NOOP", "TYPE", "RETR"]
+    return "200 Port command successful (%s.%s.%s.%s,%s).\r\n" %(split_token[0], split_token[1], split_token[2], split_token[3], converter), ["QUIT", "PORT", "SYST", "NOOP", "TYPE", "RETR"]
 
 def parse_retr(tokens):
     # Check path?
-    print(tokens)
+    # print(tokens)
+    counter = 1
     if len(tokens) == 1:
-       return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+       return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE", "RETR"]
     else:
        # Check token
        for token in tokens[1:]:
            for char in token:
                if ord(char) > 127 or ord(char) in crlf_vals: # Byte char check
-                   return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
+                   return "501 Syntax error in parameter.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE", "RETR"]
     token_path = tokens[1]
     if token_path[0] == "/":
        file_path = token_path[1:]
-       #if not file_path:
-       #   return "550 File not found or access denied.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
-       #else:
-       sys.stdout.write("150 File status okay.\r\n");
+       if not os.path.isfile(file_path):
+       #os.path.isfile() or path.exists()
+          return "550 File not found or access denied.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE", "RETR"]
+       else:
+          sys.stdout.write("150 File status okay.\r\n");
+       #check for os.path.isfile() in the retr folder
+       if os.path.isfile('retr_files/file%d' %(counter)):
+          counter += 1
        shutil.copyfile('%s' %(file_path), 'retr_files/%s' %(file_path))
+       os.rename('retr_files/%s' %(file_path), 'retr_files/file%d' %(counter))
     else:
        file_path = token_path
-       #if not file_path:
-       #   return "550 File not found or access denied.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
-       #else:
-       sys.stdout.write("150 File status okay.\r\n");
+       if not os.path.isfile(file_path):
+       #os.path.isfile() or path.exists()
+          return "550 File not found or access denied.\r\n", ["QUIT", "PORT", "SYST", "NOOP", "TYPE", "RETR"]
+       else:
+          sys.stdout.write("150 File status okay.\r\n");
+       #check for os.path.isfile() in the retr folder
+       if os.path.isfile('retr_files/file%d' %(counter)):
+          counter += 1
        shutil.copyfile('%s' %(file_path), 'retr_files/%s' %(file_path))
-    print(file_path)
+       os.rename('retr_files/%s' %(file_path), 'retr_files/file%d' %(counter))
+    #print(file_path)
+    #print(os.path.isfile(file_path))
     return "ok", ["QUIT", "PORT", "SYST", "NOOP", "TYPE"]
 
 read_commands()
