@@ -1,6 +1,5 @@
 # Resume
-<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/SebastianCrowell/Resume">
-<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/SebastianCrowell/Resume">
+<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/SebastianCrowell/Resume"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/SebastianCrowell/Resume"> <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/SebastianCrowell/Resume">
 
 ## A place to collect code snippets and show understanding of subjects.
 
