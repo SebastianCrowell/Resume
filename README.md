@@ -2,7 +2,7 @@
 
 ## A place to collect code snippets and show understanding of subjects.
 
-[Khan Academy](https://www.khanacademy.org/profile/kaid_707908581881657804560718/) <img alt="Khan Academy" src="https://img.shields.io/badge/Khan%20Academy%20-%2314BF96.svg?&style=for-the-badge&logo=Khan%20Academy&logoColor=white"/>
+[<img alt="Khan Academy" src="https://img.shields.io/badge/Khan%20Academy%20-%2314BF96.svg?&style=for-the-badge&logo=Khan%20Academy&logoColor=white"/>](https://www.khanacademy.org/profile/kaid_707908581881657804560718/) 
 
 [Sebastian's Hackerrannk](https://www.hackerrank.com/sebastiancrowell)<img alt="HackerRank" src="https://img.shields.io/badge/-Hackerrank-2EC866?style=for-the-badge&logo=HackerRank&logoColor=white"/>
 
