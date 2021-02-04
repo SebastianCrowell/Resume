@@ -41,8 +41,7 @@ Nano-IS (in-progress)
 ### 4.Fun
 
 [Doodling](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Doodling),
-[PhysGame](https://github.com/SebastianCrowell/Resume/tree/main/Fun/2-D%20games/2-D-Phys-Game),
-[AliceGame](https://github.com/SebastianCrowell/Resume/tree/main/Fun/2-D%20games/Alice),
+[2-D Games](https://github.com/SebastianCrowell/Resume/tree/main/Fun/2-D%20games),
 [Free time](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Free%20time),
 [Science](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Science)
 
