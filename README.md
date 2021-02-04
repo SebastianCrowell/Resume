@@ -137,4 +137,5 @@ Nano-IS (in-progress)
   Unit testing
   <p align="center">
   <img alt="Cypress.io" src="https://img.shields.io/badge/cypress%20-%23000000.svg?&style=for-the-badge&logo=cypress&logoColor=white"/>
+  <img alt="Selenium" src="https://img.shields.io/badge/Selenium-25D366?style=for-the-badge&logo=Selenium&logoColor=white"/>
   </p>
