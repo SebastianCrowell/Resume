@@ -47,8 +47,6 @@ Nano-IS (in-progress)
 [Science](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Science)
 
 ## Collection
-
-  <br>
   Languages
   <p align="center">
   <img alt="NodeJS" src="https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/>
@@ -76,7 +74,6 @@ Nano-IS (in-progress)
   <img alt="Auth0" src="https://img.shields.io/badge/Auth0%20-%23323330.svg?&style=for-the-badge&logo=auth0&logoColor=orange"/>
   </p>
   
-  <br>
   Frameworks
   <p align="center">
   <img alt="Bootstrap" src="https://img.shields.io/badge/-Bootstrap-7952B3?style=for-the-badge&logo=Bootstrap&logoColor=white"/>
@@ -88,7 +85,6 @@ Nano-IS (in-progress)
   <img alt="SASS" src="https://img.shields.io/badge/SASS%20-hotpink.svg?&style=for-the-badge&logo=SASS&logoColor=white"/>
   </p>
   
-  <br>
   Tools
   <p align="center">
   <img alt="git" src="https://img.shields.io/badge/-Git-F05032?style=for-the-badge&logo=git&logoColor=white"/>
@@ -99,7 +95,6 @@ Nano-IS (in-progress)
   <img alt="WordPress" src="https://img.shields.io/badge/WordPress%20-%23117AC9.svg?&style=for-the-badge&logo=WordPress&logoColor=white"/>
   </p>
   
-  <br>
   Design suites
   <p align="center">
   <img alt="Adobe XD" src="https://img.shields.io/badge/adobe%20xd%20-%23FF26BE.svg?&style=for-the-badge&logo=adobe%20xd&logoColor=white"/>
@@ -109,7 +104,6 @@ Nano-IS (in-progress)
   <img alt="GIMP" src="https://img.shields.io/badge/GIMP%20-%23dddfff.svg?&style=for-the-badge&logo=gimp&logoColor=grey"/>
   </p>
   
-  <br>
   OSs
   <p align="center">
   <img alt="android" src="https://img.shields.io/badge/-Android-3DDC84?style=for-the-badge&logo=Android&logoColor=white"/>
@@ -118,7 +112,6 @@ Nano-IS (in-progress)
   <img alt="Windows 10" src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white"/>
   </p>
 
-  <br>
   ML
   <p align="center">
   <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch%20-%23EE4C2C.svg?&style=for-the-badge&logo=PyTorch&logoColor=white"/>
@@ -127,7 +120,6 @@ Nano-IS (in-progress)
   <img alt="NumPy" src="https://img.shields.io/badge/numpy%20-%23013243.svg?&style=for-the-badge&logo=numpy&logoColor=white" />
   </p>
 
-  <br>
   DBs
   <p align="center">
   <img alt="MySQL" src="https://img.shields.io/badge/-MySQL-007ACC?style=for-the-badge&logo=mysql&logoColor=white"/>
@@ -136,14 +128,12 @@ Nano-IS (in-progress)
   <img alt="MariaDB" src ="https://img.shields.io/badge/MariaDB%20-%23000000.svg?&style=for-the-badge&logo=mariadb&logoColor=white"/>
   </p>
   
-  <br>
   Game deving
   <p align="center">
   <img alt="Unreal Engine" src="https://img.shields.io/badge/unreal%20engine%20-%23313131.svg?&style=for-the-badge&logo=unreal%20engine&logoColor=white"/>
   <img alt="Unity" src="https://img.shields.io/badge/unity%20-%23000000.svg?&style=for-the-badge&logo=unity&logoColor=white"/>
   </p>
   
-  <br>
   Unit testing
   <p align="center">
   <img alt="Cypress.io" src="https://img.shields.io/badge/cypress%20-%23000000.svg?&style=for-the-badge&logo=cypress&logoColor=white"/>
