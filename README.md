@@ -40,13 +40,10 @@ Nano-IS (in-progress)
 
 ### 4.Fun
 
-[Doodling](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Doodling)
-
+[Doodling](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Doodling),
 [PhysGame](https://github.com/SebastianCrowell/Resume/tree/main/Fun/2-D%20games/2-D-Phys-Game),
-[AliceGame](https://github.com/SebastianCrowell/Resume/tree/main/Fun/2-D%20games/Alice)
-
-[Free time](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Free%20time)
-
+[AliceGame](https://github.com/SebastianCrowell/Resume/tree/main/Fun/2-D%20games/Alice),
+[Free time](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Free%20time),
 [Science](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Science)
 
 ## Collection
@@ -56,7 +53,7 @@ Nano-IS (in-progress)
   OSs
   <img alt="android" src="https://img.shields.io/badge/-Android-3DDC84?style=flat-square&logo=Android&logoColor=white"/>
   <img alt="Ubuntu" src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" />
-  linux
+  <img alt="Linux" src="https://img.shields.io/badge/LINUX%20-%23FA7343.svg?&style=for-the-badge&logo=linux&logoColor=black"/>
   <img alt="Windows 10" src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" />
 
   <br>
