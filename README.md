@@ -51,6 +51,7 @@ Nano-IS (in-progress)
 <p align="center">
   <br>
   OSs
+  <br>
   <img alt="android" src="https://img.shields.io/badge/-Android-3DDC84?style=for-the-badge&logo=Android&logoColor=white"/>
   <img alt="Ubuntu" src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" />
   <img alt="Linux" src="https://img.shields.io/badge/LINUX%20-%23FA7343.svg?&style=for-the-badge&logo=linux&logoColor=black"/>
@@ -58,6 +59,7 @@ Nano-IS (in-progress)
 
   <br>
   Tools
+  <br>
   <img alt="git" src="https://img.shields.io/badge/-Git-F05032?style=for-the-badge&logo=git&logoColor=white"/>
   <img alt="GitHub" src="https://img.shields.io/badge/github%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
   <img alt="Docker" src="https://img.shields.io/badge/docker%20-%230db7ed.svg?&style=for-the-badge&logo=docker&logoColor=white"/>
@@ -67,6 +69,7 @@ Nano-IS (in-progress)
 
   <br>
   ML
+  <br>
   <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch%20-%23EE4C2C.svg?&style=for-the-badge&logo=PyTorch&logoColor=white"/>
   <img alt="Tensorflow" src="https://img.shields.io/badge/-Tensorflow-764ABC?style=for-the-badge&logo=Tensorflow&logoColor=white&color=orange"/>
   <img alt="Pandas" src="https://img.shields.io/badge/pandas%20-%23150458.svg?&style=for-the-badge&logo=pandas&logoColor=white"/>
@@ -74,13 +77,15 @@ Nano-IS (in-progress)
 
   <br>
   DBs
+  <br>
   <img alt="MySQL" src="https://img.shields.io/badge/-MySQL-007ACC?style=for-the-badge&logo=mysql&logoColor=white"/>
   <img alt="MongoDB" src ="https://img.shields.io/badge/MongoDB-%234ea94b.svg?&style=for-the-badge&logo=mongodb&logoColor=white"/>
   <img alt="SQLite" src ="https://img.shields.io/badge/sqlite-%2307405e.svg?&style=for-the-badge&logo=sqlite&logoColor=white"/>
-  mariadb
-  
+  <img alt="MariaDB" src ="https://img.shields.io/badge/MariaDB%20-%23000000.svg?&style=for-the-badge&logo=mariadb&logoColor=white"/>
+    
   <br>
   Languages
+  <br>
   <img alt="NodeJS" src="https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/>
   <img alt="JavaScript" src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
   <img alt="Java" src="https://img.shields.io/badge/java-%23ED8B00.svg?&style=for-the-badge&logo=java&logoColor=white"/>
@@ -95,6 +100,7 @@ Nano-IS (in-progress)
   
   <br>
   Frameworks
+  <br>
   <img alt="Bootstrap" src="https://img.shields.io/badge/-Bootstrap-7952B3?style=for-the-badge&logo=Bootstrap&logoColor=white"/>
   <img alt="Express.js" src="https://img.shields.io/badge/express.js%20-%23404d59.svg?&style=for-the-badge"/>
   <img alt="React" src="https://img.shields.io/badge/react%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
@@ -105,14 +111,16 @@ Nano-IS (in-progress)
   
   <br>
   Design suites
+  <br>
   <img alt="Adobe XD" src="https://img.shields.io/badge/adobe%20xd%20-%23FF26BE.svg?&style=for-the-badge&logo=adobe%20xd&logoColor=white"/>
   <img alt="Adobe Photoshop" src="https://img.shields.io/badge/adobe%20photoshop%20-%2331A8FF.svg?&style=for-the-badge&logo=adobe%20photoshop&logoColor=white"/>
   <img alt="Figma" src="https://img.shields.io/badge/figma%20-%23F24E1E.svg?&style=for-the-badge&logo=figma&logoColor=white"/>
   <img alt="Blender" src="https://img.shields.io/badge/blender%20-%23F5792A.svg?&style=for-the-badge&logo=blender&logoColor=white"/>
-  <img alt="GIMP" src="https://img.shields.io/badge/GIMP%20-%23ffffff.svg?&style=for-the-badge&logo=gimp&logoColor=grey"/>
+  <img alt="GIMP" src="https://img.shields.io/badge/GIMP%20-%23dddfff.svg?&style=for-the-badge&logo=gimp&logoColor=grey"/>
   
   <br>
   Hosting & CI/CD & Servers & Authentication
+  <br>
   <img alt="Google Cloud Platform" src="https://img.shields.io/badge/-Google_Cloud_Platform-1a73e8?style=for-the-badge&logo=google-cloud&logoColor=white"/>
   <img alt="Heroku" src="https://img.shields.io/badge/-Heroku-430098?style=for-the-badgee&logo=heroku&logoColor=white"/>
   <img alt="GitLab" src="https://img.shields.io/badge/gitlab%20-%23181717.svg?&style=for-the-badge&logo=gitlab&logoColor=white"/>
@@ -124,11 +132,12 @@ Nano-IS (in-progress)
 
   <br>
   Unit testing
+  <br>
   <img alt="Cypress.io" src="https://img.shields.io/badge/cypress%20-%23000000.svg?&style=for-the-badge&logo=cypress&logoColor=white"/>
   
   <br>
   Game deving
+  <br>
   <img alt="Unreal Engine" src="https://img.shields.io/badge/unreal%20engine%20-%23313131.svg?&style=for-the-badge&logo=unreal%20engine&logoColor=white"/>
   <img alt="Unity" src="https://img.shields.io/badge/unity%20-%23000000.svg?&style=for-the-badge&logo=unity&logoColor=white"/>
-  
 </p>
