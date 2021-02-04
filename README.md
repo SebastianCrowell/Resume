@@ -33,7 +33,6 @@
 [Widernet](https://github.com/SebastianCrowell/Resume/tree/main/Research/Widernet),
 [ML Piano (Key Assist)](https://github.com/SebastianCrowell/Resume/tree/main/Research/Piano),
 [Trello](https://github.com/SebastianCrowell/Resume/tree/main/Research/Trello),
-[Junkyard Wineyard](https://github.com/SebastianCrowell/Resume/tree/main/Research/Junkyard-wine),
 Nano-robotics (in-progress),
 Nano-OS (in-progress),
 Nano-IS (in-progress)
@@ -43,6 +42,8 @@ Nano-IS (in-progress)
 [Doodling](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Doodling),
 [2-D Games](https://github.com/SebastianCrowell/Resume/tree/main/Fun/2-D%20games),
 [Free time](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Free%20time),
+[Junkyard Wineyard](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Junkyard-wine),
+[Scribd-py-scraper](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Scribd-py-scraper),
 [Science](https://github.com/SebastianCrowell/Resume/tree/main/Fun/Science)
 
 ## Collection
