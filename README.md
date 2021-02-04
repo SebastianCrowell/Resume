@@ -64,7 +64,6 @@ Nano-IS (in-progress)
   <img alt="Shell Script" src="https://img.shields.io/badge/shell_script%20-%23121011.svg?&style=for-the-badge&logo=gnu-bash&logoColor=white"/>
   </p>
 
-  <br>
   Hosting & CI/CD & Servers & Authentication
   <p align="center">
   <img alt="Google Cloud Platform" src="https://img.shields.io/badge/-Google_Cloud_Platform-1a73e8?style=for-the-badge&logo=google-cloud&logoColor=white"/>
