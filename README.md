@@ -143,7 +143,12 @@ Nano-IS (in-progress)
 
 ## Considering
 https://undraw.co/illustrations
+
 https://onepagelove.com/
+
 https://cferdinandi.github.io/kraken/
+
 https://parceljs.org/
+
 https://animate.style/
+
