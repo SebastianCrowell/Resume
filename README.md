@@ -3,7 +3,6 @@
 ## A place to collect code snippets and show understanding of subjects.
 
 ### Contacts and Accounts
-<p align="center">
 [<img alt="Khan Academy" src="https://img.shields.io/badge/Khan%20Academy%20-%2314BF96.svg?&style=for-the-badge&logo=Khan%20Academy&logoColor=white"/>](https://www.khanacademy.org/profile/kaid_707908581881657804560718/) 
 [<img alt="HackerRank" src="https://img.shields.io/badge/-Hackerrank-2EC866?style=for-the-badge&logo=HackerRank&logoColor=white"/>](https://www.hackerrank.com/sebastiancrowell)
 [<img alt="LinkedIn" src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>](https://www.linkedin.com/in/sebastian-crowell-8847aa204/) 
@@ -12,8 +11,7 @@
 [<img alt="Slack" src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white"/>](https://join.slack.com/t/newworkspace-7bx5666/shared_invite/zt-lt1ldljp-tap093bGIMOEm6VRhM3cuQ)
 [<img alt="LeetCode" src="https://img.shields.io/badge/LeetCode%20-%23FF9A00.svg?&style=for-the-badge&logo=LeetCode&logoColor=black"/>](https://leetcode.com/SebastianCrowell/)
 [<img alt="DevPost" src="https://img.shields.io/badge/DEVPOST%20-%231947B5.svg?&style=for-the-badge&logo=DEVPOST&logoColor=white"/>](https://devpost.com/sebastiancrowell?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav)
-[<img alt="DevPost" src="https://img.shields.io/badge/Glitch%20-%23ffffff.svg?&style=for-the-badge&logo=Glitch&logoColor=pink"/>](https://glitch.com/@SebastianCrowell)
-</p>
+[<img alt="Glitch" src="https://img.shields.io/badge/Glitch%20-%23ffffff.svg?&style=for-the-badge&logo=Glitch&logoColor=pink"/>](https://glitch.com/@SebastianCrowell)
 
 ### 1.Basics
 
