@@ -16,9 +16,15 @@ const App = () => {
   var color;
   var colorTwo;
 
-  // let cheerio = require('cheerio')
-  // let $;
-  // var wordsThatRhyme = [];
+  //var request = require('request');
+
+  //let cheerio = require('cheerio');
+  //let $;
+  //$ = cheerio.load('https://rhymer.com/pink.html');
+
+  //var wordsThatRhyme = [];
+
+  //console.log($("a .btn"));
 
   const createPoem = () => {
     var newContentFirst = document.getElementById("first");
@@ -723,7 +729,6 @@ const App = () => {
         default:
       }
       //console.log(predictionText[1].class)
-      // $ = cheerio.load('https://www.rhymezone.com/r/rhyme.cgi?Word=' + colorTwo + '&typeofrhyme=perfect&org1=syl&org2=l&org3=y');
       ReactDOM.render(secondFlower + " are " + colorTwo + ",", newContentSecond);
     } catch (error) {
       colorTwo = "pink";
@@ -810,24 +815,6 @@ const App = () => {
             break;
           default:
         }
-        break;
-      case "blue":
-        random = Math.floor((Math.random() * 4) + 1);
-        switch(random){
-          case 1:
-            fourthLine = "We stick together like glue."
-            break;
-          case 2:
-            fourthLine = "I like someone for valentine, ill give you a clue."
-            break;
-          case 3:
-            fourthLine = "Someones my cruch, guess who."
-            break;
-          case 4:
-            fourthLine = "I think i've fallen for you."
-            break;
-          default:
-          }
         break;
       case "yellow":
         random = Math.floor((Math.random() * 4) + 1);
