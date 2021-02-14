@@ -4,8 +4,11 @@ import cam from './cam'
 import { getRetinaContext } from './2d-projection'
 import { renderPredictions } from './prediction-text'
 
+var predictionText;
+// var ctxRGB;
+
 const ObjectDetectionVideo = React.memo(
-  ({ model, onPrediction, fit, mirrored, render }) => {
+  ({model, onPrediction, render }) => {
     const videoRef = useRef()
     const canvasRef = useRef()
 
@@ -18,6 +21,7 @@ const ObjectDetectionVideo = React.memo(
       if (onPrediction) {
         onPrediction(predictions)
       }
+      predictionText = predictions
 
       const wantedWidth = videoRef.current.offsetWidth
       const wantedHeight = videoRef.current.offsetHeight
@@ -38,6 +42,8 @@ const ObjectDetectionVideo = React.memo(
       ctx.setHeight(wantedHeight)
       ctx.clearAll()
 
+      // ctxRGB = ctx;
+
       // Update predictions to match canvas.
       const offsetPredictions = predictions.map((prediction) => {
         let x = prediction.bbox[0] * scale + xOffset
@@ -45,9 +51,6 @@ const ObjectDetectionVideo = React.memo(
         const width = prediction.bbox[2] * scale
         const height = prediction.bbox[3] * scale
 
-        if (mirrored) {
-          x = wantedWidth - x - width
-        }
         return { ...prediction, bbox: [x, y, width, height] }
       })
 
@@ -57,7 +60,7 @@ const ObjectDetectionVideo = React.memo(
       requestAnimationFrame(() => {
         detectFrame()
       })
-    }, [mirrored, model, onPrediction, render])
+    }, [model, onPrediction, render])
 
     if (canvasRef.current) {
       canvasRef.current.style.position = 'absolute'
@@ -78,5 +81,10 @@ const ObjectDetectionVideo = React.memo(
     )
   }
 )
+
+export {
+  predictionText
+  // ctxRGB
+}
 
 export default ObjectDetectionVideo
