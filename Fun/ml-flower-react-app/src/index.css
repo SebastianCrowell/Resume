@@ -1,0 +1,21 @@
+.fillPage {
+  position: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 20px;
+}
+
+.poem {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+}
+
+.padded-poem {
+  padding-top: 20px;
+}
+
+.padded-button {
+  padding: 10px;
+}
