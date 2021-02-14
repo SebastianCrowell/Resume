@@ -9,7 +9,8 @@
 [<img alt="Twitter" src="https://img.shields.io/badge/NokLoque%20-%231DA1F2.svg?&style=for-the-badge&logo=Twitter&logoColor=white"/>](https://twitter.com/NokLoque)
 [<img alt="Facebook" src="https://img.shields.io/badge/Facebook%20-%231877F2.svg?&style=for-the-badge&logo=Facebook&logoColor=white"/>](https://www.facebook.com/sebastian.crowell.14)
 [<img alt="Slack" src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white" />](https://join.slack.com/t/newworkspace-7bx5666/shared_invite/zt-lt1ldljp-tap093bGIMOEm6VRhM3cuQ)
-[<img alt="LeetCode" src="https://img.shields.io/badge/LeetCode%20-%23FF9A00.svg?&style=for-the-badge&logo=LeetCode&logoColor=black" />](https://leetcode.com/SebastianCrowell/)
+[<img alt="LeetCode" src="https://img.shields.io/badge/LeetCode%20-%23FF9A00.svg?&style=for-the-badge&logo=LeetCode&logoColor=white" />](https://leetcode.com/SebastianCrowell/)
+[<img alt="DevPost" src="https://img.shields.io/badge/DEVPOST%20-%23FF9A00.svg?&style=for-the-badge&logo=LeetCode&logoColor=blue" />](https://devpost.com/sebastiancrowell?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav)
 
 ### 1.Basics
 
