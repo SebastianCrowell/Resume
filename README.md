@@ -3,15 +3,17 @@
 ## A place to collect code snippets and show understanding of subjects.
 
 ### Contacts and Accounts
+<p align="center">
 [<img alt="Khan Academy" src="https://img.shields.io/badge/Khan%20Academy%20-%2314BF96.svg?&style=for-the-badge&logo=Khan%20Academy&logoColor=white"/>](https://www.khanacademy.org/profile/kaid_707908581881657804560718/) 
 [<img alt="HackerRank" src="https://img.shields.io/badge/-Hackerrank-2EC866?style=for-the-badge&logo=HackerRank&logoColor=white"/>](https://www.hackerrank.com/sebastiancrowell)
 [<img alt="LinkedIn" src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>](https://www.linkedin.com/in/sebastian-crowell-8847aa204/) 
 [<img alt="Twitter" src="https://img.shields.io/badge/NokLoque%20-%231DA1F2.svg?&style=for-the-badge&logo=Twitter&logoColor=white"/>](https://twitter.com/NokLoque)
 [<img alt="Facebook" src="https://img.shields.io/badge/Facebook%20-%231877F2.svg?&style=for-the-badge&logo=Facebook&logoColor=white"/>](https://www.facebook.com/sebastian.crowell.14)
-[<img alt="Slack" src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white" />](https://join.slack.com/t/newworkspace-7bx5666/shared_invite/zt-lt1ldljp-tap093bGIMOEm6VRhM3cuQ)
-[<img alt="LeetCode" src="https://img.shields.io/badge/LeetCode%20-%23FF9A00.svg?&style=for-the-badge&logo=LeetCode&logoColor=black" />](https://leetcode.com/SebastianCrowell/)
-[<img alt="DevPost" src="https://img.shields.io/badge/DEVPOST%20-%231947B5.svg?&style=for-the-badge&logo=DEVPOST&logoColor=white" />](https://devpost.com/sebastiancrowell?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav)
-[<img alt="DevPost" src="https://img.shields.io/badge/Glitch%20-%23ffffff.svg?&style=for-the-badge&logo=Glitch&logoColor=pink" />](https://glitch.com/@SebastianCrowell)
+[<img alt="Slack" src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white"/>](https://join.slack.com/t/newworkspace-7bx5666/shared_invite/zt-lt1ldljp-tap093bGIMOEm6VRhM3cuQ)
+[<img alt="LeetCode" src="https://img.shields.io/badge/LeetCode%20-%23FF9A00.svg?&style=for-the-badge&logo=LeetCode&logoColor=black"/>](https://leetcode.com/SebastianCrowell/)
+[<img alt="DevPost" src="https://img.shields.io/badge/DEVPOST%20-%231947B5.svg?&style=for-the-badge&logo=DEVPOST&logoColor=white"/>](https://devpost.com/sebastiancrowell?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav)
+[<img alt="DevPost" src="https://img.shields.io/badge/Glitch%20-%23ffffff.svg?&style=for-the-badge&logo=Glitch&logoColor=pink"/>](https://glitch.com/@SebastianCrowell)
+</p>
 
 ### 1.Basics
 
@@ -56,7 +58,7 @@ Nano-IS (in-progress)
   <img alt="JavaScript" src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
   <img alt="Java" src="https://img.shields.io/badge/java-%23ED8B00.svg?&style=for-the-badge&logo=java&logoColor=white"/>
   <img alt="PHP" src="https://img.shields.io/badge/-PHP-777BB4?style=for-the-badge&logo=php&logoColor=white"/>
-  <img alt="html5" src="https://img.shields.io/badge/-HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img alt="html5" src="https://img.shields.io/badge/-HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
   <img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/>
   <img alt="Python" src="https://img.shields.io/badge/python%20-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white"/>
   <img alt="C" src="https://img.shields.io/badge/c%20-%2300599C.svg?&style=for-the-badge&logo=c&logoColor=white"/>
@@ -96,6 +98,9 @@ Nano-IS (in-progress)
   <img alt="Jupyter" src="https://img.shields.io/badge/Jupyter%20-%23F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white"/>
   <img alt="Trello" src="https://img.shields.io/badge/Trello%20-%23026AA7.svg?&style=for-the-badge&logo=Trello&logoColor=white"/>
   <img alt="WordPress" src="https://img.shields.io/badge/WordPress%20-%23117AC9.svg?&style=for-the-badge&logo=WordPress&logoColor=white"/>
+  <img alt="Postman" src="https://img.shields.io/badge/Postman-FE7A16.svg?&style=for-the-badge&logo=Postman&logoColor=white"/>
+  <img alt="Google Cloud" src ="https://img.shields.io/badge/Google%20Cloud-FEAA2D.svg?&style=for-the-badge&logo=Google%20Cloud&logoColor=orange"/>
+  <img alt="Wireframe" src ="https://img.shields.io/badge/Wireshark%20-%23F5F5F5.svg?&style=for-the-badge&logo=Wireshark&logoColor=black"/>
   </p>
   
   Design suites
@@ -113,6 +118,7 @@ Nano-IS (in-progress)
   <img alt="Ubuntu" src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" />
   <img alt="Linux" src="https://img.shields.io/badge/LINUX%20-%23FA7343.svg?&style=for-the-badge&logo=linux&logoColor=black"/>
   <img alt="Windows 10" src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white"/>
+  <img alt="z/OS" src="https://img.shields.io/badge/z/OS%20-%23ffffff.svg?&style=for-the-badge&logo=IBM&logoColor=black"/>
   </p>
 
   ML
@@ -120,7 +126,10 @@ Nano-IS (in-progress)
   <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch%20-%23EE4C2C.svg?&style=for-the-badge&logo=PyTorch&logoColor=white"/>
   <img alt="Tensorflow" src="https://img.shields.io/badge/-Tensorflow-764ABC?style=for-the-badge&logo=Tensorflow&logoColor=white&color=orange"/>
   <img alt="Pandas" src="https://img.shields.io/badge/pandas%20-%23150458.svg?&style=for-the-badge&logo=pandas&logoColor=white"/>
-  <img alt="NumPy" src="https://img.shields.io/badge/numpy%20-%23013243.svg?&style=for-the-badge&logo=numpy&logoColor=white" />
+  <img alt="NumPy" src="https://img.shields.io/badge/numpy%20-%23013243.svg?&style=for-the-badge&logo=numpy&logoColor=white"/>
+  <img alt="Keras" src="https://img.shields.io/badge/Keras%20-%23D00000.svg?&style=for-the-badge&logo=Keras&logoColor=white"/>
+  <img alt="ModelZoo" src="https://img.shields.io/badge/ModelZoo%20-%23593d88.svg?&style=for-the-badge&logo=Model-Zoo&logoColor=white"/>
+  <img alt="CA" src="https://img.shields.io/badge/Cloud%20Annotations%20-%232C3454.svg?&style=for-the-badge&logo=IBM&logoColor=white"/>
   </p>
 
   DBs
