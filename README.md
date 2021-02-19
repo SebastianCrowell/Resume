@@ -99,6 +99,7 @@ Nano-IS (in-progress)
   <img alt="Postman" src="https://img.shields.io/badge/Postman-FE7A16.svg?&style=for-the-badge&logo=Postman&logoColor=white"/>
   <img alt="Google Cloud" src ="https://img.shields.io/badge/Google%20Cloud-FEAA2D.svg?&style=for-the-badge&logo=Google%20Cloud&logoColor=orange"/>
   <img alt="Wireframe" src ="https://img.shields.io/badge/Wireshark%20-%23F5F5F5.svg?&style=for-the-badge&logo=Wireshark&logoColor=black"/>
+  <img alt="PowerBI" src ="https://img.shields.io/badge/PowerBI%20-%23121011.svg?&style=for-the-badge&logo=Power%20BI&logoColor=red"/>
   </p>
   
   Design suites
