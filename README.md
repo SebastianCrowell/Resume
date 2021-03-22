@@ -164,6 +164,10 @@ https://animate.style/
 
 https://www.telerik.com/fiddler
 
+https://www.qt.io/
+
+https://www.qgis.org/en/site/
+
 ## Review
 
 http://bigocheatsheet.com/
